@@ -19,7 +19,7 @@ function NavbarComponent() {
               className="mx-auto my-lg-0 d-none d-xxl-flex navbar-nav"
               style={{ maxHeight: "100px" }}
               navbarScroll>
-              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#home" className='nav-active'>Home</Nav.Link>
               <Nav.Link href="#profile">Profile</Nav.Link>
               <Nav.Link href="#applications">Applications</Nav.Link>
               <Nav.Link href="#evaluations">Evaluations</Nav.Link>
