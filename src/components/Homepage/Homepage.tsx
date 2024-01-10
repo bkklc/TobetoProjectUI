@@ -54,7 +54,7 @@ function Homepage() {
                   </div>
                 </div>
               </div>
-            </section>;
+            </section>
           </div>
           <div className="my-2">
             <div className="container">
