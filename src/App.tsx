@@ -5,11 +5,12 @@ import Homepage from './components/homepage/Homepage'
 
 
 
+
 function App() {
   return (
     <>
-      <NavbarComponent />      
-      <Homepage/>
+      <NavbarComponent />             
+      <Homepage/> 
       <Footer />
     </>
   )

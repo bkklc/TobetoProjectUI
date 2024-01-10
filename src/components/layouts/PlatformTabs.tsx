@@ -1,12 +1,14 @@
+import { Container } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 function PlatformTabs() {
   return (
-    <Tabs
+    <Container>
+      <Tabs
       defaultActiveKey="profile"
       id="justify-tab-example"
-      className="mb-3"
+      className="nav nav-tabs mainTablist "
       justify
     >
       <Tab eventKey="home" title="Başvurularım">
@@ -22,6 +24,8 @@ function PlatformTabs() {
         Tab content for Contact
       </Tab>
     </Tabs>
+    </Container>
+    
   );
 }
 
