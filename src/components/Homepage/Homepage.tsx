@@ -1,5 +1,5 @@
 import { Container , Stack} from 'react-bootstrap'
-import PlatformTabs from '../layouts/PlatformTabs'
+import PlatformTabs from '../Layouts/PlatformTabs'
 
 function Homepage() {
   return (

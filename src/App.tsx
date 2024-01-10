@@ -1,6 +1,6 @@
-import NavbarComponent from './components/navbar/NavbarComponent'
-import Footer from './components/footer/Footer'
-import Homepage from './components/homepage/Homepage'
+import NavbarComponent from './components/Navbar/NavbarComponent'
+import Footer from './components/Footer/Footer'
+import Homepage from './components/Homepage/Homepage'
 
 
 

@@ -12,16 +12,16 @@ function PlatformTabs() {
       justify
     >
       <Tab eventKey="home" title="Başvurularım">
-        Tab content for Home
+        Başvurularım
       </Tab>
       <Tab eventKey="profile" title="Eğitimlerim">
-        Tab content for Profile
+        Eğitimlerim
       </Tab>
       <Tab eventKey="longer-tab" title="Duyuru ve Haberlerim">
-        Tab content for Loooonger Tab
+        Duyuru ve Haberlerim
       </Tab>
       <Tab eventKey="contact" title="Anketlerim">
-        Tab content for Contact
+        Anketlerim
       </Tab>
     </Tabs>
     </Container>
