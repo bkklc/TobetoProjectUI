@@ -7,7 +7,7 @@ function PlatformTabs() {
     <Container>
       <Tabs
       defaultActiveKey="profile"
-      id="justify-tab-example"
+      id="myTab"
       className="nav nav-tabs mainTablist "
       justify
     >
