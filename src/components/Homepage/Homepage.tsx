@@ -1,4 +1,5 @@
 import { Container , Stack} from 'react-bootstrap'
+import PlatformTabs from '../layouts/PlatformTabs'
 
 function Homepage() {
   return (
@@ -27,7 +28,12 @@ function Homepage() {
                   <div className="mt-2 d-flex flex-column justify-content-center px-10 text-center"><span className="header-text-md mt-4 ">Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.</span><span className="header-text mt-4 mb-4">Aradığın <span className="quot">&nbsp;“</span>İş<span className="quot">”&nbsp;</span> Burada!</span></div>
                 </div>
               </div>
+              <PlatformTabs/>
+
+
             </Container>
+
+
           </div>
           <div className="my-2">
             <section className="my-2">

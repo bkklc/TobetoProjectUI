@@ -19,7 +19,7 @@ function NavbarComponent() {
               className="mx-auto my-lg-0 d-none d-xxl-flex navbar-nav"
               style={{ maxHeight: "100px" }}
               navbarScroll>
-              <Nav.Link href="#home" className='nav-active'>Ana Sayfa</Nav.Link>
+              <Nav.Link href="platform" className='nav-active'>Ana Sayfa</Nav.Link>
               <Nav.Link href="#profile">Profilim</Nav.Link>
               <Nav.Link href="#applications">Değerlendirmeler</Nav.Link>
               <Nav.Link href="#evaluations">Katalog</Nav.Link>
