@@ -19,12 +19,12 @@ function NavbarComponent() {
               className="mx-auto my-lg-0 d-none d-xxl-flex navbar-nav"
               style={{ maxHeight: "100px" }}
               navbarScroll>
-              <Nav.Link href="#home" className='nav-active'>Home</Nav.Link>
-              <Nav.Link href="#profile">Profile</Nav.Link>
-              <Nav.Link href="#applications">Applications</Nav.Link>
-              <Nav.Link href="#evaluations">Evaluations</Nav.Link>
-              <Nav.Link href="#calendar">Calendar</Nav.Link>
-              <Nav.Link href="#calendar">Calendar</Nav.Link>
+              <Nav.Link href="#home" className='nav-active'>Ana Sayfa</Nav.Link>
+              <Nav.Link href="#profile">Profilim</Nav.Link>
+              <Nav.Link href="#applications">Değerlendirmeler</Nav.Link>
+              <Nav.Link href="#evaluations">Katalog</Nav.Link>
+              <Nav.Link href="#calendar">Takvim</Nav.Link>
+              <Nav.Link href="#calendar">İstanbul Kodluyor</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <Nav>
