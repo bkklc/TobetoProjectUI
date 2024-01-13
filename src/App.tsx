@@ -1,16 +1,16 @@
 import NavbarComponent from './components/Navbar/NavbarComponent'
 import Footer from './components/Footer/Footer'
-import Homepage from './components/Homepage/Homepage'
-import  Degerlendirmeler  from './pages/Degerlendirmeler'
+import Homepage from './pages/Homepage/Homepage'
+import  Degerlendirmeler  from './pages/Degerlendirmeler/Degerlendirmeler'
+import Dashboard from './components/Dashboard/Dashboard'
 
 
 function App() {
   return (
     <>
       <NavbarComponent />             
-      <Homepage/> 
-      <Footer />
-      <Degerlendirmeler/>
+      <Dashboard/>
+      <Footer/>
     </>
   )
 }
