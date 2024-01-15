@@ -1,7 +1,7 @@
 import React from 'react'
-import LoginComponent from '../../components/Auth/LoginComponent'
+import LoginComponent from '../../components/AuthComponents/LoginComponent'
 import { Container, Row } from 'react-bootstrap'
-import AuthBanner from '../../components/Auth/AuthBanner'
+import AuthBanner from '../../components/AuthComponents/AuthBanner'
 
 
 const Login = () => {

@@ -1,7 +1,6 @@
-import React from "react";
 import { Button, Col, Form } from "react-bootstrap";
 
-export default function Register() {
+export default function RegisterComponent() {
   return (
     <Col className="col-md-6 col-12 btn-rainbow-card">
       <div className=" mx-auto text-center">
