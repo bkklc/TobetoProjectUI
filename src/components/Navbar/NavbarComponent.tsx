@@ -21,7 +21,7 @@ function NavbarComponent() {
             style={{ maxHeight: "100px" }}
             navbarScroll>
             <Nav.Link as={Link} to={"/"} className='nav-active'>Ana Sayfa</Nav.Link>
-            <Nav.Link>Profilim</Nav.Link>
+            <Nav.Link as={Link} to={"/profilim"}>Profilim</Nav.Link>
             <Nav.Link as={Link} to={"/degerlendirmeler"}>Değerlendirmeler</Nav.Link>
             <Nav.Link>Katalog</Nav.Link>
             <Nav.Link>Takvim</Nav.Link>
