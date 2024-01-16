@@ -11,8 +11,8 @@ const ProfileEdit = () => {
       <Row>
         <SideMenu />
         <Routes>
-          <Route path="/kisisel-bilgilerim" Component={PersonalInfo}></Route>
-          <Route path="/a" Component={AuthBanner}></Route>
+        <Route path="/kisisel-bilgilerim" Component={PersonalInfo}></Route>
+        <Route path="/a" Component={AuthBanner}></Route>
         </Routes>
       </Row>
     </Container>
