@@ -1,142 +1,140 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import ProfileInfo from "../../pages/ProfileInfo/ProfileInfo";
+import ProfileInfo from "./SideMenu";
 
 const PersonalInfo = () => {
   <ProfileInfo />;
 
   return (
-    <Container>
-      <Row className="mb-2">
-        <Col className="col-12 mb-6 text-center">
-          <div className="profile-photo mx-auto">
-            <img
-              alt=""
-              aria-hidden="true"
-              src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=384&q=75"
-            />
+    <>
+      <Col className="col-9 mb-6 text-center">
+        <div className="profile-photo mx-auto">
+          <img
+            alt=""
+            aria-hidden="true"
+            src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=384&q=75"
+          />
 
-            <div className="photo-edit-btn cursor-pointer" />
-          </div>
+          <div className="photo-edit-btn cursor-pointer" />
+        </div>
 
-          <div className="row mb-2"></div>
-          <div>
-            <div className="uppy-Container">
-              <div className="uppy-Root" dir="ltr">
+        <div className="row mb-2"></div>
+        <div>
+          <div className="uppy-Container">
+            <div className="uppy-Root" dir="ltr">
+              <div
+                className="uppy-Dashboard uppy-Dashboard--animateOpenClose uppy-Dashboard--modal uppy-Dashboard--isInnerWrapVisible"
+                data-uppy-theme="light"
+                data-uppy-num-acquirers={0}
+                data-uppy-drag-drop-supported="true"
+                aria-hidden="true"
+                aria-disabled="false"
+                aria-label="Dosya Yükle (Kapatmak için Esc)"
+              >
                 <div
-                  className="uppy-Dashboard uppy-Dashboard--animateOpenClose uppy-Dashboard--modal uppy-Dashboard--isInnerWrapVisible"
-                  data-uppy-theme="light"
-                  data-uppy-num-acquirers={0}
-                  data-uppy-drag-drop-supported="true"
                   aria-hidden="true"
-                  aria-disabled="false"
-                  aria-label="Dosya Yükle (Kapatmak için Esc)"
+                  className="uppy-Dashboard-overlay"
+                  tabIndex={-1}
+                />
+                <div
+                  className="uppy-Dashboard-inner"
+                  aria-modal="true"
+                  role="dialog"
                 >
-                  <div
-                    aria-hidden="true"
-                    className="uppy-Dashboard-overlay"
-                    tabIndex={-1}
-                  />
-                  <div
-                    className="uppy-Dashboard-inner"
-                    aria-modal="true"
-                    role="dialog"
+                  <button
+                    className="uppy-u-reset uppy-Dashboard-close"
+                    type="button"
+                    aria-label="Kapat"
+                    title="Kapat"
                   >
-                    <button
-                      className="uppy-u-reset uppy-Dashboard-close"
-                      type="button"
-                      aria-label="Kapat"
-                      title="Kapat"
-                    >
-                      <span aria-hidden="true">×</span>
-                    </button>
-                    <div className="uppy-Dashboard-innerWrap">
-                      <div className="uppy-Dashboard-dropFilesHereHint">
-                        Buraya sürükleyip bırakın
-                      </div>
-                      <div className="uppy-Dashboard-AddFiles">
-                        <input
-                          className="uppy-Dashboard-input"
-                          aria-hidden="true"
-                          tabIndex={-1}
-                          type="file"
-                          name="files[]"
-                          accept="image/jpeg,image/png"
-                        />
-                        <input
-                          className="uppy-Dashboard-input"
-                          aria-hidden="true"
-                          tabIndex={-1}
-                          type="file"
-                          name="files[]"
-                          accept="image/jpeg,image/png"
-                        />
-                        <div className="uppy-Dashboard-AddFiles-title">
-                          Sürükleyip bırak, yapıştır veya{" "}
-                          <button
-                            type="button"
-                            className="uppy-u-reset uppy-c-btn uppy-Dashboard-browse"
-                            data-uppy-super-focusable="true"
-                          >
-                            gözat
-                          </button>
-                        </div>
-                        <div
-                          className="uppy-Dashboard-AddFiles-list"
-                          role="tablist"
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <div className="uppy-Dashboard-innerWrap">
+                    <div className="uppy-Dashboard-dropFilesHereHint">
+                      Buraya sürükleyip bırakın
+                    </div>
+                    <div className="uppy-Dashboard-AddFiles">
+                      <input
+                        className="uppy-Dashboard-input"
+                        aria-hidden="true"
+                        tabIndex={-1}
+                        type="file"
+                        name="files[]"
+                        accept="image/jpeg,image/png"
+                      />
+                      <input
+                        className="uppy-Dashboard-input"
+                        aria-hidden="true"
+                        tabIndex={-1}
+                        type="file"
+                        name="files[]"
+                        accept="image/jpeg,image/png"
+                      />
+                      <div className="uppy-Dashboard-AddFiles-title">
+                        Sürükleyip bırak, yapıştır veya{" "}
+                        <button
+                          type="button"
+                          className="uppy-u-reset uppy-c-btn uppy-Dashboard-browse"
+                          data-uppy-super-focusable="true"
                         >
-                          <span
-                            role="presentation"
-                            style={{ whiteSpace: "nowrap" }}
-                          />
-                        </div>
-                        <div className="uppy-Dashboard-AddFiles-info">
-                          <a
-                            tabIndex={-1}
-                            href="https://uppy.io"
-                            rel="noreferrer noopener"
-                            target="_blank"
-                            className="uppy-Dashboard-poweredBy"
-                          >
-                            Powered by{" "}
-                            <span>
-                              <svg
-                                aria-hidden="true"
-                                focusable="false"
-                                className="uppy-c-icon uppy-Dashboard-poweredByIcon"
-                                width={11}
-                                height={11}
-                                viewBox="0 0 11 11"
-                              >
-                                <path d="M7.365 10.5l-.01-4.045h2.612L5.5.806l-4.467 5.65h2.604l.01 4.044h3.718z" />
-                              </svg>
-                              <span className="uppy-Dashboard-poweredByUppy">
-                                Uppy
-                              </span>
+                          gözat
+                        </button>
+                      </div>
+                      <div
+                        className="uppy-Dashboard-AddFiles-list"
+                        role="tablist"
+                      >
+                        <span
+                          role="presentation"
+                          style={{ whiteSpace: "nowrap" }}
+                        />
+                      </div>
+                      <div className="uppy-Dashboard-AddFiles-info">
+                        <a
+                          tabIndex={-1}
+                          href="https://uppy.io"
+                          rel="noreferrer noopener"
+                          target="_blank"
+                          className="uppy-Dashboard-poweredBy"
+                        >
+                          Powered by{" "}
+                          <span>
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              className="uppy-c-icon uppy-Dashboard-poweredByIcon"
+                              width={11}
+                              height={11}
+                              viewBox="0 0 11 11"
+                            >
+                              <path d="M7.365 10.5l-.01-4.045h2.612L5.5.806l-4.467 5.65h2.604l.01 4.044h3.718z" />
+                            </svg>
+                            <span className="uppy-Dashboard-poweredByUppy">
+                              Uppy
                             </span>
-                          </a>
-                        </div>
+                          </span>
+                        </a>
                       </div>
-                      <div className="uppy-Dashboard-progressindicators">
+                    </div>
+                    <div className="uppy-Dashboard-progressindicators">
+                      <div
+                        className="uppy-StatusBar is-waiting"
+                        aria-hidden="true"
+                      >
                         <div
-                          className="uppy-StatusBar is-waiting"
-                          aria-hidden="true"
-                        >
-                          <div
-                            className="uppy-StatusBar-progress"
-                            role="progressbar"
-                            aria-label="0%"
-                            aria-valuetext="0%"
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                            aria-valuenow={0}
-                            style={{ width: "0%" }}
-                          />
-                          <div className="uppy-StatusBar-actions" />
-                        </div>
-                        <div className="uppy uppy-Informer">
-                          <span />
-                        </div>
+                          className="uppy-StatusBar-progress"
+                          role="progressbar"
+                          aria-label="0%"
+                          aria-valuetext="0%"
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-valuenow={0}
+                          style={{ width: "0%" }}
+                        />
+                        <div className="uppy-StatusBar-actions" />
+                      </div>
+                      <div className="uppy uppy-Informer">
+                        <span />
                       </div>
                     </div>
                   </div>
@@ -144,7 +142,8 @@ const PersonalInfo = () => {
               </div>
             </div>
           </div>
-        </Col>
+        </div>
+
         <div className="col-12 col-md-6 mb-6">
           <label className="input-label-text">Adınız*</label>
           <input
@@ -267,8 +266,8 @@ const PersonalInfo = () => {
             defaultValue={""}
           />
         </div>
-      </Row>
-    </Container>
+      </Col>
+    </>
   );
 };
 
