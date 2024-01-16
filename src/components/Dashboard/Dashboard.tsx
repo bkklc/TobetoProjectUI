@@ -3,9 +3,7 @@ import Homepage from "../../pages/Homepage/Homepage";
 import Degerlendirmeler from "../../pages/Degerlendirmeler/Degerlendirmeler";
 import MyProfile from "../../pages/Profile/MyProfile";
 import Login from "../../pages/Auth/Login";
-import ProfileInfo from "../ProfileInfo/SideMenu";
 import Register from "../../pages/Auth/Register";
-import PersonalInfo from "../ProfileInfo/PersonalInfo";
 import ProfileEdit from "../../pages/Profile/ProfileEdit/ProfileEdit";
 
 
@@ -17,8 +15,7 @@ export default function Dashboard() {
         <Route path="/profilim" Component={MyProfile}></Route>
         <Route path ="/profilBilgileri" Component={ProfileEdit}></Route>
         <Route path="/login" Component={Login}></Route>
-        <Route path="/kayit-ol" Component={Register}></Route>
-        
+        <Route path="/kayit-ol" Component={Register}></Route>       
     </Routes>
   )
 }
