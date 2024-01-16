@@ -10,7 +10,7 @@ const ProfileEdit = () => {
       <Row>
         <SideMenu />
         <Routes>
-          <Route path="/kisiselbilgilerim" Component={PersonalInfo}></Route>
+          <Route path="/kisiselBilgilerim" Component={PersonalInfo}></Route>
         </Routes>
       </Row>
     </Container>
