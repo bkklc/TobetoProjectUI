@@ -1,29 +1,34 @@
 import React from 'react';
+import { Col, Row, Card } from 'react-bootstrap';
 
-const Certificates: React.FC = () => {
+function Certificates () { 
   return (
-    <div className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
-      <div className="row">
-        <div className="section-header">
-          <span className="header-text">
-            <strong>Sertifikalarım</strong>
-          </span>
-        </div>
-        <div className="col-12 tobeto-light-bg">
-          <div className="upload-area">
-            <div className="cursor-pointer">
-              {/* SVG içeriği */}
-            </div>
-            <span><strong>Dosya Yükle</strong></span>
-            <div>
-              <div className="uppy-Container">
-                {/* Diğer içerikler buraya gelecek */}
+    <Col xs={12} lg={9} style={{ minHeight: "90vh" }}>
+      <Row>
+        <Card className="section-header">
+          <Card.Body>
+            <span className="header-text">
+              <strong>Sertifikalarım</strong>
+            </span>
+          </Card.Body>
+        </Card>
+        <Col xs={12} className="tobeto-light-bg">
+          <Card className="upload-area">
+            <Card.Body>
+              <div className="cursor-pointer">
+                {/* SVG içeriği */}
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              <span><strong>Dosya Yükle</strong></span>
+              <div>
+                <div className="uppy-Container">
+                  {/* Diğer içerikler buraya gelecek */}
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Col>
   );
 }
 
