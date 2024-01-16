@@ -5,6 +5,7 @@ import PersonalInfo from '../../../components/ProfileInfo/PersonalInfo'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AuthBanner from '../../../components/AuthComponents/AuthBanner'
 import EducationLife from '../../../components/ProfileInfo/EducationLife'
+import Certificates from '../../../components/ProfileInfo/Certificates'
 
 const ProfileEdit = () => {
   return (
@@ -14,6 +15,7 @@ const ProfileEdit = () => {
         <Routes>
         <Route path="/kisisel-bilgilerim" Component={PersonalInfo}></Route>
         <Route path='egitim-hayatim' Component={EducationLife}></Route>
+        <Route path='sertifikalarım' Component={Certificates}></Route>
         <Route path="/a" Component={AuthBanner}></Route>
         </Routes>
       </Row>
