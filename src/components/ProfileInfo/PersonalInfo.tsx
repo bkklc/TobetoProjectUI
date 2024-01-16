@@ -1,4 +1,4 @@
-import { Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 const PersonalInfo = () => {
   return (
@@ -47,7 +47,7 @@ const PersonalInfo = () => {
                 </div>
               </div>
             </Col>
-            <Col className="col-12 col-md-6 mb-6">
+            <div className="col-12 col-md-6 mb-6">
 
               <label className="input-label-text">Adınız*</label>
               <input
@@ -55,7 +55,7 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input"
                 type="text"
               />
-            </Col>
+            </div>
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Soyadınız*</label>
               <input
@@ -155,9 +155,9 @@ const PersonalInfo = () => {
               />
             </div>
           </Row>
-          <button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn">
+          <Button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn">
             Kaydet
-          </button>
+          </Button>
         </Form>
       </Col>
     </>
