@@ -16,7 +16,7 @@ const ProfileEdit = () => {
         <Routes>
           <Route path="/kisisel-bilgilerim" Component={PersonalInfo}></Route>
           <Route path='/egitim-hayatim' Component={EducationLife}></Route>
-          <Route path='/sosyal-medya' Component={SocialMedia}></Route>
+          <Route path='/medya-hesaplarim' Component={SocialMedia}></Route>
           <Route path='/deneyimlerim' Component={Experiences}></Route>
           <Route path="/yetkinliklerim" Component={Abilities}></Route>
           <Route path="/yabanci-dillerim" Component={MyLanguages}></Route>
