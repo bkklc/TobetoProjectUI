@@ -13,7 +13,7 @@ export default function Dashboard() {
         <Route path='/' Component={Homepage}></Route>
         <Route path="/degerlendirmeler" Component={Degerlendirmeler}></Route>
         <Route path="/profilim" Component={MyProfile}></Route>
-        <Route path ="/profilBilgileri" Component={ProfileEdit}></Route>
+        <Route path="/profilimi-duzenle/*" Component={ProfileEdit}></Route>
         <Route path="/login" Component={Login}></Route>
         <Route path="/kayit-ol" Component={Register}></Route>       
     </Routes>
