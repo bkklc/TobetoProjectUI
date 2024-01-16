@@ -4,12 +4,12 @@ import { Col } from "react-bootstrap";
 export default function Abilities() {
   return (
     <Col md={9}>
-      <div className="container-lg " style={{ minHeight: "90vh"}}>
+      <div className="container-lg " style={{ minHeight: "90vh" }}>
         <div className="row mb-2">
           <div className="col-12 mb-6">
             <label className="form-label">Yetkinlik</label>
             <div className="input-group">
-              <span className="input-group-text" id="basic-addon1" >
+              <span className="input-group-text" id="basic-addon1"  >
                 <svg
                   height={20}
                   width={20}

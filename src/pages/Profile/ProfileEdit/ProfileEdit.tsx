@@ -7,6 +7,7 @@ import SocialMedia from '../../../components/ProfileInfo/SocialMedia'
 import Abilities from '../../../components/ProfileInfo/Abilities'
 import Experiences from '../../../components/ProfileInfo/Experiences'
 import MyLanguages from '../../../components/ProfileInfo/MyLanguages'
+import Settings from '../../../components/ProfileInfo/Settings'
 
 const ProfileEdit = () => {
   return (
@@ -20,6 +21,7 @@ const ProfileEdit = () => {
           <Route path='/deneyimlerim' Component={Experiences}></Route>
           <Route path="/yetkinliklerim" Component={Abilities}></Route>
           <Route path="/yabanci-dillerim" Component={MyLanguages}></Route>
+          <Route path="/ayarlar" Component={Settings}></Route>
         </Routes>
       </Row>
     </Container>
