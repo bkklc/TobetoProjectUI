@@ -33,15 +33,14 @@ const Experiences = () => {
             <Form.Label className="input-label-text">İş Bitiş*</Form.Label>
             <InputGroup>
               <FormControl as="input" type="text" placeholder="gg.aa.yyyy" disabled className="form-control tobeto-input" value="" />
-              <InputGroup.Text>
+            </InputGroup>
+          </Col>
+          <Col xs={12} md={{ span: 6, offset: 6 }}>
                 <Form.Check
                   name="checkbox"
-                  className="form-check-input me-4"
                   type="checkbox"
                   label={<small className="text-muted">Çalışmaya Devam Ediyorum</small>}
                 />
-              </InputGroup.Text>
-            </InputGroup>
           </Col>
           <Col xs={12} md={12} className="mb-6">
             <Form.Label className="input-label-text">İş Açıklaması</Form.Label>
