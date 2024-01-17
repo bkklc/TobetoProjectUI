@@ -32,8 +32,8 @@ function NavbarComponent() {
             <Nav.Link as={Link} to={"/"} className={(url === "/"? "nav-active" : "")}>Ana Sayfa</Nav.Link>
             <Nav.Link as={Link} to={"/profilim"} className={(url === "/profilim"? "nav-active" : "")}>Profilim</Nav.Link>
             <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler"? "nav-active" : "")}>Değerlendirmeler</Nav.Link>
-            <Nav.Link>Katalog</Nav.Link>
-            <Nav.Link>Takvim</Nav.Link>
+            <Nav.Link as={Link} to={"/takvim"} className={(url === "/takvim"? "nav-active" : "")}>Takvim</Nav.Link>
+            <Nav.Link>Katalog</Nav.Link>            
             <Nav.Link>İstanbul Kodluyor</Nav.Link>
           </Nav>
         </Navbar.Collapse>
