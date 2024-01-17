@@ -3,7 +3,7 @@ import { Col, Form, InputGroup, Card, Container } from 'react-bootstrap';
 
 const CalendarLeftMenu = () => {
   return (
-    <Col md={3} className="mt-5">
+    <Col md={4} lg={3} className="mt-5">
       <Container   >
         <Card.Body className="d-flex flex-column ">
           <div className="filter-header mb-3">
