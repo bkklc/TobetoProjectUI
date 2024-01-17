@@ -1,10 +1,10 @@
 import React from 'react';
-import { Col, Form, InputGroup, Card } from 'react-bootstrap';
+import { Col, Form, InputGroup, Card, Container } from 'react-bootstrap';
 
 const CalendarLeftMenu = () => {
   return (
     <Col md={3} className="mt-5">
-      <Card   >
+      <Container   >
         <Card.Body className="d-flex flex-column ">
           <div className="filter-header mb-3">
             <span>Eğitim Arama</span>
@@ -71,7 +71,7 @@ const CalendarLeftMenu = () => {
             />
           </div>
         </Card.Body>
-      </Card>
+      </Container>
     </Col>
   );
 }
