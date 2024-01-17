@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row,Button } from 'react-bootstrap';
 
 const Info = () => {
   return (
@@ -25,6 +25,27 @@ const Info = () => {
        <p className="istka-sm-text mmt-0">Sanayi ve Teknoloji Bakanlığı Kalkınma Ajansları Genel Müdürlüğü koordinasyonunda İstanbul Kalkınma Ajansı (İSTKA) ve İngiltere merkezli Bridges Outcomes Partnerships iş birliğinde başladı!</p>
      </Col>
    </Row>
+   <Row>
+      <Col xs={12} className="bg-lightgray d-flex flex-row">
+        <Button href="/istanbul-kodluyor#sss" className="btn big-btn-primary w-50 my-20">
+          Sıkça Sorulan Sorular
+        </Button>
+        <Button href="/platform" className="btn big-btn-primary w-50 my-20">
+          Platforma Git
+        </Button>
+      </Col>
+    </Row>
+   <Row className="bg-lightgreen">
+      <Col xs={12} className="header-left-2">
+        <span className="header-left-text">İstanbul Kodluyor Projesi Hakkında</span>
+      </Col>
+      <Col xs={12} className="mt-8">
+        <p>
+          <b>Yazılım ve teknoloji</b> alanında meslek sahibi olmak isteyen genç yetişkinlere, <b>ücretsiz ve kapsamlı eğitimlerle</b> gerekli bilgi ve becerileri kazandıran, Türkiye’nin önde gelen kurumlarında <b>işe yerleşmelerini</b> sağlayan bir projedir.
+          Teknoloji alanında nitelikli insan kaynağını geliştirmeyi amaçlayan bu proje, aynı zamanda <b>kadınların</b> sektördeki temsiliyetini artırmayı da hedeflemektedir.
+        </p>
+      </Col>
+    </Row>
    </>
   );
 };
