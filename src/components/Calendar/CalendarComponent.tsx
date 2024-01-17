@@ -28,7 +28,7 @@ const CalendarComponent = (props: Props) => {
   return (
     <Col  >
       
-        <div className="card p-5">
+        <div className=" p-5">
           <FullCalendar
             locales={[trLocale]}
             locale="tr"
