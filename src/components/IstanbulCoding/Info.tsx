@@ -2,6 +2,7 @@ import { Col, Row } from 'react-bootstrap';
 
 const Info = () => {
   return (
+    <>
     <Row className="bg-darkblue">
       <Col xs={12} className="d-flex justify-content-center p-10 istkaLogo">
         <span style={{ boxSizing: 'border-box', display: 'inline-block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: 0, margin: 0, padding: 0, position: 'relative', maxWidth: '100%' }}>
@@ -16,6 +17,15 @@ const Info = () => {
         <span className="header-text mt-8 mb-10">Aradığın <span className="quot">&nbsp;“</span>İş<span className="quot">”&nbsp;</span> Burada!</span>
       </Col>
     </Row>
+     <Row className="bg-lightgreen p-0">
+     <Col xs={12} className="istka-md-text">
+       <span>Türkiye’nin İlk Sosyal Etki Tahvili: “İstanbul Kodluyor” Projesi&nbsp;</span>
+     </Col>
+     <Col xs={12} className="px-md-20 px-sm-0 text-center">
+       <p className="istka-sm-text mmt-0">Sanayi ve Teknoloji Bakanlığı Kalkınma Ajansları Genel Müdürlüğü koordinasyonunda İstanbul Kalkınma Ajansı (İSTKA) ve İngiltere merkezli Bridges Outcomes Partnerships iş birliğinde başladı!</p>
+     </Col>
+   </Row>
+   </>
   );
 };
 
