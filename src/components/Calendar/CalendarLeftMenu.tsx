@@ -1,5 +1,4 @@
-import React from 'react';
-import { Col, Form, InputGroup, Card, Container } from 'react-bootstrap';
+import { Card, Col, Container, Form, InputGroup } from 'react-bootstrap';
 
 const CalendarLeftMenu = () => {
   return (

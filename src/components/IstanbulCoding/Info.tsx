@@ -308,28 +308,28 @@ const Info = () => {
             <div>
               <img
                 alt="Sanayi ve Teknoloji Bakanlığı Logo"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstb.02c86f02.png&w=3840&q=75"
+                src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstb.02c86f02.png&w=3840&q=75"
                 className="brandss"
               />
             </div>
             <div>
               <img
                 alt="İstanbul Kalkınma Ajansı Logo"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fistka.08116c01.png&w=3840&q=75"
+                src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fistka.08116c01.png&w=3840&q=75"
                 className="brandss"
               />
             </div>
             <div>
               <img
                 alt="Bridges of Internship Logo"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fboi.42ec6b80.png&w=640&q=75"
+                src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fboi.42ec6b80.png&w=256&q=75"
                 className="brandss"
               />
             </div>
             <div>
               <img
                 alt="ETKİ Logo"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fetki.8886e8e3.png&w=1080&q=75"
+                src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fetki.8886e8e3.png&w=640&q=75"
                 className="brandss"
               />
             </div>
@@ -338,14 +338,14 @@ const Info = () => {
             <div>
               <img
                 alt="enocta"
-                src="/_next/static/media/enocta-logo.ec253fa2.svg"
+                src="https://tobeto.com/_next/static/media/enocta-logo.ec253fa2.svg"
                 className="brandss"
               />
             </div>
             <div>
               <img
                 alt="tobeto"
-                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=640&q=75"
+                src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=384&q=75"
                 className="brandss"
               />
             </div>
