@@ -14,7 +14,7 @@ import Certificates from '../../../components/ProfileInfo/Certificates'
 const ProfileEdit = () => {
   return (
     <Container>
-      <Row>
+      <Row className='mt-8'>
         <SideMenu />
         <Routes>
           <Route path="/kisisel-bilgilerim" Component={PersonalInfo}></Route>
@@ -24,7 +24,7 @@ const ProfileEdit = () => {
           <Route path="/yetkinliklerim" Component={Abilities}></Route>
           <Route path="/yabanci-dillerim" Component={MyLanguages}></Route>
           <Route path="/ayarlar" Component={Settings}></Route>
-          <Route path='sertifikalarım' Component={Certificates}></Route>
+          <Route path='/sertifikalarim' Component={Certificates}></Route>
         </Routes>
       </Row>
     </Container>
