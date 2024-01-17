@@ -1,50 +1,51 @@
-import React from 'react';
 
-const EducationLife = () => {
-    return (
-        <div className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
-            <form data-hs-cf-bound="true">
-                <div className="row mb-2">
-                    {/* Eğitim Durumu */}
-                    <div className="col-12 col-md-6 mb-6">
-                        <label className="form-label">Eğitim Durumu*</label>
-                        <select name="EducationStatus" className="form-select tobeto-input">
-                            <option value="">Seviye Seçiniz</option>
-                            <option value="Lisans">Lisans</option>
-                            <option value="Ön Lisans">Ön Lisans</option>
-                            <option value="Yüksek Lisans">Yüksek Lisans</option>
-                            <option value="Doktora">Doktora</option>
-                        </select>
-                    </div>
-                    {/* Üniversite */}
-                    <div className="col-12 col-md-6 mb-6">
-                        <label className="form-label">Üniversite*</label>
-                        <input name="University" className="form-control tobeto-input" type="text" placeholder="Kampüs 365" />
-                    </div>
-                    {/* Bölüm */}
-                    <div className="col-12 col-md-6 mb-6">
-                        <label className="form-label">Bölüm*</label>
-                        <input name="Department" className="form-control tobeto-input" type="text" placeholder="Yazılım" />
-                    </div>
-                    {/* Başlangıç Yılı */}
-                    <div className="col-12 col-md-6 mb-6">
-                        <label className="form-label">Başlangıç Yılı*</label>
-                        <input type="text" placeholder="Başlangıç Yılınızı Seçiniz" className="form-control tobeto-input" />
-                    </div>
-                    {/* Mezuniyet Yılı */}
-                    <div className="col-12 col-md-6 mb-6">
-                        <label className="form-label">Mezuniyet Yılı*</label>
-                        <input type="text" placeholder="Mezuniyet Yılınızı Seçiniz"  className="form-control tobeto-input" />
-                        <div className="form-check mt-3">
-                            <input name="checkbox" className="form-check-input me-2" type="checkbox" />
-                            <label className="form-check-label small">Devam Ediyorum</label>
-                        </div>
-                    </div>
-                </div>
-                <button className="btn btn-primary py-2 mb-3">Kaydet</button>
-            </form>
-        </div>
-    )
+import React from 'react';
+import { Form, Col, Button, Row } from 'react-bootstrap';
+
+function EducationLife() {
+  return (
+    <Col xs={12} lg={9} style={{ minHeight: "90vh" }}>
+      <Form>
+      <Row>
+          {/* Eğitim Durumu */}
+          <Form.Group as={Col} md={6} controlId="formEducationStatus">
+            <Form.Label>Eğitim Durumu*</Form.Label>
+            <Form.Control as="select" name="EducationStatus" className="tobeto-input">
+              <option value="">Seviye Seçiniz</option>
+              <option value="Lisans">Lisans</option>
+              <option value="Ön Lisans">Ön Lisans</option>
+              <option value="Yüksek Lisans">Yüksek Lisans</option>
+              <option value="Doktora">Doktora</option>
+            </Form.Control>
+          </Form.Group>
+          {/* Üniversite */}
+          <Form.Group as={Col} md={6} controlId="formUniversity">
+            <Form.Label>Üniversite*</Form.Label>
+            <Form.Control name="University" className="tobeto-input" type="text" placeholder="Kampüs 365" />
+          </Form.Group>
+          {/* Bölüm */}
+          <Form.Group as={Col} md={6} controlId="formDepartment">
+            <Form.Label>Bölüm*</Form.Label>
+            <Form.Control name="Department" className="tobeto-input" type="text" placeholder="Bölüm" />
+          </Form.Group>
+          {/* Başlangıç Yılı */}
+          <Form.Group as={Col} md={6} controlId="formStartDate">
+            <Form.Label>Başlangıç Yılı*</Form.Label>
+            <Form.Control type="text" placeholder="Başlangıç Yılınızı Seçiniz" className="tobeto-input" />
+          </Form.Group>
+          {/* Mezuniyet Yılı */}
+          <Form.Group as={Col} md={6} controlId="formGraduationDate">
+            <Form.Label>Mezuniyet Yılı*</Form.Label>
+            <Form.Control type="text" placeholder="Mezuniyet Yılınızı Seçiniz" className="tobeto-input" />
+            <Form.Check type="checkbox" label="Devam Ediyorum" className="mt-3" />
+          </Form.Group>
+          </Row>
+        <Button variant="primary" className="py-2 mb-3" type="submit">
+          Kaydet
+        </Button>
+      </Form>
+    </Col>
+  );
 }
 
 export default EducationLife;
