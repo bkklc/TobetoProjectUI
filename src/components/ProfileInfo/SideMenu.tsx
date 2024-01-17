@@ -2,13 +2,10 @@ import { useEffect, useState } from "react";
 import { Col, Nav } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import PageUrl from "../../hooks/PageUrl";
 
 function SideMenu() {
-  const location: any = useLocation(); // once ready it returns the 'window.location' object
-  const [url, setUrl] = useState(null);
-  useEffect(() => {
-    setUrl(location.pathname);
-  }, [location]);
+  const url = PageUrl();
   return (
     <>
       <Col md={3} lg={3} className="mb-8 mb-lg-0">

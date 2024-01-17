@@ -1,7 +1,10 @@
-import { Card, Col, Container, Row, Stack } from 'react-bootstrap'
+import { Button, Card, Col, Container, Nav, Row, Stack } from 'react-bootstrap'
 import PlatformTabs from '../../components/Items/PlatformTabs'
+import { Link } from 'react-router-dom'
+import PageUrl from '../../hooks/PageUrl';
 
 function Homepage() {
+  const url = PageUrl();  
   return (
     <main>
       <Stack gap={3}>
@@ -74,19 +77,23 @@ function Homepage() {
               <div className="package-card">
                 <div className="details pack-bg-2">
                   <h1><br /> Profilini oluştur </h1>
-                  <button className="btn btn-primary w-100 ">Başla</button>
+                  <Button>
+                  <Nav.Link as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"} className={(url === "/profilimi-duzenle/kisisel-bilgilerim"? "nav-active" : "")}>Başla</Nav.Link>
+                  </Button>
                 </div>
               </div>
               <div className="package-card">
                 <div className="details pack-bg-3">
                   <h1 className="mb-6"><br /> Kendini değerlendir </h1>
-                  <button className="btn btn-primary w-100 ">Başla</button>
+                  <Button>
+                  <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler"? "nav-active" : "")}>Başla</Nav.Link>
+                  </Button>
                 </div>
               </div>
               <div className="package-card">
                 <div className="details pack-bg-1">
                   <h1 className="mb-6"> <br /> Öğrenmeye başla </h1>
-                  <button className="btn btn-primary w-100 ">Başla</button>
+                  <Button className="btn btn-primary w-100 ">Başla</Button>
                 </div>
               </div>
             </div>

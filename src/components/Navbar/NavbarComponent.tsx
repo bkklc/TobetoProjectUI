@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Navbar, Nav, Container, NavDropdown, Dropdown } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom'
+import PageUrl from '../../hooks/PageUrl';
+import { Link } from 'react-router-dom';
 
 
-function NavbarComponent() {
-  const location:any = useLocation(); // once ready it returns the 'window.location' object
-  const [url, setUrl] = useState(null);
-  useEffect(() => {
-    setUrl(location.pathname);
-  }, [location]);
-  
+function NavbarComponent() {  
+  const url = PageUrl();  
   return (
     
     <Navbar expand="sm" className='position-relative navbar navbar-expand-xxl py-5 bg-white'>
