@@ -6,6 +6,7 @@ import Register from "../../pages/Auth/Register";
 import ProfileEdit from "../../pages/Profile/ProfileEdit/ProfileEdit";
 import Profile from "../../pages/Profile/Profile";
 import IstanbulCoding from "../../pages/IstanbulCoding/IstanbulCoding";
+import Calendar from "../../pages/Calendar/Calendar";
 
 
 export default function Dashboard() {
@@ -18,6 +19,7 @@ export default function Dashboard() {
         <Route path="/login" Component={Login}></Route>
         <Route path="/kayit-ol" Component={Register}></Route>     
         <Route path="/istanbul-kodluyor" Component={IstanbulCoding}></Route>     
+        <Route path="/takvim" Component={Calendar}></Route>     
           
     </Routes>
   )

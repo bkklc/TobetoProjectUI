@@ -1,4 +1,4 @@
-import { Col, Row,Button } from 'react-bootstrap';
+import { Col, Row,Button, Container } from 'react-bootstrap';
 
 const Info = () => {
   return (
@@ -118,6 +118,127 @@ const Info = () => {
         </div>
       </Col>
     </Row>
+    <Row className="bg-lightgray">
+      <Col xs={12} className="mt-10 text-center">
+        <span className="text-neon">ÖNE ÇIKAN EĞİTİMLER</span>
+        <div className="ik-edus">
+          <div className="cursor-pointer">
+            <span style={{ position: 'relative', display: 'inline-block', overflow: 'hidden', width: 'initial', height: 'initial' }}>
+              <img
+                alt=""
+                src="/_next/static/media/web_egitim_ikonlar_yazilim-web.4aba227e.svg"
+                srcSet="/_next/static/media/web_egitim_ikonlar_yazilim-web.4aba227e.svg 1x, /_next/static/media/web_egitim_ikonlar_yazilim-web.4aba227e.svg 2x"
+                decoding="async"
+                style={{ position: 'absolute', inset: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%' }}
+              />
+            </span>
+          </div>
+        </div>
+      </Col>
+    </Row>
+    <Row className="bg-lightgreen">
+      <div className="header-left-2">
+        <span className="header-left-text">Sen de hemen başvur!</span>
+      </div>
+        <Row className="ps-md-40 ps-sm-0">
+          <Col md={3} xs={12} className="d-flex align-items-center justify-content-center">
+            <span
+              className="text-right right-line"
+              style={{
+                fontSize: '3em',
+                fontWeight: 600,
+                paddingTop: '2em',
+                color: 'rgb(255, 255, 255)',
+              }}
+            >
+              Yazılım ve Teknoloji Alanında
+            </span>
+          </Col>
+          <Col md={9} xs={12} className="mt-8 reg-sec">
+            <div>
+              <span className="number">1</span>
+              <span className="text">Ücretsiz eğitim al</span>
+            </div>
+            <div>
+              <span className="number">2</span>
+              <span className="text">Profesyonel yetkinlikler kazan</span>
+            </div>
+            <div>
+              <span className="number">3</span>
+              <span className="text">Yeni mesleğinle işe başla!</span>
+            </div>
+          </Col>
+        </Row>
+    </Row>
+    <Row className="bg-grey pb-0">
+      <Col xs={12} className="text-center-mobil px-md-10 px-sm-0 pt-md-10 pt-sm-0">
+        <span className="text-grey">Bu Proje Nasıl Destekleniyor?</span>
+        <p
+          className="px-20 py-10"
+          style={{ fontSize: '1.5em' }}
+        >
+          <b>İstanbul Kodluyor</b>, Türkiye’nin ilk sosyal etki tahvili projesidir. Sosyal etki tahvilleri, sosyal sorunlara çözüm bulan, performansa dayalı sözleşmelerdir ve ölçülebilir, pozitif, sosyal ve çevresel etki yaratacak sonuçlara ulaşılmayı amaçlamaktadır.
+        </p>
+      </Col>
+    </Row>
+    <Row className="bg-grey pt-0">
+      <Col xs={12} className="text-center p-10">
+        <div className="partners mt-10">
+          <div>
+            <img
+              alt="Sanayi ve Teknoloji Bakanlığı Logo"
+              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstb.02c86f02.png&w=3840&q=75"
+              className="brandss"
+            />
+          </div>
+          <div>
+            <img
+              alt="İstanbul Kalkınma Ajansı Logo"
+              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fistka.08116c01.png&w=3840&q=75"
+              className="brandss"
+            />
+          </div>
+          <div>
+            <img
+              alt="Bridges of Internship Logo"
+              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fboi.42ec6b80.png&w=640&q=75"
+              className="brandss"
+            />
+          </div>
+          <div>
+            <img
+              alt="ETKİ Logo"
+              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fetki.8886e8e3.png&w=1080&q=75"
+              className="brandss"
+            />
+          </div>
+        </div>
+        <div className="partners mt-20">
+          <div>
+            <img
+              alt="enocta"
+              src="/_next/static/media/enocta-logo.ec253fa2.svg"
+              className="brandss"
+            />
+          </div>
+          <div>
+            <img
+              alt="tobeto"
+              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=640&q=75"
+              className="brandss"
+            />
+          </div>
+        </div>
+      </Col>
+    </Row>
+    <Container fluid>
+      <Row>
+        <Col className="sss-banner2 py-8">
+          <h1 className="ch-text text-center">Sıkça Sorulan Sorular</h1>
+        </Col>
+      </Row>
+    </Container>
+  
    </>
   );
 };
