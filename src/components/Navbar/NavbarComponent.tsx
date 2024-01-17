@@ -50,8 +50,8 @@ function NavbarComponent() {
               </div>
             }
             id="basic-nav-dropdown">
-            <Dropdown.Item eventKey={1.1} href="/profilimi-duzenle/kisisel-bilgilerim">Profil Bilgileri</Dropdown.Item>
-            <Dropdown.Item eventKey={1.3}>
+            <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Profil Bilgileri</Dropdown.Item>
+            <Dropdown.Item eventKey={1.3} as={Link} to={"/login"}>
               <i className="fa fa-sign-out"></i> Logout
             </Dropdown.Item>
           </NavDropdown>
