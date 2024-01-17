@@ -5,7 +5,7 @@ const PersonalInfo = () => {
     <>
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
         <Form action="#" data-hs-cf-bound="true">
-          <Row className="row mb-2">
+          <Row className="mb-2">
             <Col mb={6} md={12} className="text-center">
               <div className="profile-photo mx-auto">
                 <span>

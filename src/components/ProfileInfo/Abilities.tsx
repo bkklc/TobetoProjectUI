@@ -1,11 +1,11 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 export default function Abilities() {
   return (
     <Col md={9}>
       <div className="container-lg " style={{ minHeight: "90vh" }}>
-        <div className="row mb-2">
+        <Row className="mb-2">
           <div className="col-12 mb-6">
             <label className="form-label">Yetkinlik</label>
             <div className="input-group">
@@ -30,7 +30,7 @@ export default function Abilities() {
               />
             </div>
           </div>
-        </div>
+        </Row>
         <button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn">
           Kaydet
         </button>
