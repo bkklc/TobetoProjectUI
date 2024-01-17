@@ -14,7 +14,8 @@ const PersonalInfo = () => {
                       alt=""
                       aria-hidden="true"
                       src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=384&q=75"
-
+                      height={148}
+                      width={148}
                     />
                   </span>
                 </span>
