@@ -1,6 +1,50 @@
+import { useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
+import axios from "axios";
+import { register } from "../../services/authService";
+
 
 export default function RegisterComponent() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+
+  const handleFirstName = (event: any) => {
+    setFirstName(event.target.value);
+  };
+
+  const handlePassword = (event: any) => {
+    setPassword(event.target.value);
+  };
+  const handleLastName = (event: any) => {
+    setLastName(event.target.value);
+  };
+
+  const handleEmail = (event: any) => {
+    setEmail(event.target.value);
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();    
+
+    try {
+      await register(firstName, lastName, password, email);      
+      handleClear();
+    } catch (error) {
+      return error;
+    }
+  };
+  
+
+  const handleClear = () => {
+    setEmail("");
+    setPassword("");
+    setFirstName("");
+    setLastName("");
+  };
+
   return (
     <Col className="col-md-6 col-12 btn-rainbow-card">
       <div className=" mx-auto text-center">
@@ -14,43 +58,53 @@ export default function RegisterComponent() {
               height={120}
             />
           </div>
-          <Form data-hs-cf-bound="true">
+          <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>
             <h3 className="mt-6 mb-8">Hemen Kayıt Ol</h3>
-
-            <Form.Group>
+            <Form.Group >
               <Form.Control
+                value={firstName}
+                onChange={handleFirstName}
                 name="firstName"
                 className="form-control mt-6"
                 type="text"
                 placeholder="Ad*"
               />
               <Form.Control
+                value={lastName}
+                onChange={handleLastName}
                 name="lastName"
                 className="form-control mt-6"
                 type="text"
                 placeholder="Soyad*"
               />
               <Form.Control
+                value={email}
+                onChange={handleEmail}
                 name="email"
                 className="form-control mt-6"
-                type="text"
+                type="email"
                 placeholder="E-Posta*"
               />
               <Form.Control
+                value={password}
+                onChange={handlePassword}
                 name="password"
                 className="form-control mt-6"
-                type="text"
+                type="password"
                 placeholder="Şifre*"
               />
               <Form.Control
                 name="passwordAgain"
                 className="form-control mt-6"
-                type="text"
+                type="password"
                 placeholder="Şifre Tekrar*"
               />
+              
             </Form.Group>
+          <Button name='kayit-ol' className='w-100 mt-6' variant='primary' type='submit'>Kayıt Ol</Button>
+
           </Form>
-          <Button className="btn btn-primary w-100 mt-6">Kayıt Ol</Button>
+
           <div className="col-12 mt-6">
             <label>
               <small>
