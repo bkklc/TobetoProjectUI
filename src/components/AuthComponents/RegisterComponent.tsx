@@ -1,49 +1,47 @@
 import { useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
-import axios from "axios";
 import { register } from "../../services/authService";
-
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterComponent() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   
 
-  const handleFirstName = (event: any) => {
-    setFirstName(event.target.value);
-  };
+  const navigate = useNavigate();
+  
+  const payload = {
+    FirstName: firstName,
+    LastName: lastName,
+    Password: password,
+    Email: email,
+  };  
 
-  const handlePassword = (event: any) => {
-    setPassword(event.target.value);
-  };
-  const handleLastName = (event: any) => {
-    setLastName(event.target.value);
-  };
 
-  const handleEmail = (event: any) => {
-    setEmail(event.target.value);
-  };
+// şifre karşılaştırma 
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();    
-
+    e.preventDefault();
+    
     try {
-      await register(firstName, lastName, password, email);      
-      handleClear();
+      await register(payload);
+      // await register(firstName, lastName, password, email);      
+      navigate('/giris')
+      //handleLoginPage();
     } catch (error) {
       return error;
     }
   };
-  
 
-  const handleClear = () => {
-    setEmail("");
-    setPassword("");
-    setFirstName("");
-    setLastName("");
-  };
+  // const handleLoginPage = () => {
+  //   setEmail("");
+  //   setPassword("");
+  //   setFirstName("");
+  //   setLastName("");
+  // };
 
   return (
     <Col className="col-md-6 col-12 btn-rainbow-card">
@@ -60,10 +58,10 @@ export default function RegisterComponent() {
           </div>
           <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>
             <h3 className="mt-6 mb-8">Hemen Kayıt Ol</h3>
-            <Form.Group >
+            <Form.Group>
               <Form.Control
                 value={firstName}
-                onChange={handleFirstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 name="firstName"
                 className="form-control mt-6"
                 type="text"
@@ -71,7 +69,7 @@ export default function RegisterComponent() {
               />
               <Form.Control
                 value={lastName}
-                onChange={handleLastName}
+                onChange={(e) => setLastName(e.target.value)}
                 name="lastName"
                 className="form-control mt-6"
                 type="text"
@@ -79,7 +77,7 @@ export default function RegisterComponent() {
               />
               <Form.Control
                 value={email}
-                onChange={handleEmail}
+                onChange={(e) => setEmail(e.target.value)}
                 name="email"
                 className="form-control mt-6"
                 type="email"
@@ -87,22 +85,27 @@ export default function RegisterComponent() {
               />
               <Form.Control
                 value={password}
-                onChange={handlePassword}
+                onChange={(e) => setPassword(e.target.value)}
                 name="password"
                 className="form-control mt-6"
                 type="password"
                 placeholder="Şifre*"
               />
-              <Form.Control
+              {/* <Form.Control
                 name="passwordAgain"
                 className="form-control mt-6"
                 type="password"
                 placeholder="Şifre Tekrar*"
-              />
-              
+              /> */}
             </Form.Group>
-          <Button name='kayit-ol' className='w-100 mt-6' variant='primary' type='submit'>Kayıt Ol</Button>
-
+            <Button
+              name="kayit-ol"
+              className="w-100 mt-6"
+              variant="primary"
+              type="submit"
+            >
+              Kayıt Ol
+            </Button>
           </Form>
 
           <div className="col-12 mt-6">

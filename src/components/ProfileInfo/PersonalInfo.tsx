@@ -91,7 +91,8 @@ const PersonalInfo = () => {
                 type="date"
               />
             </div>
-            <div className="col-12 col-md-6 mb-6">
+            
+            <div className=" col-md-6 mb-6">
               <label className="input-label-text">TC Kimlik No*</label>
               <input
                 name="identifier"
@@ -106,6 +107,11 @@ const PersonalInfo = () => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">E-posta</label>
+              <input
+                name="identifier"
+                className="form-control tobeto-input mb-2"
+                type="email"
+              />
             </div>
             <div className="col-12 mb-6">
               <label className="input-label-text">Ülke*</label>

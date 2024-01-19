@@ -5,24 +5,30 @@ import { login } from '../../services/authService';
 
 
 export default function LoginComponent() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [auth, setAuth] = useState<AuthLogin>();
 
     
-    const handleUsernameChange = (event:any) => {
-        setUsername(event.target.value);
-      };
+    // const handleUsernameChange = (event:any) => {
+    //     setUsername(event.target.value);
+    //   };
     
-      const handlePasswordChange = (event:any) => {
-        setPassword(event.target.value);
-      };
+    //   const handlePasswordChange = (event:any) => {
+    //     setPassword(event.target.value);
+    //   };
     
-      const handleSubmit = async (event:any) => {
-        event.preventDefault();
+    const payload = {
+        Email: email,        
+        Password: password,        
+      };
+
+
+      const handleSubmit =  async (e: any) => {
+        e.preventDefault();
     
         try {
-          const response = await login(username, password);
+          const response = await login(payload);
           setAuth(response);
         } catch (error) {
           console.error("Login error:", error);
@@ -48,10 +54,10 @@ export default function LoginComponent() {
 
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className='mt-6'>
-                        <Form.Control name='email' type='email' placeholder='E-Posta' value={username} onChange={handleUsernameChange}/>
+                        <Form.Control name='email' type='email' placeholder='E-Posta' value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </Form.Group>
                     <Form.Group className='mt-6'>
-                        <Form.Control name='password' type='password' placeholder='Şifre' value={password} onChange={handlePasswordChange} />
+                        <Form.Control name='password' type='password' placeholder='Şifre' value={password} onChange={(e) => setPassword(e.target.value)}  />
                     </Form.Group>                   
                     <Button name='giris' className='w-100 mt-6' variant='primary' type='submit'>Giriş Yap</Button>
                     <label>
