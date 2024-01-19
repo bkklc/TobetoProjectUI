@@ -32,6 +32,7 @@ export default function LoginComponent() {
       const decoded = jwtDecode(response.token);
       console.log(decoded);
       setAuth(response);
+      navigate("/")
     } catch (error) {
       console.error("Login error:", error);
     }

@@ -17,7 +17,7 @@ export default function Dashboard() {
         <Route path="/profilim" Component={Profile}></Route>
         <Route path="/profilimi-duzenle/*" Component={ProfileEdit}></Route>
         <Route path="/giris" Component={Login}></Route>
-        <Route path="/kayit-ol" Component={Register}></Route>     
+        <Route path="/kayitOl" Component={Register}></Route>     
         <Route path="/istanbul-kodluyor" Component={IstanbulCoding}></Route>     
         <Route path="/takvim" Component={Calendar}></Route>     
           

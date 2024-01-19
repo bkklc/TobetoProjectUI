@@ -8,40 +8,39 @@ export default function RegisterComponent() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  
+  const [passwordAgain, setPasswordAgain] = useState("");
 
   const navigate = useNavigate();
-  
+
   const payload = {
     FirstName: firstName,
     LastName: lastName,
     Password: password,
     Email: email,
-  };  
+  };
 
+  const isPasswordMatch = () => {
+    return password === passwordAgain;
+  };
 
-// şifre karşılaştırma 
+  const handleRegistration = async (e: any) => {
+    if (isPasswordMatch()) {
+      e.preventDefault();
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    
-    try {
-      await register(payload);
-      // await register(firstName, lastName, password, email);      
-      navigate('/giris')
-      //handleLoginPage();
-    } catch (error) {
-      return error;
+      try {
+        await register(payload);
+
+        navigate("/giris");
+      } catch (error) {
+        return error;
+      }
+    } else {
+      alert("Şifreler Eşleşmedi");      
+      
     }
   };
 
-  // const handleLoginPage = () => {
-  //   setEmail("");
-  //   setPassword("");
-  //   setFirstName("");
-  //   setLastName("");
-  // };
+  
 
   return (
     <Col className="col-md-6 col-12 btn-rainbow-card">
@@ -56,7 +55,7 @@ export default function RegisterComponent() {
               height={120}
             />
           </div>
-          <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>
+          <Form data-hs-cf-bound="true" onSubmit={handleRegistration}>
             <h3 className="mt-6 mb-8">Hemen Kayıt Ol</h3>
             <Form.Group>
               <Form.Control
@@ -66,6 +65,7 @@ export default function RegisterComponent() {
                 className="form-control mt-6"
                 type="text"
                 placeholder="Ad*"
+                required
               />
               <Form.Control
                 value={lastName}
@@ -74,6 +74,7 @@ export default function RegisterComponent() {
                 className="form-control mt-6"
                 type="text"
                 placeholder="Soyad*"
+                required
               />
               <Form.Control
                 value={email}
@@ -82,6 +83,7 @@ export default function RegisterComponent() {
                 className="form-control mt-6"
                 type="email"
                 placeholder="E-Posta*"
+                required                
               />
               <Form.Control
                 value={password}
@@ -90,13 +92,16 @@ export default function RegisterComponent() {
                 className="form-control mt-6"
                 type="password"
                 placeholder="Şifre*"
+                required
               />
-              {/* <Form.Control
-                name="passwordAgain"
+              <Form.Control
+                value={passwordAgain}
+                onChange={(e) => setPasswordAgain(e.target.value)}
+                name="Şifre Tekrarı"
                 className="form-control mt-6"
                 type="password"
                 placeholder="Şifre Tekrar*"
-              /> */}
+              />
             </Form.Group>
             <Button
               name="kayit-ol"
