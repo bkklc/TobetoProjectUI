@@ -12,9 +12,9 @@ export const login = async (payload:any) => {
   }
 };
 
-  export const register = async (firstName: string,lastName: string,email: string, password: string) => {
+  export const register = async (payload:any) => {
     try {
-      const response = await axiosIstance.post(`/Auth/register`, {firstName,lastName,email, password,});
+      const response = await axiosIstance.post(`/Auth/register`, payload);
       return response.data;
     } catch (error) {
       throw error;
