@@ -2,13 +2,15 @@ import { Button, Col,Form } from 'react-bootstrap'
 import { useState } from 'react';
 import { AuthLogin } from '../../models/auth';
 import { login } from '../../services/authService';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 
 
 export default function LoginComponent() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [auth, setAuth] = useState<AuthLogin>();
-
+    const navigate = useNavigate();
     
     const handleUsernameChange = (event:any) => {
         setUsername(event.target.value);
@@ -23,6 +25,8 @@ export default function LoginComponent() {
     
         try {
           const response = await login(username, password);
+          const decoded = jwtDecode(response.token);
+          console.log(decoded);
           setAuth(response);
         } catch (error) {
           console.error("Login error:", error);
