@@ -1,4 +1,5 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
+import Questions from "./Questions";
 
 const Info = () => {
   return (
@@ -358,6 +359,7 @@ const Info = () => {
             <h1 className="ch-text text-center">Sıkça Sorulan Sorular</h1>
           </Col>
         </Row>
+        <Questions />
       </Container>
     </>
   );
