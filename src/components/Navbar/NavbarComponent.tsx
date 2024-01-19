@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Navbar, Nav, Container, NavDropdown, Dropdown } from 'react-bootstrap';
 import PageUrl from '../../hooks/PageUrl';
 import { Link } from 'react-router-dom';
 
 
-function NavbarComponent() {  
+function NavbarComponent() {
   const url = PageUrl();  
   return (
     
