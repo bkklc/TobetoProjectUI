@@ -2,6 +2,9 @@ import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
 
 const Info = () => {
+  function clickTrainings() {
+    alert("Öne çıkan eğitimler");
+  }
   return (
     <>
       <Row className="bg-darkblue">
@@ -214,41 +217,17 @@ const Info = () => {
       <Row className="bg-lightgray">
         <Col xs={12} className="mt-10 text-center">
           <span className="text-neon">ÖNE ÇIKAN EĞİTİMLER</span>
-          <div className="ik-edus">
-            <div className="cursor-pointer">
-              <span
-                style={{
-                  position: "relative",
-                  display: "inline-block",
-                  overflow: "hidden",
-                  width: "initial",
-                  height: "initial",
-                }}
-              >
-                <img
-                  alt=""
-                  src="/_next/static/media/web_egitim_ikonlar_yazilim-web.4aba227e.svg"
-                  srcSet="/_next/static/media/web_egitim_ikonlar_yazilim-web.4aba227e.svg 1x, /_next/static/media/web_egitim_ikonlar_yazilim-web.4aba227e.svg 2x"
-                  decoding="async"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    boxSizing: "border-box",
-                    padding: 0,
-                    border: "none",
-                    margin: "auto",
-                    display: "block",
-                    width: 0,
-                    height: 0,
-                    minWidth: "100%",
-                    maxWidth: "100%",
-                    minHeight: "100%",
-                    maxHeight: "100%",
-                  }}
-                />
-              </span>
-            </div>
-          </div>
+          <img
+            className="cursor-pointer"
+            onClick={clickTrainings}
+            src="../../src/assets/png/featured-trainings.png"
+            alt="İ"
+            decoding="async"
+            data-nimg="intrinsic"
+            style={{
+              maxWidth: "100%",
+            }}
+          />
         </Col>
       </Row>
       <Row className="bg-lightgreen">
