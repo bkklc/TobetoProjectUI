@@ -359,7 +359,9 @@ const Info = () => {
             <h1 className="ch-text text-center">Sıkça Sorulan Sorular</h1>
           </Col>
         </Row>
-        <Questions />
+        <div className="px-20">
+          <Questions />
+        </div>
       </Container>
     </>
   );

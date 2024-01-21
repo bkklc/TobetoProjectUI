@@ -10,7 +10,12 @@ const Questions = () => {
     },
     {
       title: "Kimler başvurabilir?",
-      content: "Aşağıdaki şartları sağlayan herkes programa başvurabilir.",
+      content: `Aşağıdaki şartları sağlayan herkes programa başvurabilir.
+      ${`<br>&#8226`} 18 – 35 yaş arası olanlar,
+      ${`<br>&#8226`} Lise/Önlisans/ Lisans /Yüksek Lisans mezunu olup son altı aydır öğrenci olmayanlar,
+      ${`<br>&#8226`} Son bir yıldır sigortalı bir işte çalışmayanlar ve iş arayışında olanlar,
+      ${`<br>&#8226`} Kariyerini yazılım ve teknoloji alanında geliştirmek isteyenler.
+      `,
       className: "mb-3",
     },
     {
@@ -50,8 +55,20 @@ const Questions = () => {
     },
     {
       title: "Hangi eğitimleri alabilirim?", //To Do
-      content:
-        "Program kapsamında başvurusu uygun bulunan herkes ilk aşamada iki haftalık “Herkes için Kodlama” eğitimlerine katılır. Bu eğitimler sonrasında ilk aşamayı başarılı şekilde geçen adaylar aşağıdaki mesleki gelişim eğitimlerinden birini alabilirler.",
+      content: `Program kapsamında başvurusu uygun bulunan herkes ilk aşamada iki haftalık “Herkes için Kodlama” eğitimlerine katılır. Bu eğitimler sonrasında ilk aşamayı başarılı şekilde geçen adaylar aşağıdaki mesleki gelişim eğitimlerinden birini alabilirler.
+      ${`<br><b>Mesleki Gelişim Eğitimleri:</b>`}
+      ${`<br>&#8226`} Java & React Full Stack Developer,
+      ${`<br>&#8226`} .NET & React Full Stack Developer,
+      ${`<br>&#8226`} İş Analisti,
+      ${`<br>&#8226`} Yazılım Kalite ve Test Uzmanı,
+      ${`<br>&#8226`} Mobil Geliştirici (Flutter),
+      ${`<br>&#8226`} Sistem ve Network Uzmanı,
+      ${`<br>&#8226`} Siber Güvenlik,
+      ${`<br>&#8226`} Veri Bilimi,
+      ${`<br>&#8226`} Dijital Pazarlama Uzmanı,
+      ${`<br>&#8226`} Oyun Yazılım Uzmanı,
+
+      `,
       className: "mb-3",
     },
     {
@@ -70,15 +87,20 @@ const Questions = () => {
 
     {
       title: "Eğitmenler kimler?",
-      content:
-        '"Herkes için Kodlama" eğitimlerinin canlı oturumları Engin Demiroğ ve Kodlama.io ekibi liderliğinde yürütülmektedir. Çoğu mesleki gelişim eğitimleri yine Engin Demiroğ ve Kodlama.io ekibi liderliğinde verilecek olup, dijital pazarlama eğitimleri Veli Bahçeci ve Rovia\'nın eğitmen kadrosu tarafından, veri bilimi eğitimi Miuul ekibi tarafından, oyun eğitimi Dojo ekibi tarafından ve iş analisti eğitimi Ozan Kaan Karmik tarafından verilecektir.',
+      content: `"Herkes için Kodlama" eğitimlerinin canlı oturumları Engin Demiroğ ve Kodlama.io ekibi liderliğinde yürütülmektedir. 
+       <br> <br>Çoğu mesleki gelişim eğitimleri yine Engin Demiroğ ve Kodlama.io ekibi liderliğinde verilecek olup, dijital pazarlama eğitimleri Veli Bahçeci ve Rovia\'nın eğitmen kadrosu tarafından, veri bilimi eğitimi Miuul ekibi tarafından, oyun eğitimi Dojo ekibi tarafından ve iş analisti eğitimi Ozan Kaan Karmik tarafından verilecektir.`,
       className: "mb-3",
     },
 
     {
       title: "Yüz yüze eğitim ve etkinlik tarihleri neler?",
-      content:
-        'İlk fiziksel kampüs buluşmaları "Herkes için Kodlama" eğitimleri bitiminde olacaktır. Bu eğitimi tamamlayanlar eğitimini bitirdikleri tarihten sonraki ilk buluşmaya katılacaktır. Etkinlik tarihleri aşağıdaki gibidir. 7 Ekim 2023 25 Kasım 2023 11 Ocak 2024 20 Şubat 2024 Mesleki gelişim eğitimlerinin yüz yüze eğitim ve etkinlik tarihleri kendi içinde değişmekte olup, kabul edilen adaylarla paylaşılacaktır.',
+      content: `İlk fiziksel kampüs buluşmaları "Herkes için Kodlama" eğitimleri bitiminde olacaktır. Bu eğitimi tamamlayanlar eğitimini bitirdikleri tarihten sonraki ilk buluşmaya katılacaktır. Etkinlik tarihleri aşağıdaki gibidir.
+      ${`<br>&#8226`} 7 Ekim 2023,
+      ${`<br>&#8226`} 25 Kasım 2023,
+      ${`<br>&#8226`} 11 Ocak 2024,
+      ${`<br>&#8226`} 20 Şubat 2024,
+      ${`<br>`} Mesleki gelişim eğitimlerinin yüz yüze eğitim ve etkinlik tarihleri kendi içinde değişmekte olup, kabul edilen adaylarla paylaşılacaktır.
+      `,
       className: "mb-3",
     },
 
@@ -98,8 +120,13 @@ const Questions = () => {
 
     {
       title: "Mesleki gelişim eğitimlerine kabul edilme kriterleri neler?",
-      content:
-        'Mesleki gelişim eğitimlerine kabul edilebilmek için aşağıdaki kriterler göz önünde bulundurulacaktır. "Herkes için Kodlama" eğitimini başarıyla tamamlamak, Süreç içinde yapılacak değerlendirmelerde uygun bulunmak, İstanbul\'da yapılacak olan "Kampüs Buluşması" etkinliğine yüz yüze katılmak, Yazılım ve teknoloji alanında işe girmeye istekli olmak',
+
+      content: `Mesleki gelişim eğitimlerine kabul edilebilmek için aşağıdaki kriterler göz önünde bulundurulacaktır. "Herkes için Kodlama" eğitimini başarıyla tamamlamak, Süreç içinde yapılacak değerlendirmelerde uygun bulunmak, İstanbul\'da yapılacak olan "Kampüs Buluşması" etkinliğine yüz yüze katılmak, Yazılım ve teknoloji alanında işe girmeye istekli olmak
+      ${`<br>&#8226`} "Herkes için Kodlama" eğitimini başarıyla tamamlamak,,
+      ${`<br>&#8226`} Süreç içinde yapılacak değerlendirmelerde uygun bulunmak,
+      ${`<br>&#8226`} İstanbul'da yapılacak olan "Kampüs Buluşması" etkinliğine yüz yüze katılmak,
+      ${`<br>&#8226`} Yazılım ve teknoloji alanında işe girmeye istekli olmak
+      `,
       className: "mb-3",
     },
 

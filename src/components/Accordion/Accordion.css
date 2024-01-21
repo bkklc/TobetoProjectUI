@@ -10,7 +10,7 @@
   background-color: #001956;
   color: #444;
   cursor: pointer;
-  padding: 14px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   border: none;
@@ -20,9 +20,9 @@
 
 .accordion__title {
   font-family: "Open Sans", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
   margin-bottom: 0;
   color: #fff;
 }
@@ -45,6 +45,10 @@
 .accordion__text {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   padding: 18px;
+}
+
+.active {
+  background-color: #110a3a;
 }
