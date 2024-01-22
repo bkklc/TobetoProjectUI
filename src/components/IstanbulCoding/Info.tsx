@@ -2,6 +2,13 @@ import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
 
 const Info = () => {
+
+  const scrollToQuestions = () => {
+    const questionsElement = document.getElementById('Questions'); 
+    if (questionsElement) {
+      questionsElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   function clickTrainings() {
     alert("Öne çıkan eğitimler");
   }
@@ -110,7 +117,8 @@ const Info = () => {
       <Row>
         <Col xs={12} className="bg-lightgray d-flex flex-row">
           <Button
-            href="/istanbul-kodluyor#sss"
+            
+            onClick={scrollToQuestions}
             className="btn big-btn-primary w-50 my-20"
           >
             Sıkça Sorulan Sorular
@@ -335,7 +343,7 @@ const Info = () => {
       <Container fluid>
         <Row>
           <Col className="sss-banner2 py-8">
-            <h1 className="ch-text text-center">Sıkça Sorulan Sorular</h1>
+            <h1 className="ch-text text-center" id="Questions">Sıkça Sorulan Sorular</h1>
           </Col>
         </Row>
         <div className="px-20">
