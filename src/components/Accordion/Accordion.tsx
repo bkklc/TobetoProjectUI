@@ -4,25 +4,25 @@ import Chevron from "./Chevron";
 import "./Accordion.css";
 
 function Accordion(props: any) {
-  const [setActive, setActiveState] = useState("");
+  const [setenable, setenableState] = useState("");
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("accordion__icon");
 
   const content = useRef<any>(null);
 
   function toggleAccordion() {
-    setActiveState(setActive === "" ? "active" : "");
+    setenableState(setenable === "" ? "enable" : "");
     setHeightState(
-      setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
+      setenable === "enable" ? "0px" : `${content.current.scrollHeight}px`
     );
     setRotateState(
-      setActive === "active" ? "accordion__icon" : "accordion__icon rotate"
+      setenable === "enable" ? "accordion__icon" : "accordion__icon rotate"
     );
   }
 
   return (
     <div className="accordion__section">
-      <button className={`accordion ${setActive}`} onClick={toggleAccordion}>
+      <button className={`accordion ${setenable}`} onClick={toggleAccordion}>
         <p className="accordion__title">{props.title}</p>
         <Chevron className={`${setRotate}`} width={10} fill={"#777"} />
       </button>

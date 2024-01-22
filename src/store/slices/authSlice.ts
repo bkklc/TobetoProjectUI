@@ -17,9 +17,9 @@ const initialState: AuthState = {
   error: '',
 };
 
-export const loginUser = createAsyncThunk('auth/loginUser', async ({ username, password }: { username: string; password: string }) => {
+export const loginUser = createAsyncThunk('auth/loginUser', async ({payload}: { payload:any }) => {
   try {
-    const userData = await login(username, password);
+    const userData = await login(payload);
     return userData;
   } catch (error) {
     throw error;
