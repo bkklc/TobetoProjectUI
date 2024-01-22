@@ -8,8 +8,8 @@ const Login = () => {
     return (
         <>
             <Container>
-                <Row className='mt-10'>
-                    <Col md={6} className="btn-rainbow-card mx-auto text-center col-12">
+                <Row className='mt-10 equal-col'>
+                    <Col md={6} className="btn-rainbow-card mx-auto text-center col-12" style={{marginRight:"10px"}}>
                         <LoginComponent />
                     </Col>
                     <Col md={6} className="col-12 btn-rainbow-card-ik ">

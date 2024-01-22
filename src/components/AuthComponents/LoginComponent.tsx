@@ -2,7 +2,7 @@ import { Button, Col, Form } from "react-bootstrap";
 import { useState } from "react";
 import { AuthLogin } from "../../models/auth";
 import { login } from "../../services/authService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 export default function LoginComponent() {
@@ -93,12 +93,11 @@ export default function LoginComponent() {
           <label>
             <small>
               Henüz üye değil misin?
-              <a
-                className="text-decoration-none text-muted fw-bold"
-                href="/kayit-ol"
-              >
-                Kayıt Ol
-              </a>
+
+              <Link to={"/kayitol"} className="text-decoration-none text-muted fw-bold">
+              Kayıt Ol
+              </Link>
+             
             </small>
           </label>
         </Col>
