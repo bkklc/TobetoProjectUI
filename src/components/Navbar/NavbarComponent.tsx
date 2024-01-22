@@ -46,7 +46,7 @@ function NavbarComponent() {
             }
             id="basic-nav-dropdown">
             <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Profil Bilgileri</Dropdown.Item>
-            <Dropdown.Item eventKey={1.3} as={Link} to={"/login"}>
+            <Dropdown.Item eventKey={1.3} as={Link} to={"/giris"}>
               <i className="fa fa-sign-out"></i> Logout
             </Dropdown.Item>
           </NavDropdown>
