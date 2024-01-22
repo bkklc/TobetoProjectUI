@@ -3,7 +3,7 @@ import { Button, Col } from 'react-bootstrap'
 
 export default function AuthBanner() {
     return (
-        <Col className="col-md-6 col-12 btn-rainbow-card-ik ">
+        
             <div className="ik-banner-big h-100">
                 <img
                     alt=""
@@ -24,6 +24,6 @@ export default function AuthBanner() {
                     <Button className='btn d-md-inline-block mt-5 btn-darkblue2'>Başvur</Button>
                 </div>
             </div>
-        </Col>
+        
     )
 }

@@ -38,7 +38,7 @@ export default function LoginComponent() {
     }
   };
   return (
-    <Col className="btn-rainbow-card mx-auto text-center col-md-6 col-12">
+    
       <div className="py-4 px-sm-0 px-md-12 text-center ">
         <div className="d-flex flex-column align-items-center">
           <span>
@@ -103,6 +103,6 @@ export default function LoginComponent() {
           </label>
         </Col>
       </div>
-    </Col>
+    
   );
 }

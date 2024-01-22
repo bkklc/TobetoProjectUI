@@ -1,8 +1,9 @@
 import { Container } from 'react-bootstrap'
+import './Footer.css';
 
 function Footer() {
   return (
-    <footer className='bg-secondary py-5'>
+    <footer className='bg-secondary py-5 footer'>
         <Container>
           <div className="row justify-content-between align-items-center">
             <div className="col-6 col-lg-4 mb-lg-0 my-4"><a className="d-block mobile-text-center navbar-brand" href="#">
