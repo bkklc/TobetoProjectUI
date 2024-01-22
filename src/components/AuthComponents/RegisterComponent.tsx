@@ -43,7 +43,7 @@ export default function RegisterComponent() {
   
 
   return (
-    <Col className="col-md-6 col-12 btn-rainbow-card">
+    
       <div className=" mx-auto text-center">
         <div className="py-4 px-md-12 px-0 text-center">
           <div className="cursor-pointer">
@@ -129,6 +129,6 @@ export default function RegisterComponent() {
           </div>
         </div>
       </div>
-    </Col>
+    
   );
 }
