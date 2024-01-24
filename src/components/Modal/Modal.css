@@ -1,0 +1,19 @@
+.modalContainer {
+width: 40%;
+height: 400px;
+position: fixed;
+top: 50%; 
+left: 50%; 
+transform: translate(-50%, -50%);
+background-color: red;
+overscroll-behavior: contain;
+}
+
+.bodyLock {
+    overflow: hidden !important;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,16 +1,22 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
+import Modal from "../Modal/Modal";
+import { useState } from "react";
 
 const Info = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const scrollToQuestions = () => {
-    const questionsElement = document.getElementById('Questions'); 
+    const questionsElement = document.getElementById("Questions");
     if (questionsElement) {
-      questionsElement.scrollIntoView({ behavior: 'smooth' });
+      questionsElement.scrollIntoView({ behavior: "smooth" });
     }
   };
   function clickTrainings() {
-    alert("Öne çıkan eğitimler");
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
   }
   return (
     <>
@@ -117,7 +123,6 @@ const Info = () => {
       <Row>
         <Col xs={12} className="bg-lightgray d-flex flex-row">
           <Button
-            
             onClick={scrollToQuestions}
             className="btn big-btn-primary w-50 my-20"
           >
@@ -343,13 +348,16 @@ const Info = () => {
       <Container fluid>
         <Row>
           <Col className="sss-banner2 py-8">
-            <h1 className="ch-text text-center" id="Questions">Sıkça Sorulan Sorular</h1>
+            <h1 className="ch-text text-center" id="Questions">
+              Sıkça Sorulan Sorular
+            </h1>
           </Col>
         </Row>
         <div className="px-20">
           <Questions />
         </div>
       </Container>
+      <Modal isOpen={isOpen} onClose={closeModal} />
     </>
   );
 };
