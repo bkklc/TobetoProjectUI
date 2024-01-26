@@ -1,10 +1,8 @@
-import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import AnnouncementsComponent from "./AnnouncementsComponent";
 
-type Props = {};
 
-const ApplicationsComponent = (props: Props) => {
+
+const ApplicationsComponent = () => {
   return (
     <Row>
       <Col md={6}>

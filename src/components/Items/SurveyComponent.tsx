@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const SurveyComponent = (props: Props) => {
+const SurveyComponent = () => {
   return (
     <div className=" noDataCard">
       <p>Atanmış herhangi bir anketiniz bulunmamaktadır</p>

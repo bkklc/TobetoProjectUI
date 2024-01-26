@@ -1,8 +1,6 @@
-import React from "react";
 
-type Props = {};
 
-const EducationComponent = (props: Props) => {
+const EducationComponent = () => {
   return (
     <div className="col-md-3 col-12 mb-4">
       <div className="corp-edu-card">

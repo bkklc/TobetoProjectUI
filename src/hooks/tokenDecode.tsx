@@ -1,5 +1,4 @@
 import { jwtDecode } from 'jwt-decode';
-import React from 'react'
 
 export default function tokenDecode() {
     var decodedToken = {

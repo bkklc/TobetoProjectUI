@@ -1,4 +1,3 @@
-import React from 'react'
 import LoginComponent from '../../components/AuthComponents/LoginComponent'
 import { Container, Row, Col } from 'react-bootstrap'
 import AuthBanner from '../../components/AuthComponents/AuthBanner'

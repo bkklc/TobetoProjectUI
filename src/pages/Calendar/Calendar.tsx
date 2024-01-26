@@ -1,4 +1,3 @@
-import React from 'react'
 import CalendarLeftMenu from '../../components/Calendar/CalendarLeftMenu'
 import CalendarComponent from '../../components/Calendar/CalendarComponent'
 import { Row } from 'react-bootstrap'

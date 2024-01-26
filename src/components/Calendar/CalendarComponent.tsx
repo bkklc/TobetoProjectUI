@@ -8,9 +8,8 @@ import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 
 
-type Props = {};
 
-const CalendarComponent = (props: Props) => {
+const CalendarComponent = () => {
   const [events, setEvents] = useState<any>([
     { title: "Meeting", start: new Date() },
   ]);

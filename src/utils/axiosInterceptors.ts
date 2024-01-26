@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosIstance = axios.create({
-    baseURL: "http://localhost:5062/api"
+    baseURL: "https://api.tobeto.hoixi.com.tr/api"
 })
 
 export default axiosIstance;

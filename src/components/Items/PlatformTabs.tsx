@@ -1,4 +1,4 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import AnnouncementsComponent from "./AnnouncementsComponent";

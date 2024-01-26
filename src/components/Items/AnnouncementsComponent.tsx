@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
- const AnnouncementsComponent = (props: Props) => {
+const AnnouncementsComponent = () => {
   return (
     <div className="row">
       <div className="col-md-4 col-12 my-4">

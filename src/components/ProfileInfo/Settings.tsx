@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Settings() {
   return (
     <div className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>

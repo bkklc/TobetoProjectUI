@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { Form, Col, Button, Row } from 'react-bootstrap';
 
 function EducationLife() {
