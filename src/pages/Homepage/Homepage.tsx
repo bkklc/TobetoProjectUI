@@ -2,6 +2,7 @@ import { Button, Card, Col, Container, Nav, Row, Stack } from 'react-bootstrap'
 import PlatformTabs from '../../components/Items/PlatformTabs'
 import { Link } from 'react-router-dom'
 import PageUrl from '../../hooks/PageUrl';
+import tokenDecode from '../../hooks/tokenDecode';
 
 function Homepage() {
   const url = PageUrl();  
@@ -14,7 +15,7 @@ function Homepage() {
               <h3><span className="text-secondary"> TOBETO</span>
                 <span className="fw-normal text-info">'ya</span>
                 <span className="fw-normal text-info"> hoş geldin</span>
-              </h3><h4 className="fw-normal text-info mb-5">Furkan</h4>
+              </h3><h4 className="fw-normal text-info mb-5">{tokenDecode().Name.split(" ")[0]}</h4>
               <p className="tobeto-slogan">Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!</p>
             </div>
           </Container>
