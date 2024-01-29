@@ -1,6 +1,7 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
 import { useState } from "react";
+import { Link,  } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import "./Info.css";
 
@@ -451,6 +452,60 @@ const Info = () => {
           </p>
         </Modal.Body>
       </Modal>
+      <Row>
+        <Col className="sss-banner2 pt-8">
+          <h1 className="ch-text text-center">Projeden Kareler</h1>
+        </Col>
+      </Row>
+      <div className="row bg-white py-0">
+        <div>
+          <div className="gallery-wrapper mt-10">
+            <div className="gallery-card">
+              <figure className="card__thumbnail">
+                <img
+                  src="https://tobeto.s3.cloud.ngn.com.tr/DSC_01824_41b41689ce.JPG"
+                  alt="Kampüs buluşması 1"
+                />
+                <span className="card__title">Kampüs buluşması 1</span>
+              </figure>
+              <div className="overlay-bg"></div>
+            </div>
+            <div className="gallery-card">
+              <figure className="card__thumbnail">
+                <img
+                  src="https://tobeto.s3.cloud.ngn.com.tr/DSC_06023_1491907961.JPG"
+                  alt="Kampüs Buluşması 1"
+                />
+                <span className="card__title">Kampüs Buluşması 1</span>
+              </figure>
+              <div className="overlay-bg"></div>
+            </div>
+            <div className="gallery-card">
+              <figure className="card__thumbnail">
+                <img
+                  src="https://tobeto.s3.cloud.ngn.com.tr/New_Project_2_daa103de14.jpg"
+                  alt="Kampüs Buluşması 2"
+                />
+                <span className="card__title">Kampüs Buluşması 2</span>
+              </figure>
+              <div className="overlay-bg"></div>
+            </div>
+            <div className="gallery-card">
+              <figure className="card__thumbnail">
+                <img
+                  src="https://tobeto.s3.cloud.ngn.com.tr/DSCF_3893_8edb49df7e.JPG"
+                  alt="Feedback Session Meeting"
+                />
+                <span className="card__title">Feedback Session Meeting</span>
+              </figure>
+              <div className="overlay-bg"></div>
+            </div>
+          </div>
+          <Link to="/istanbul-kodluyor/galeri" className="showMoreBtn mb-8 text-decoration-none">
+              Daha Fazla Göster
+              </Link>
+        </div>
+      </div>
     </>
   );
 };
