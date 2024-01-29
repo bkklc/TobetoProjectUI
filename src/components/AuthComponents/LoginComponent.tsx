@@ -1,41 +1,31 @@
 import { Button, Col, Form } from "react-bootstrap";
-import { useState } from "react";
-import { login } from "../../services/authService";
+import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { LoginFormData } from "../../models/auth";
+import testAuthService from "../../services/testAuthService";
 
 export default function LoginComponent() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+  const [formData, setFormData] = useState<LoginFormData>({
+    email: '',
+    password: ''
+  });
 
-  // const handleUsernameChange = (event:any) => {
-  //     setUsername(event.target.value);
-  //   };
-
-  //   const handlePasswordChange = (event:any) => {
-  //     setPassword(event.target.value);
-  //   };
-
-  const payload = {
-    Email: email,
-    Password: password,
-  };
-
-  const handleSubmit = async (e: any) => {
+const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      const response = await login(payload);
-      const decoded = jwtDecode(response.token);
-      console.log(decoded);
-      
-      navigate("/")
-    } catch (error) {
-      console.error("Login error:", error);
-    }
+    testAuthService
+      .login(formData)
+      .then(response => {
+        localStorage.setItem("Token" , response.data.token)
+        navigate("/")
+      })
+      .catch(error => console.error(error));
   };
+
+  useEffect(() => {
+    
+  }, [formData]);
+
   return (
     
       <div className="py-4 px-sm-0 px-md-12 text-center ">
@@ -59,8 +49,8 @@ export default function LoginComponent() {
               name="email"
               type="email"
               placeholder="E-Posta"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={e => setFormData({ ...formData, email: e.target.value })}
             />
           </Form.Group>
           <Form.Group className="mt-6">
@@ -68,8 +58,8 @@ export default function LoginComponent() {
               name="password"
               type="password"
               placeholder="Şifre"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={e => setFormData({ ...formData, password: e.target.value })}
             />
           </Form.Group>
           <Button
