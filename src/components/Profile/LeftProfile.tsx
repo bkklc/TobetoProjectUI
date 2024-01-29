@@ -1,4 +1,5 @@
 import { Col, Image } from 'react-bootstrap';
+import tokenDecode from '../../hooks/tokenDecode';
 
 const LeftProfile = () => {
   return (
@@ -26,7 +27,7 @@ const LeftProfile = () => {
               <div className="info-icon name"></div>
               <div className="info-text">
                 <span className="header">Ad Soyad</span>
-                <span className="text">BEYZA ALTINTOPRAK</span>
+                <span className="text">{tokenDecode().Name}</span>
               </div>
             </div>
             <div className="info-box">
@@ -40,7 +41,7 @@ const LeftProfile = () => {
               <div className="info-icon mail"></div>
               <div className="info-text">
                 <span className="header">E-Posta Adresi</span>
-                <span className="text">mail@gmail.com</span>
+                <span className="text">{tokenDecode().Email}</span>
               </div>
             </div>
             <div className="info-box">
