@@ -1,6 +1,6 @@
 import { useEffect, useState, FormEvent } from "react";
 import { Button, Form } from "react-bootstrap";
-import testAuthService from "../../services/testAuthService";
+import testAuthService from "../../services/authService";
 import { RegisterFormData } from "../../models/auth";
 
 export default function RegisterComponent() {

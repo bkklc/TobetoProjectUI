@@ -2,7 +2,7 @@ import { Button, Col, Form } from "react-bootstrap";
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginFormData } from "../../models/auth";
-import testAuthService from "../../services/testAuthService";
+import testAuthService from "../../services/authService";
 
 export default function LoginComponent() {
   const navigate = useNavigate();

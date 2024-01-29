@@ -1,22 +1,14 @@
-import axiosIstance from "../utils/axiosInterceptors";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 
+class AuthService {
+	// modelleme
+	register(model: any) {
+		return axiosInstance.post("Auth/register", model);
+	}
 
+    login(model: any) {
+		return axiosInstance.post("Auth/login", model);
+	}
+}
 
-export const login = async (payload:any) => {
-  try {
-    const response = await axiosIstance.post(`/Auth/login`, payload);
-    localStorage.setItem("Token", response.data.token);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-  export const register = async (payload:any) => {
-    try {
-      const response = await axiosIstance.post(`/Auth/register`, payload);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+export default new AuthService();
