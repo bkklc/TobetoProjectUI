@@ -77,7 +77,7 @@ const Questions = () => {
     {
       title: "Eğitmenler kimler?",
       content: `"Herkes için Kodlama" eğitimlerinin canlı oturumları Engin Demiroğ ve Kodlama.io ekibi liderliğinde yürütülmektedir. 
-       <br> <br>Çoğu mesleki gelişim eğitimleri yine Engin Demiroğ ve Kodlama.io ekibi liderliğinde verilecek olup, dijital pazarlama eğitimleri Veli Bahçeci ve Rovia\'nın eğitmen kadrosu tarafından, veri bilimi eğitimi Miuul ekibi tarafından, oyun eğitimi Dojo ekibi tarafından ve iş analisti eğitimi Ozan Kaan Karmik tarafından verilecektir.`,
+       <br> <br>Çoğu mesleki gelişim eğitimleri yine Engin Demiroğ ve Kodlama.io ekibi liderliğinde verilecek olup, dijital pazarlama eğitimleri Veli Bahçeci ve Rovia'nın eğitmen kadrosu tarafından, veri bilimi eğitimi Miuul ekibi tarafından, oyun eğitimi Dojo ekibi tarafından ve iş analisti eğitimi Ozan Kaan Karmik tarafından verilecektir.`,
     },
 
     {
@@ -106,7 +106,7 @@ const Questions = () => {
     {
       title: "Mesleki gelişim eğitimlerine kabul edilme kriterleri neler?",
 
-      content: `Mesleki gelişim eğitimlerine kabul edilebilmek için aşağıdaki kriterler göz önünde bulundurulacaktır. "Herkes için Kodlama" eğitimini başarıyla tamamlamak, Süreç içinde yapılacak değerlendirmelerde uygun bulunmak, İstanbul\'da yapılacak olan "Kampüs Buluşması" etkinliğine yüz yüze katılmak, Yazılım ve teknoloji alanında işe girmeye istekli olmak
+      content: `Mesleki gelişim eğitimlerine kabul edilebilmek için aşağıdaki kriterler göz önünde bulundurulacaktır. "Herkes için Kodlama" eğitimini başarıyla tamamlamak, Süreç içinde yapılacak değerlendirmelerde uygun bulunmak, İstanbul'da yapılacak olan "Kampüs Buluşması" etkinliğine yüz yüze katılmak, Yazılım ve teknoloji alanında işe girmeye istekli olmak
       ${`<br>&#8226`} "Herkes için Kodlama" eğitimini başarıyla tamamlamak,,
       ${`<br>&#8226`} Süreç içinde yapılacak değerlendirmelerde uygun bulunmak,
       ${`<br>&#8226`} İstanbul'da yapılacak olan "Kampüs Buluşması" etkinliğine yüz yüze katılmak,

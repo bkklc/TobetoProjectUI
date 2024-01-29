@@ -1,7 +1,8 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
-import Modal from "../Modal/Modal";
 import { useState } from "react";
+import { Modal } from "react-bootstrap";
+import "./Info.css";
 
 const Info = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -357,7 +358,99 @@ const Info = () => {
           <Questions />
         </div>
       </Container>
-      <Modal isOpen={isOpen} onClose={closeModal} />
+
+      <Modal className="modalWrapper" show={isOpen} onHide={closeModal}>
+        <Modal.Header closeButton>
+          <img
+            src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
+            alt="istanbul-kodluyor"
+            style={{
+              width: "125px",
+              marginLeft: "auto",
+            }}
+          />
+        </Modal.Header>
+        <Modal.Body>
+          <b>UI/UX Tasarımı</b>
+          <p className="mt-1">
+            UI/UX tasarımı eğitimi, kullanıcıların dijital ürünlerle
+            etkileşimlerini optimize etmeyi öğretir. Katılımcılar, estetik ve
+            kullanılabilirlik ilkeleriyle kullanıcı deneyimini iyileştirme
+            konularında yetenekler kazanır. Bu eğitim, işlevselliği ve estetiği
+            birleştirerek kullanıcıların memnuniyetini artırma hedefini taşır.
+          </p>
+          <b>Yazılım & Web Geliştirme</b>
+          <p className="mt-1">
+            Yazılım ve web geliştirme eğitimi, çeşitli programlama dilleri ve
+            teknolojileri kullanarak web siteleri ve uygulamalar oluşturmayı
+            öğretir. Katılımcılar, temel ve ileri seviye geliştirme yetenekleri
+            kazanarak dijital ürünleri tasarlama ve hayata geçirme becerilerini
+            geliştirirler.
+          </p>
+          <b>Siber Güvenlik </b>
+          <p className="mt-1">
+            Siber güvenlik eğitimi, dijital dünyada güvenliği sağlamayı
+            amaçlayan stratejileri ve teknikleri öğretir. Katılımcılar, siber
+            saldırılara karşı korunma, ağ güvenliği, etik hack teknikleri ve
+            güvenlik önlemleri konularında bilgi sahibi olarak dijital
+            varlıkları koruma yeteneklerini geliştirirler.
+          </p>
+          <b>Veri Bilimi </b>
+          <p className="mt-1">
+            Veri bilimi eğitimi, büyük veri setlerini analiz ederek anlamlı
+            bilgiler çıkarmayı öğretir. Katılımcılar, veri madenciliği,
+            istatistiksel analiz ve makine öğrenmesi gibi yöntemleri kullanarak
+            veri tabanlı kararlar almayı ve iş süreçlerini optimize etmeyi
+            öğrenirler.
+          </p>
+          <b>Bulut Yazılım</b>
+          <p className="mt-1">
+            Bulut yazılım eğitimi, bulut tabanlı hizmetlerle uygulama
+            geliştirmeyi ve dağıtmayı öğretir. Katılımcılar, bulut altyapısını
+            kullanarak ölçeklenebilir ve esnek uygulamalar oluşturmayı
+            öğrenirler. Bu eğitim, işletmelerin kaynakları daha etkili bir
+            şekilde yönetmelerine yardımcı olur.
+          </p>
+          <b>Mobil Uygulama</b>
+          <p className="mt-1">
+            Geliştirme Mobil uygulama geliştirme eğitimi, iOS ve Android
+            platformlarında uygulama oluşturmayı öğretir. Katılımcılar, mobil
+            uygulama tasarımı, kullanıcı deneyimi ve mobil platform özellikleri
+            konularında bilgi sahibi olarak mobil uygulamalar geliştirme
+            yeteneklerini geliştirirler.
+          </p>
+          <b>Sistem Geliştirme</b>
+          <p className="mt-1">
+            Sistem geliştirme eğitimi, bilişim sistemleri ve yazılım projeleri
+            oluşturma süreçlerini öğretir. Katılımcılar, gereksinim analizi,
+            tasarım, geliştirme ve test aşamalarını öğrenerek bütünsel bir bakış
+            açısı kazanırlar.
+          </p>
+          <b>Oyun Geliştirme</b>
+          <p className="mt-1">
+            Oyun geliştirme eğitimi, video oyunlarının tasarımını ve
+            geliştirilmesini öğretir. Katılımcılar, oyun motorları, grafik
+            tasarımı, oyun mekaniği ve kullanıcı deneyimi konularında bilgi
+            sahibi olarak eğlenceli ve etkileyici oyunlar yaratma yeteneklerini
+            geliştirirler.
+          </p>
+          <b> Ağ ve Güvenlik</b>
+          <p className="mt-1">
+            Ağ ve güvenlik eğitimi, ağ altyapısını yönetme, ağ güvenliği
+            stratejileri ve ağ yönetimi tekniklerini öğretir. Katılımcılar, ağ
+            kurulumu, izleme, sorun giderme ve güvenlik protokollerini anlayarak
+            ağ altyapısını koruma yeteneklerini geliştirirler.
+          </p>
+          <b>Dijital Pazarlama</b>
+          <p className="mt-1">
+            Dijital pazarlama eğitimi, çevrimiçi platformlarda marka bilinirliği
+            oluşturmayı ve potansiyel müşterilere ulaşmayı öğretir.
+            Katılımcılar, dijital reklamcılık, sosyal medya yönetimi, içerik
+            stratejileri ve SEO teknikleri konularında bilgi sahibi olarak
+            dijital pazarlama kampanyalarını etkili bir şekilde yönetebilirler.
+          </p>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
