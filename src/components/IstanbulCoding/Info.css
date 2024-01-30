@@ -1,0 +1,10 @@
+.modalWrapper div.modal-content {
+  position: absolute;
+  width: 800px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 0%)
+}
+.modalWrapper div.modal-dialog {
+  position: relative;
+}
