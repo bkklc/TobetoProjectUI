@@ -1,14 +1,15 @@
-import NavbarComponent from './components/Navbar/NavbarComponent'
-import Footer from './components/Footer/Footer'
-import Dashboard from './components/Dashboard/Dashboard'
+import Dashboard from './components/Platform/Dashboard/Dashboard'
+import ProtectedRoute from './components/Platform/ProtectedRoute/ProtectedRoute'
+import Tobeto from './components/Tobeto/Tobeto'
 
 
 function App() {
   return (
     <>
-      <NavbarComponent />             
-      <Dashboard/>
-      <Footer/>
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+      <Tobeto/>
     </>
   )
 }

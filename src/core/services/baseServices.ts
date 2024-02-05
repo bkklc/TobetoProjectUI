@@ -17,24 +17,24 @@ export class BaseService<
 	}
 
 	getAll(): Promise<AxiosResponse<GetAllType, any>> {
-		return axiosInstance.get<GetAllType>(this.apiUrl);
+		return axiosInstance.get<GetAllType>(this.apiUrl + "/getAll");
 	}
 
-	getById(id: number): Promise<AxiosResponse<GetByIdType, any>> {
-		return axiosInstance.get<GetByIdType>(this.apiUrl + "/" + id);
+	getById(id: any): Promise<AxiosResponse<GetByIdType, any>> {
+		return axiosInstance.get<GetByIdType>(this.apiUrl + "/getById?id=" + id);
 	}
 
 	add(request: AddRequestType): Promise<AxiosResponse<AddResponseType, any>> {
-		return axiosInstance.post<AddResponseType>(this.apiUrl, request);
+		return axiosInstance.post<AddResponseType>(this.apiUrl + "/add", request);
 	}
 
 	update(
 		request: UpdateRequestType,
 	): Promise<AxiosResponse<UpdateResponseType, any>> {
-		return axiosInstance.put<UpdateResponseType>(this.apiUrl, request);
+		return axiosInstance.put<UpdateResponseType>(this.apiUrl + "/update", request);
 	}
 
 	delete(id: number) {
-		return axiosInstance.delete(this.apiUrl + "/" + id);
+		return axiosInstance.delete(this.apiUrl + "/delete?id=" + id);
 	}
 }
