@@ -7,11 +7,15 @@ import { useState } from 'react';
 
 
 function NavbarComponent() {
-  
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = '/giris';
+  };
 
-  const url = PageUrl(); 
+
+  const url = PageUrl();
   return (
-    
+
     <Navbar expand="sm" className='position-relative navbar navbar-expand-xxl py-5 bg-white'>
       <Container fluid>
         <Navbar.Brand href="#home">
@@ -29,12 +33,12 @@ function NavbarComponent() {
             className="mx-auto my-lg-0 d-none d-xxl-flex navbar-nav"
             style={{ maxHeight: "100px" }}
             navbarScroll>
-            <Nav.Link as={Link} to={"/"} className={(url === "/"? "nav-active" : "")}>Ana Sayfa</Nav.Link>
-            <Nav.Link as={Link} to={"/profilim"} className={(url === "/profilim"? "nav-active" : "")}>Profilim</Nav.Link>
-            <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler"? "nav-active" : "")}>Değerlendirmeler</Nav.Link>            
-            <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog"? "nav-active" : "")}>Katalog</Nav.Link>            
-            <Nav.Link as={Link} to={"/takvim"} className={(url === "/takvim"? "nav-active" : "")}>Takvim</Nav.Link>
-            <Nav.Link as={Link} to={"/istanbul-kodluyor"} className={(url === "/istanbul-kodluyor"? "nav-active" : "")}>İstanbul Kodluyor</Nav.Link>
+            <Nav.Link as={Link} to={"/"} className={(url === "/" ? "nav-active" : "")}>Ana Sayfa</Nav.Link>
+            <Nav.Link as={Link} to={"/profilim"} className={(url === "/profilim" ? "nav-active" : "")}>Profilim</Nav.Link>
+            <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler" ? "nav-active" : "")}>Değerlendirmeler</Nav.Link>
+            <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog" ? "nav-active" : "")}>Katalog</Nav.Link>
+            <Nav.Link as={Link} to={"/takvim"} className={(url === "/takvim" ? "nav-active" : "")}>Takvim</Nav.Link>
+            <Nav.Link as={Link} to={"/istanbul-kodluyor"} className={(url === "/istanbul-kodluyor" ? "nav-active" : "")}>İstanbul Kodluyor</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Nav>
@@ -51,7 +55,7 @@ function NavbarComponent() {
             }
             id="basic-nav-dropdown">
             <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Profil Bilgileri</Dropdown.Item>
-            <Dropdown.Item eventKey={1.3} as={Link} to={"/giris"}>
+            <Dropdown.Item eventKey={1.3} onClick={handleLogout}>
               <i className="fa fa-sign-out"></i> Logout
             </Dropdown.Item>
           </NavDropdown>
