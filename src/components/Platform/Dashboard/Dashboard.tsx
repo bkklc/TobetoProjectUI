@@ -15,7 +15,7 @@ export default function Dashboard() {
         <Route path="/degerlendirmeler" element={<DashboardRoute><Degerlendirmeler/></DashboardRoute>}></Route>
         <Route path="/profilim" element={<DashboardRoute><Profile /></DashboardRoute>}></Route>
         <Route path="/profilimi-duzenle/*" element={<DashboardRoute><ProfileEdit/></DashboardRoute>}></Route>       
-        <Route path="/takvim" Component={Calendar}></Route>
+        <Route path="/takvim" element={<DashboardRoute><Calendar/></DashboardRoute>}></Route> 
       </Routes>
     
 

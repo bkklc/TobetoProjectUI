@@ -14,10 +14,10 @@ function Degerlendirmeler() {
               <h3>
                 <span className="text-secondary"
                   style={{ fontWeight: 'normal' }}> Yetkinlik</span><span className="fw-normal text-info"
-                    style={{ fontWeight: 'normal' }}>lerini</span><span className="fw-normal text-info"
-                      style={{ fontWeight: 'normal' }}> ücretsiz ölç,</span><span className="text-secondary"
-                        style={{ fontWeight: 'normal' }}> bilgi</span><span className="fw-normal text-info"
-                          style={{ fontWeight: 'normal' }}>lerini</span><span className="fw-normal text-info" style={{ fontWeight: 'normal' }}> test et.
+                  style={{ fontWeight: 'normal' }}>lerini</span><span className="fw-normal text-info"
+                  style={{ fontWeight: 'normal' }}> ücretsiz ölç,</span><span className="text-secondary"
+                  style={{ fontWeight: 'normal' }}> bilgi</span><span className="fw-normal text-info"
+                  style={{ fontWeight: 'normal' }}>lerini</span><span className="fw-normal text-info" style={{ fontWeight: 'normal' }}> test et.
                 </span>
               </h3>
             </div>

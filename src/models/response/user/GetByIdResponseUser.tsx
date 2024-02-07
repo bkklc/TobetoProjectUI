@@ -1,4 +1,4 @@
-export default interface GetByIdUser {
+export default interface GetByIdResponseUser {
     nationalIdentity: string,
     firstName: string,
     lastName: string,
