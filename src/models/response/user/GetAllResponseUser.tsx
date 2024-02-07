@@ -1,3 +1,5 @@
+import GetAllUserSocialMedia from "../userSocialMedia/GetAllUserSocialMedia";
+
 export default interface GetAllResponseUser {
   id: number;
   nationalIdentity: string;
@@ -7,7 +9,7 @@ export default interface GetAllResponseUser {
   email: string;
   imageId: number;
   birthDate: Date;
-  // userSocialMedias: userSocialMedias[];
+  userSocialMedias: [GetAllUserSocialMedia];
   // userLanguages: userLanguages[];
   // certificates: certificates[];
   // userAnnouncements: userAnnouncements[];
@@ -18,3 +20,4 @@ export default interface GetAllResponseUser {
     
   }
   
+

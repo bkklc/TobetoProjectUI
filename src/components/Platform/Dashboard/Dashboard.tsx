@@ -7,8 +7,9 @@ import Homepage from "../../../pages/Platform/Homepage/Homepage";
 import Degerlendirmeler from "../../../pages/Platform/Degerlendirmeler/Degerlendirmeler";
 
 
+
 export default function Dashboard() {
-  return (
+return (
     
       <Routes>
         <Route path='/' element={<DashboardRoute><Homepage/></DashboardRoute>}></Route>
@@ -21,3 +22,5 @@ export default function Dashboard() {
 
   )
 }
+
+
