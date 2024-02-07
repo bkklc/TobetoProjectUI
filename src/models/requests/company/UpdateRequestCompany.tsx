@@ -1,4 +1,4 @@
-export default interface UpdateRequestCourse {
+export default interface UpdateRequestCompany {
   Id: number;
   ImageId: number;
   Name: string;
