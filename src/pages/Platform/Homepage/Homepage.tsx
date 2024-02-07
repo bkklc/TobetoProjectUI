@@ -1,12 +1,31 @@
 import { Button, Card, Col, Container, Nav, Row, Stack } from 'react-bootstrap'
-
 import { Link } from 'react-router-dom'
 import PageUrl from '../../../hooks/PageUrl';
 import tokenDecode from '../../../hooks/tokenDecode';
 import PlatformTabs from '../../../components/Platform/Items/PlatformTabs';
+import { useEffect, useState } from 'react';
+import userService from '../../../services/userService';
 
 
 function Homepage() {
+  const [responseData, setResponseData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await userService.getAll();
+        setResponseData(response.data);
+      } catch (error) {
+        console.error("Veri çekme sırasında bir hata oluştu:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(responseData && (responseData.items[0].userSocialMedias[0]));
+
+
   const url = PageUrl();  
   return (
     <main>

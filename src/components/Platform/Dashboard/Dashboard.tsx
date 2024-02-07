@@ -8,8 +8,9 @@ import Degerlendirmeler from "../../../pages/Platform/Degerlendirmeler/Degerlend
 import Catalog from "../../../pages/Platform/Catalog/Catalog";
 
 
+
 export default function Dashboard() {
-  return (
+return (
     
       <Routes>
         <Route path='/' element={<DashboardRoute><Homepage/></DashboardRoute>}></Route>
@@ -21,3 +22,5 @@ export default function Dashboard() {
       </Routes>
   )
 }
+
+

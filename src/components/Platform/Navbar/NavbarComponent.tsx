@@ -2,9 +2,13 @@ import { Navbar, Nav, Container, NavDropdown, Dropdown } from 'react-bootstrap';
 import PageUrl from '../../../hooks/PageUrl';
 import { Link } from 'react-router-dom';
 import tokenDecode from '../../../hooks/tokenDecode';
+import userService from '../../../services/userService';
+import { useState } from 'react';
 
 
 function NavbarComponent() {
+  
+
   const url = PageUrl(); 
   return (
     
@@ -58,3 +62,12 @@ function NavbarComponent() {
 }
 
 export default NavbarComponent
+
+function useEffect(arg0: () => void, arg1: never[]) {
+  throw new Error('Function not implemented.');
+}
+
+
+function setResponseData(data: any) {
+  throw new Error('Function not implemented.');
+}
