@@ -1,0 +1,7 @@
+.inputWrapper {
+    flex: 1;   
+}
+
+.inputWrapper input:focus {
+    box-shadow: transparent !important;
+}
