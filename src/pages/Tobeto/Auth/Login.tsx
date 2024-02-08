@@ -7,7 +7,7 @@ import AuthBanner from '../../../components/Tobeto/AuthComponents/AuthBanner'
 const Login = () => {
     return (
         <>
-            <Container className='mt-60 mb-10'>
+            <Container className='mt-40 mb-10'>
                 <Row className='mt-10 equal-col'>
                     <Col md={6} className="btn-rainbow-card mx-auto text-center col-12">
                         <LoginComponent />
