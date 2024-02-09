@@ -83,7 +83,7 @@ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
             <small>
               Henüz üye değil misin?
 
-              <Link to={"/kayitol"} className="text-decoration-none text-muted fw-bold">
+              <Link to={"/kayit-ol"} className="text-decoration-none text-muted fw-bold">
               Kayıt Ol
               </Link>
              

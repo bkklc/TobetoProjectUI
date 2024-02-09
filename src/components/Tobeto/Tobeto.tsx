@@ -11,7 +11,7 @@ export default function Tobeto() {
   return (
     <Routes>
         <Route path="/giris" element={<TobetoRoute><Login/></TobetoRoute>}></Route>
-        <Route path="/kayitOl" element={<TobetoRoute><Register/></TobetoRoute>}></Route>
+        <Route path="/kayit-ol" element={<TobetoRoute><Register/></TobetoRoute>}></Route>
         <Route path="/istanbul-kodluyor" Component={IstanbulCoding}></Route>
         <Route path="/istanbul-kodluyor/galeri" Component={Gallery}></Route>
     </Routes>

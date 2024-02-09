@@ -6,7 +6,7 @@ import AuthBanner from "../../../components/Tobeto/AuthComponents/AuthBanner";
 export default function Register() {
   return (
     <>
-            <Container>
+            <Container className='mt-40 mb-10'>
                 <Row className='mt-10 equal-col'>
                     <Col md={6} className="col-md-6 col-12 btn-rainbow-card">
                         <RegisterComponent/>

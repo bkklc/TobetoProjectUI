@@ -1,6 +1,16 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
+import PageUrl from "../../../hooks/PageUrl";
+import ResponseData from "../../../hooks/ResponseData";
+import userService from "../../../services/userService";
+import tokenDecode from "../../../hooks/tokenDecode";
+import addressService from "../../../services/addressService";
 
 const PersonalInfo = () => {
+  const responseData = ResponseData(userService.getById(tokenDecode().ID));
+  const addressResponseData = ResponseData(addressService.getById(tokenDecode().ID));
+
+  console.log(responseData && responseData.firstName);
+
   return (
     <>
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
@@ -55,6 +65,7 @@ const PersonalInfo = () => {
                 name="name"
                 className="form-control tobeto-input"
                 type="text"
+                defaultValue={responseData && responseData.firstName}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -63,6 +74,7 @@ const PersonalInfo = () => {
                 name="surname"
                 className="form-control tobeto-input"
                 type="text"
+                defaultValue={responseData && responseData.lastName}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -78,7 +90,7 @@ const PersonalInfo = () => {
                   id="phoneNumber"
                   name="phoneNumber"
                   className="PhoneInputInput"
-                  defaultValue="+90 506 058 78 89"
+                  defaultValue={responseData && responseData.phoneNumber}
                 />
               </div>
             </div>
@@ -89,15 +101,17 @@ const PersonalInfo = () => {
                 max="2024-01-016"
                 className="form-control tobeto-input"
                 type="date"
+                value={responseData && responseData.birthDate}
               />
             </div>
-            
+
             <div className=" col-md-6 mb-6">
               <label className="input-label-text">TC Kimlik No*</label>
               <input
                 name="identifier"
                 className="form-control tobeto-input mb-2"
                 type="number"
+                defaultValue={responseData && responseData.nationalIdentity}
               />
               <span
                 className="text-danger"
@@ -111,6 +125,7 @@ const PersonalInfo = () => {
                 name="identifier"
                 className="form-control tobeto-input mb-2"
                 type="email"
+                defaultValue={responseData && responseData.email}
               />
             </div>
             <div className="col-12 mb-6">

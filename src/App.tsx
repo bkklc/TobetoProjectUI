@@ -6,10 +6,8 @@ import Tobeto from './components/Tobeto/Tobeto'
 function App() {
   return (
     <>
-      <ProtectedRoute>
-        <Dashboard />
-      </ProtectedRoute>
-      <Tobeto/>
+      <Dashboard />
+      <Tobeto />
     </>
   )
 }

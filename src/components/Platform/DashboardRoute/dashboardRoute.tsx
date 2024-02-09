@@ -1,6 +1,7 @@
 import Banner from "../../Tobeto/Navbar/Banner";
 import Footer from "../Footer/Footer";
 import NavbarComponent from "../Navbar/NavbarComponent";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 type Props = {
   children: any;
@@ -9,9 +10,12 @@ type Props = {
 const DashboardRoute = (props: Props) => {
   return (
     <>
+    <ProtectedRoute>
       <NavbarComponent />
       {props.children}
       <Footer />
+    </ProtectedRoute>
+      
     </>
   );
 };
