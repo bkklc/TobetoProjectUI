@@ -6,8 +6,10 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import CatalogCard from "../../../components/Platform/CatalogCard/CatalogCard";
 import "./Catolog.css";
+import Accordion from "../../../components/Platform/Accordion/Accordion";
+import CatalogCard from "../../../components/Platform/CatalogCard/CatalogCard";
+import CatalogFilter from "../../../components/Platform/CatalogFilter/CatalogFilter";
 
 function Catalog() {
   return (
@@ -75,10 +77,31 @@ function Catalog() {
         </Container>
       </div>
 
-      <div className="col-lg-9 col-md-8 col-12">
-        <div className="row gy-6 gx-3">
-          <div className="col-lg-4 col-md-6 col-12  cursor-pointer">
-            <CatalogCard />
+      <div className="container mt-5 pb-20">
+        <div className="row">
+          <div className="col-lg-3 col-md-4 col-12 light">
+            <div className="col-lg-3 col-md-4 col-12 w-100">
+              <div className="filter dm-none">
+                <h2>Filtrele</h2>
+                <hr className="mt-0" />
+                <div>
+                  <Accordion
+                    title="Kategori"
+                    content={<CatalogFilter />}
+                    activeStyle={{ background: "#93f" }}
+                    passiveStyle={{ background: "#4d405ab0" }}
+                    iconColor="#fff"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-9 col-md-8 col-12">
+            <div className="row gy-6 gx-3">
+              <div className="col-lg-4 col-md-6 col-12  cursor-pointer">
+                <CatalogCard />
+              </div>
+            </div>
           </div>
         </div>
       </div>
