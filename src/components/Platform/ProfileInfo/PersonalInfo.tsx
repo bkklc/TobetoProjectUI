@@ -4,12 +4,17 @@ import ResponseData from "../../../hooks/ResponseData";
 import userService from "../../../services/userService";
 import tokenDecode from "../../../hooks/tokenDecode";
 import addressService from "../../../services/addressService";
+import socialMediaService from "../../../services/socialMediaService";
 
 const PersonalInfo = () => {
   const responseData = ResponseData(userService.getById(tokenDecode().ID));
-  const addressResponseData = ResponseData(addressService.getById(tokenDecode().ID));
+  // const adressResponseData = ResponseData(addressService.getById(tokenDecode().ID))
 
-  console.log(responseData && responseData.firstName);
+  // console.log(adressResponseData && adressResponseData.country);
+
+  //const addressResponseData = ResponseData(addressService.getById(tokenDecode().ID));
+
+  //console.log(responseData && responseData.firstName);
 
   return (
     <>
@@ -101,7 +106,7 @@ const PersonalInfo = () => {
                 max="2024-01-016"
                 className="form-control tobeto-input"
                 type="date"
-                value={responseData && responseData.birthDate}
+                value={responseData && responseData.birthDate.split('T')[0]}
               />
             </div>
 

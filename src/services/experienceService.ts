@@ -6,7 +6,14 @@ import GetAllExperience from "../models/response/experience/GetAllExperience";
 import GetByIdExperience from "../models/response/experience/GetByIdExperience";
 import UpdateResponseExperience from "../models/response/experience/UpdateResponseExperience";
 
-class ExperienceService extends BaseService<GetAllExperience,GetByIdExperience,AddRequestExperience,AddResponseExperience,UpdateRequestExperience,UpdateResponseExperience>{
+class ExperienceService extends BaseService<
+    GetAllExperience,
+    GetByIdExperience,
+    AddRequestExperience,
+    AddResponseExperience,
+    UpdateRequestExperience,
+    UpdateResponseExperience
+>{
 
     constructor() {
         super();

@@ -1,10 +1,10 @@
 class TokenService {
 	getToken(): string | null {
-		return localStorage.getItem("token");
+		return localStorage.getItem("Token");
 	}
 
 	hasToken(): boolean {
-		return localStorage.getItem("token") != null;
+		return localStorage.getItem("Token") != null;
 	}
 }
 
