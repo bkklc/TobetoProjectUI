@@ -1,25 +1,16 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import PageUrl from "../../../hooks/PageUrl";
 import ResponseData from "../../../hooks/ResponseData";
 import userService from "../../../services/userService";
 import tokenDecode from "../../../hooks/tokenDecode";
-import addressService from "../../../services/addressService";
-import socialMediaService from "../../../services/socialMediaService";
+
 
 const PersonalInfo = () => {
   const responseData = ResponseData(userService.getById(tokenDecode().ID));
-  // const adressResponseData = ResponseData(addressService.getById(tokenDecode().ID))
-
-  // console.log(adressResponseData && adressResponseData.country);
-
-  //const addressResponseData = ResponseData(addressService.getById(tokenDecode().ID));
-
-  //console.log(responseData && responseData.firstName);
 
   return (
     <>
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
-        <Form action="#" data-hs-cf-bound="true">
+        <Form data-hs-cf-bound="true">
           <Row className="mb-2">
             <Col mb={6} md={12} className="text-center">
               <div className="profile-photo mx-auto">
@@ -70,7 +61,7 @@ const PersonalInfo = () => {
                 name="name"
                 className="form-control tobeto-input"
                 type="text"
-                defaultValue={responseData && responseData.firstName}
+                defaultValue={responseData.firstName}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -79,7 +70,7 @@ const PersonalInfo = () => {
                 name="surname"
                 className="form-control tobeto-input"
                 type="text"
-                defaultValue={responseData && responseData.lastName}
+                defaultValue={responseData.lastName}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -95,7 +86,7 @@ const PersonalInfo = () => {
                   id="phoneNumber"
                   name="phoneNumber"
                   className="PhoneInputInput"
-                  defaultValue={responseData && responseData.phoneNumber}
+                  defaultValue={responseData.phoneNumber}
                 />
               </div>
             </div>
@@ -106,7 +97,7 @@ const PersonalInfo = () => {
                 max="2024-01-016"
                 className="form-control tobeto-input"
                 type="date"
-                value={responseData && responseData.birthDate.split('T')[0]}
+                defaultValue={responseData && responseData.birthDate.split('T')[0]}
               />
             </div>
 
@@ -116,7 +107,7 @@ const PersonalInfo = () => {
                 name="identifier"
                 className="form-control tobeto-input mb-2"
                 type="number"
-                defaultValue={responseData && responseData.nationalIdentity}
+                defaultValue={responseData.nationalIdentity}
               />
               <span
                 className="text-danger"
@@ -130,7 +121,7 @@ const PersonalInfo = () => {
                 name="identifier"
                 className="form-control tobeto-input mb-2"
                 type="email"
-                defaultValue={responseData && responseData.email}
+                defaultValue={responseData.email}
               />
             </div>
             <div className="col-12 mb-6">

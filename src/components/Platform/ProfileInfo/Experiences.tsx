@@ -7,7 +7,8 @@ import cityService from '../../../services/cityService';
 import experienceService from '../../../services/experienceService';
 
 const Experiences = () => {
-  const cityResponse = ResponseData(cityService.getAll());
+
+const cityResponse = ResponseData(cityService.getAll());
 
   const [formData, setFormData] = useState<AddRequestExperience>(
     {
@@ -73,10 +74,14 @@ const Experiences = () => {
           <Col xs={12} md={6} className="mb-6">
             <Form.Label className="input-label-text">Şehir Seçiniz*</Form.Label>
             <Form.Select
-              name="City"
+              name="CityId"
               className="form-select tobeto-input"
-              aria-label="">
-              <option value="">İl Seçiniz</option>
+              aria-label=""
+              onChange={e => setFormData({ ...formData, CityId: e.target.selectedIndex })}>
+              <option id='0' value="">İl Seçiniz</option>
+              {cityResponse && (cityResponse.items.map((cities: any) => (
+                  <option id={cities.id} value="">{cities.name}</option>
+                )))}
             </Form.Select>
           </Col>
           <Col xs={12} md={6} className="mb-6">
