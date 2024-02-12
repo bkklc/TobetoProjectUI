@@ -1,14 +1,20 @@
-import { FormEvent, useEffect, useState } from 'react';
-import { Button, Col, Form, FormControl, InputGroup, Row } from 'react-bootstrap';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { Button, Col, Form, FormControl, Row } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import ResponseData from '../../../hooks/ResponseData';
 import tokenDecode from '../../../hooks/tokenDecode';
 import AddRequestExperience from '../../../models/requests/experience/AddRequestExperience';
 import cityService from '../../../services/cityService';
 import experienceService from '../../../services/experienceService';
 
+
+
 const Experiences = () => {
 
-const cityResponse = ResponseData(cityService.getAll());
+  const cityResponse = ResponseData(cityService.getAll());
+
+  const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
 
   const [formData, setFormData] = useState<AddRequestExperience>(
     {
@@ -17,8 +23,9 @@ const cityResponse = ResponseData(cityService.getAll());
       CompanyName: '',
       Position: '',
       Sector: '',
+      Description: '',
       StartDate: new Date(),
-      EndDate: new Date()
+      EndDate: null
     }
   );
 
@@ -33,6 +40,7 @@ const cityResponse = ResponseData(cityService.getAll());
   useEffect(() => {
 
   }, [formData]);
+
 
   return (
     <Col xs={12} lg={9} style={{ minHeight: '90vh' }}>
@@ -80,37 +88,40 @@ const cityResponse = ResponseData(cityService.getAll());
               onChange={e => setFormData({ ...formData, CityId: e.target.selectedIndex })}>
               <option id='0' value="">İl Seçiniz</option>
               {cityResponse && (cityResponse.items.map((cities: any) => (
-                  <option id={cities.id} value="">{cities.name}</option>
-                )))}
+                <option key={cities.id} value={cities.id}>{cities.name}</option>
+              )))}
             </Form.Select>
           </Col>
           <Col xs={12} md={6} className="mb-6">
             <Form.Label className="input-label-text">İş Başlangıcı*</Form.Label>
-            <InputGroup>
-              <FormControl
-                as="input"
-                type="text"
-                placeholder="gg.aa.yyyy"
-                className="form-control tobeto-input"
-              />
-            </InputGroup>
+            <DatePicker
+              selected={formData.StartDate}
+              className="form-control tobeto-input"
+              dateFormat="dd.MM.yyyy"
+              placeholderText="gg.aa.yyyy"
+              onChange={(date: Date) => {
+                setFormData({ ...formData, StartDate: date });
+                setIsEndDateEnabled(true);
+              }}
+            />
           </Col>
           <Col xs={12} md={6} className="mb-6">
             <Form.Label className="input-label-text">İş Bitiş*</Form.Label>
-            <InputGroup>
-              <FormControl
-                as="input"
-                type="text"
-                placeholder="gg.aa.yyyy"
-                disabled className="form-control tobeto-input"
-                value="" />
-            </InputGroup>
+            <DatePicker
+              selected={formData.EndDate}
+              onChange={(date: Date) => setFormData({ ...formData, EndDate: date })}
+              className="form-control tobeto-input"
+              dateFormat="dd.MM.yyyy"
+              placeholderText="gg.aa.yyyy"
+              disabled={!isEndDateEnabled}
+            />
           </Col>
           <Col xs={12} md={{ span: 6, offset: 6 }}>
             <Form.Check
               name="checkbox"
               type="checkbox"
               label={<small className="text-muted">Çalışmaya Devam Ediyorum</small>}
+              onChange={() => setIsEndDateEnabled(!isEndDateEnabled)}
             />
           </Col>
           <Col xs={12} md={12} className="mb-6">
@@ -118,8 +129,11 @@ const cityResponse = ResponseData(cityService.getAll());
             <FormControl
               as="textarea"
               rows={6}
-              name="description"
-              className="form-control tobeto-input" />
+              name="Description"
+              className="form-control tobeto-input"
+              value={formData.Description}
+              onChange={e => setFormData({ ...formData, Description: e.target.value })}
+            />
           </Col>
         </Row>
         <Button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn" type="submit">Kaydet</Button>

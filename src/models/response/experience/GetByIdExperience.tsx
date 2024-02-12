@@ -4,6 +4,7 @@ export default interface GetByIdExperience{
     CompanyName:string,
     Position:string,
     Sector:string,
+    Description:string,
     StartDate:string,
     EndDate:string
 }

@@ -5,6 +5,7 @@ export default interface UpdateResponseExperience{
     CompanyName:string,
     Position:string,
     Sector:string,
+    Description:string,
     StartDate:string,
     EndDate:string
 }

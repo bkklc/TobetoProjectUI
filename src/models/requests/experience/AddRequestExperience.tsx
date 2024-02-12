@@ -4,6 +4,7 @@ export default interface AddRequestExperience {
     CompanyName: string,
     Position: string,
     Sector: string,
+    Description: string,
     StartDate: Date,
-    EndDate: Date
+    EndDate: Date | null
 }

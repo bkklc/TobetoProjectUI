@@ -5,6 +5,7 @@ export default interface AddResponseExperience {
     CompanyName: string,
     Position: string,
     Sector: string,
+    Description:string,
     StartDate: Date,
     EndDate: Date
 }
