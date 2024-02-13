@@ -8,7 +8,15 @@ function NavbarComponent() {
     localStorage.clear();
     window.location.href = '/giris';
   };
-
+  console.log(tokenDecode())
+  const adminControl = () => {
+    if(tokenDecode()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
+      
+      return(
+        <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Admin</Dropdown.Item>
+      )
+    }
+  }
 
   const url = PageUrl();
   return (
@@ -52,6 +60,7 @@ function NavbarComponent() {
             }
             id="basic-nav-dropdown">
             <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Profil Bilgileri</Dropdown.Item>
+            {adminControl()}
             <Dropdown.Item eventKey={1.3} onClick={handleLogout}>
               <i className="fa fa-sign-out"></i> Logout
             </Dropdown.Item>

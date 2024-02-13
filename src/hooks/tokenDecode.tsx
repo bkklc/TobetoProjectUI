@@ -5,7 +5,7 @@ export default function tokenDecode() {
         Email: "",
         ID: "0",
         Name: "",
-        Role: "",
+        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role": "",
         aud: "",
         exp: 0,
         iss: "Tobeto",

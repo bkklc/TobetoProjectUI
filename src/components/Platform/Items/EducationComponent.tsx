@@ -1,26 +1,34 @@
+import { Row } from "react-bootstrap";
+import ResponseData from "../../../hooks/ResponseData";
+import courseService from "../../../services/courseService";
+import educationService from "../../../services/educationService";
 
 
 const EducationComponent = () => {
+  const courseResponse = ResponseData(courseService.getAll());
   return (
-    <div className="col-md-3 col-12 mb-4">
-      <div className="corp-edu-card">
-        <div
-          className="card-img"
-          style={{
-            backgroundImage:
-              'url("https://tobeto.s3.cloud.ngn.com.tr/23_EAH_1_45f7232003.jpg")',
-          }}
-        />
-
-        <div className="card-content">
-          <div className="d-flex flex-column">
-            <span>Dr. Ecmel Ayral'dan Hoşgeldin Mesajı</span>
-            <span className="platform-course-date">21 Eylül 2023 15:20</span>
+    <Row>
+      {courseResponse && courseResponse.items.map((education: any) => (
+        <div className="col-md-3 mb-4">
+          <div className="corp-edu-card">
+            <div
+              className="card-img"
+              style={{
+                backgroundImage:
+                  'url("https://tobeto.s3.cloud.ngn.com.tr/23_MES_6_6c76eef420.jpg")',
+              }}
+            />
+            <div className="card-content">
+              <div className="d-flex flex-column">
+                <span>{education.name}</span>
+                <span className="platform-course-date">21 Eylül 2023 15:20</span>
+              </div>
+              <a className="apply-btn">Eğitime Git</a>
+            </div>
           </div>
-          <a className="apply-btn">Eğitime Git</a>
         </div>
-      </div>
-    </div>
+      ))}
+    </Row>
   );
 };
 

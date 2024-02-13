@@ -1,5 +1,5 @@
+import AdminDashboard from './components/Admin/adminDashboard/adminDashboard'
 import Dashboard from './components/Platform/Dashboard/Dashboard'
-import ProtectedRoute from './components/Platform/ProtectedRoute/ProtectedRoute'
 import Tobeto from './components/Tobeto/Tobeto'
 
 
@@ -8,6 +8,7 @@ function App() {
     <>
       <Dashboard />
       <Tobeto />
+      <AdminDashboard/>
     </>
   )
 }
