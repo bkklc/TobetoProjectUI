@@ -150,7 +150,7 @@ const Experiences = () => {
            dataResponse && dataResponse.items.map((data: any) => (
             <div className="my-grade">
               <div className="grade-header">
-                <span className="grade-date">09.07.2018 - 09.10.2018</span>
+                <span className="grade-date"> {`${data.startDate.split('T')[0]} | ${data.endDate === null? "Devam Ediyor" :  data.endDate.split('T')[0]}`}</span>
               </div>
               <div className="grade-details">
                 <div className="grade-details-col">
