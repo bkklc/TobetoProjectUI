@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { BaseService } from "../core/services/baseServices";
 import AddRequestExperience from "../models/requests/experience/AddRequestExperience";
 import UpdateRequestExperience from "../models/requests/experience/UpdateRequestExperience";
@@ -5,6 +6,7 @@ import AddResponseExperience from "../models/response/experience/AddResponseExpe
 import GetAllExperience from "../models/response/experience/GetAllExperience";
 import GetByIdExperience from "../models/response/experience/GetByIdExperience";
 import UpdateResponseExperience from "../models/response/experience/UpdateResponseExperience";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 
 class ExperienceService extends BaseService<
     GetAllExperience,
@@ -19,6 +21,10 @@ class ExperienceService extends BaseService<
         super();
         this.apiUrl = "Experiences";
     }
+
+    getByUserId(userId: any): Promise<AxiosResponse<GetAllExperience, any>> {
+		return axiosInstance.get<GetAllExperience>(this.apiUrl + "/getByUserId?userId=" + userId + "&PageIndex=0&PageSize=20");
+	}
 }
 
 export default new ExperienceService();

@@ -8,7 +8,6 @@ function NavbarComponent() {
     localStorage.clear();
     window.location.href = '/giris';
   };
-  console.log(tokenDecode())
   const adminControl = () => {
     if(tokenDecode()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
       
