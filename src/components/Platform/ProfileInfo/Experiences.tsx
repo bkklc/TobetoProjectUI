@@ -11,8 +11,15 @@ import experienceService from '../../../services/experienceService';
 
 
 const Experiences = () => {
-
+  const dataResponse = ResponseData(experienceService.getByUserId(tokenDecode().ID));
   const cityResponse = ResponseData(cityService.getAll());
+
+  const deleteData = (id:any) => {
+    return(
+      ResponseData(experienceService.delete(id))
+    )
+    
+  }
 
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
 
@@ -138,8 +145,42 @@ const Experiences = () => {
         </Row>
         <Button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn" type="submit">Kaydet</Button>
       </Form>
-      <Col xs={12}></Col>
+      <Col xs={12}>
+        {
+           dataResponse && dataResponse.items.map((data: any) => (
+            <div className="my-grade">
+              <div className="grade-header">
+                <span className="grade-date"> {`${data.startDate.split('T')[0]} | ${data.endDate === null? "Devam Ediyor" :  data.endDate.split('T')[0]}`}</span>
+              </div>
+              <div className="grade-details">
+                <div className="grade-details-col">
+                  <span className="grade-details-header">Kurum Adı</span>
+                  <span className="grade-details-content">{data.companyName}</span>
+                </div>
+                <div className="grade-details-col">
+                  <span className="grade-details-header">Pozisyon</span>
+                  <span className="grade-details-content">{data.position}</span>
+                </div>
+                <div className="grade-details-col">
+                  <span className="grade-details-header">Sektör</span>
+                  <span className="grade-details-content">{data.sector}</span>
+                </div>
+                <div className="grade-details-col">
+                  <span className="grade-details-header">Şehir</span>
+                  <span className="grade-details-content">{data.cityName}</span>
+                </div>
+                <div>
+                  <span className=" grade-delete" onClick={() => deleteData(data.id)}/>
+                  <span className=" grade-info" />
+                </div>
+              </div>
+            </div>
+
+          ))
+        }
+      </Col>
     </Col>
+
   );
 };
 

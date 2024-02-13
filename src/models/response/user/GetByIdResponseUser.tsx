@@ -4,6 +4,7 @@ export default interface GetByIdResponseUser {
     lastName: string,
     phoneNumber: string,
     email: string,
+    description: string;
     imageId: number,
     birthDate: Date
 

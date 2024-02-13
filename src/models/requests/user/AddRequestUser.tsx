@@ -3,6 +3,7 @@ export default interface AddRequestUser {
   firstName: string;
   lastName: string;
   email: string;
+  description: string;
   passwordSalt: string;
   passwordHash: string;
 }
