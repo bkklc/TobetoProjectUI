@@ -2,27 +2,22 @@ import { Row, Modal } from "react-bootstrap";
 import announcementService from "../../../services/announcementService";
 import ResponseData from "../../../hooks/ResponseData";
 import { useState } from "react";
-import GetAllAnnouncement from "../../../models/response/Announcement/GetAllAnnouncement";
 
 const AnnouncementsComponent =  () => {
-  
+ 
   const announcementResponse =  ResponseData(announcementService.getAll());
-  const [selectedAnnouncement, setSelectedAnnouncement] = useState<GetAllAnnouncement>(
-    {
-      Id:0,
-      Name:"",
-      Description:""
+  const [selectedAnnouncement, setSelectedAnnouncement] = useState({ name: '', description: '' });
 
-    }
-
-  );
 
   const handleReadMoreClick = (announcement:any) => {
-    setSelectedAnnouncement(announcement);
+    setSelectedAnnouncement({
+      name: announcement.name,
+      description: announcement.description
+    });
   };
 
   const handleCloseModal = () => {
-    setSelectedAnnouncement(null);
+    setSelectedAnnouncement({ name: '', description: '' });
   };
 
   return (
@@ -50,7 +45,7 @@ const AnnouncementsComponent =  () => {
       {selectedAnnouncement && (
         <Modal
           size="lg"
-          show={!!selectedAnnouncement}
+          show={!!selectedAnnouncement.name}
           onHide={handleCloseModal}
           aria-labelledby="example-modal-sizes-title-lg"
         >
