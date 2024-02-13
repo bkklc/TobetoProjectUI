@@ -2,6 +2,7 @@ import { Row } from "react-bootstrap";
 import ResponseData from "../../../hooks/ResponseData";
 import courseService from "../../../services/courseService";
 
+
 const EducationComponent = () => {
   const courseResponse = ResponseData(courseService.getAll());
   return (

@@ -5,6 +5,7 @@ export default interface UpdateResponseUser {
   lastName: string;
   phoneNumber: string;
   email: string;
+  description: string;
   imageId: number;
   birthDate: Date;
 }

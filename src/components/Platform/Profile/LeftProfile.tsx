@@ -66,7 +66,8 @@ const LeftProfile = (props: Props) => {
             <span>Hakkımda</span>
             <hr />
           </div>
-          <div>Kendini kısaca anlat</div>
+          <div>
+            <span>{responseData && (responseData.description)}</span></div>
         </div>
       </Col>
       <Col xs={12}>
