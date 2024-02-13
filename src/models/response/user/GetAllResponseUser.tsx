@@ -7,6 +7,7 @@ export default interface GetAllResponseUser {
   lastName: string;
   phoneNumber: string;
   email: string;
+  description: string;
   imageId: number;
   birthDate: Date;
   userSocialMedias: [GetAllUserSocialMedia];

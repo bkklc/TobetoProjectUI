@@ -5,6 +5,7 @@ export default interface UpdateRequestUser {
     LastName:string,
     PhoneNumber:string,
     Email:string,
+    Description: string;
     ImageId:number,
     BirthDate:string,
 }
