@@ -1,0 +1,15 @@
+.title {
+  color: #828282 !important;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.skill {
+  padding: 10px 20px;
+  background: #fff;
+  box-shadow: 2px 10px 24px hsla(0,0%,9%,.12);
+  border-radius: 54px;
+  text-align: left;
+  width: 100%;
+}
+
