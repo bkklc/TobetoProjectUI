@@ -14,6 +14,7 @@ return (
     
       <Routes>
         <Route path='/' element={<DashboardRoute><Homepage/></DashboardRoute>}></Route>
+        <Route path="/platform" element={<DashboardRoute><Homepage/></DashboardRoute>}></Route>
         <Route path="/degerlendirmeler" element={<DashboardRoute><Degerlendirmeler/></DashboardRoute>}></Route>
         <Route path="/profilim" element={<DashboardRoute><Profile /></DashboardRoute>}></Route>
         <Route path="/profilimi-duzenle/*" element={<DashboardRoute><ProfileEdit/></DashboardRoute>}></Route>       
