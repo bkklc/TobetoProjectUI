@@ -2,10 +2,13 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import ResponseData from "../../../hooks/ResponseData";
 import userService from "../../../services/userService";
 import tokenDecode from "../../../hooks/tokenDecode";
-
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import { useState } from "react";
 
 const PersonalInfo = () => {
   const responseData = ResponseData(userService.getById(tokenDecode().ID));
+  const [value, setValue] = useState();
 
   return (
     <>
@@ -55,7 +58,6 @@ const PersonalInfo = () => {
               </div>
             </Col>
             <div className="col-12 col-md-6 mb-6">
-
               <label className="input-label-text">Adınız*</label>
               <input
                 name="name"
@@ -75,20 +77,10 @@ const PersonalInfo = () => {
             </div>
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Telefon Numaranız*</label>
-              <div className="PhoneInput">
-                <div className="PhoneInputCountry">
-                  <div className="PhoneInputCountrySelectArrow" />
-                </div>
-                <input
-                  type="tel"
-                  autoComplete="tel"
-                  placeholder="5** *** ** **"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  className="PhoneInputInput"
-                  defaultValue={responseData.phoneNumber}
-                />
-              </div>
+              <PhoneInput
+                placeholder="Enter phone number"
+                value={value}
+                onChange={setValue} />              
             </div>
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Doğum Tarihiniz*</label>
@@ -97,7 +89,9 @@ const PersonalInfo = () => {
                 max="2024-01-016"
                 className="form-control tobeto-input"
                 type="date"
-                defaultValue={responseData && responseData.birthDate.split('T')[0]}
+                defaultValue={
+                  responseData && responseData.birthDate.split("T")[0]
+                }
               />
             </div>
 
@@ -109,9 +103,7 @@ const PersonalInfo = () => {
                 type="number"
                 defaultValue={responseData.nationalIdentity}
               />
-              <span
-                className="text-danger"
-              >
+              <span className="text-danger">
                 *Aboneliklerde fatura için doldurulması zorunlu alan
               </span>
             </div>

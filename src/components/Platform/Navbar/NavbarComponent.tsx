@@ -45,14 +45,16 @@ function NavbarComponent() {
             <Nav.Link as={Link} to={"/istanbul-kodluyor"} className={(url === "/istanbul-kodluyor" ? "nav-active" : "")}>İstanbul Kodluyor</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <div className="btn-group header-avatar">
         <Nav>
           <NavDropdown
             title={
-              <div className="btn-group header-avatar">
+              <div className="btn-group align-items-center" style={{marginRight: "10px",fontSize: "14px", color: "#828282"}}>
                 <img className="thumbnail-image"
                   src='https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75'
                   width={32}
                   height={32}
+                  style={{marginRight: "4px"}}
                 />
                 {tokenDecode().Name}
               </div>
@@ -65,6 +67,7 @@ function NavbarComponent() {
             </Dropdown.Item>
           </NavDropdown>
         </Nav>
+        </div>
       </Container>
     </Navbar>
   )
