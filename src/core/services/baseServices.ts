@@ -34,15 +34,12 @@ export class BaseService<
 		return axiosInstance.put<UpdateResponseType>(this.apiUrl + "/update", request);
 	}
 
-	delete(id: number) {
-		
-		axiosInstance.interceptors.request.use(config => {
-			config.data = `${id}`
-			config.headers["Content-Type"] = "application/json"
-			return config;
-		});
-
-		return axiosInstance.delete(this.apiUrl + "/delete");
-
+	delete(id: number) {		
+		return axiosInstance.delete(this.apiUrl + "/delete" , {
+			headers:{
+			"Content-Type": "application/json",
+		},
+		data: `${id}`
+	});
 	}
 }

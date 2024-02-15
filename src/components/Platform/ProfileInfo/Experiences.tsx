@@ -7,41 +7,14 @@ import tokenDecode from '../../../hooks/tokenDecode';
 import AddRequestExperience from '../../../models/requests/experience/AddRequestExperience';
 import cityService from '../../../services/cityService';
 import experienceService from '../../../services/experienceService';
+import GetAllExperience from '../../../models/response/experience/GetAllExperience';
+import Paginate from '../../../models/paginate';
 
 //
 
-const Experiences = () => {
-  const dataResponse = ResponseData(experienceService.getByUserId(tokenDecode().ID));
+const Experiences = () => { 
   const cityResponse = ResponseData(cityService.getAll());
-
-
-
-  const [deletedExperienceIds, setDeletedExperienceIds] = useState<number[]>([]);
-
-
-  const deleteData = (id: any) => {
-    experienceService.delete(id)
-      .then(response => {
-        console.log(response);
-        // Güncellemek için silinen deneyimi state'e de ekleyin
-        setDeletedExperienceIds(prevIds => [...prevIds, id]);
-      })
-      .catch(error => console.log(error));
-  };
-
-  const filteredExperiences = dataResponse && dataResponse.items
-    ? dataResponse.items.filter((data: any) => !deletedExperienceIds.includes(data.id))
-    : [];
-
-  useEffect(() => {
-    const storedDeletedExperienceIds = localStorage.getItem('deletedExperienceIds');
-    if (storedDeletedExperienceIds) {
-      setDeletedExperienceIds(JSON.parse(storedDeletedExperienceIds));
-    }
-  }, []);
-
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
-
   const [formData, setFormData] = useState<AddRequestExperience>(
     {
       UserId: Number(tokenDecode().ID),
@@ -54,18 +27,48 @@ const Experiences = () => {
       EndDate: null
     }
   );
-
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     experienceService
       .add(formData)
-      .then(response => console.log(response))
+      .then(() => {  
+        fetchData();       
+      })
       .catch(error => console.log(error))
   };
+  
+  const deleteData = async (id:number) => {
+    try{
+      await experienceService.delete(id) 
+      fetchData(); 
+    }
+    catch (error) {
+      console.error("Veri silme sırasında bir hata oluştu:", error);
+    }
+  }
 
+  const [responseData, setResponseData] = useState<Paginate<GetAllExperience>>({items:[]});
 
+  const fetchData = async () => {    
+    try {
+      await experienceService.getByUserId(tokenDecode().ID).then(
+        (res) =>{
+          if(res.status === 200){
+            setResponseData(res.data)                  
+          }         
+        }
+      );
+      
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
+    }
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  
   return (
     <Col xs={12} lg={9} style={{ minHeight: '90vh' }}>
       <Form action="#" data-hs-cf-bound="true" onSubmit={handleSubmit}>
@@ -163,9 +166,9 @@ const Experiences = () => {
         <Button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn" type="submit">Kaydet</Button>
       </Form>
       <Col xs={12}>
-        {
-          filteredExperiences.map((data: any) => (
-            <div key={data.id} className="my-grade">
+      {
+           responseData.items.map((data: any) => (
+            <div key={data.id} id={data.id} className="my-grade">
               <div className="grade-header">
                 <span className="grade-date"> {`${data.startDate.split('T')[0]} | ${data.endDate === null ? "Devam Ediyor" : data.endDate.split('T')[0]}`}</span>
               </div>
@@ -186,8 +189,8 @@ const Experiences = () => {
                   <span className="grade-details-header">Şehir</span>
                   <span className="grade-details-content">{data.cityName}</span>
                 </div>
-                <div>
-                  <span className=" grade-delete" onClick={() => deleteData(data.id)} />
+                <div>                 
+                  <span className=" grade-delete" onClick={() => deleteData(data.id)}/>
                   <span className=" grade-info" />
                 </div>
               </div>

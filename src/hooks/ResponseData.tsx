@@ -3,7 +3,7 @@ import {  useEffect, useState } from 'react';
 
 
 function ResponseData(service :any) {
-    const [responseData, setResponseData] = useState<any>('');
+  const [responseData, setResponseData] = useState<any>('');
 
   useEffect(() => {
     const fetchData = async () => {

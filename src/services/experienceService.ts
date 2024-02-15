@@ -7,6 +7,7 @@ import GetAllExperience from "../models/response/experience/GetAllExperience";
 import GetByIdExperience from "../models/response/experience/GetByIdExperience";
 import UpdateResponseExperience from "../models/response/experience/UpdateResponseExperience";
 import axiosInstance from "../core/interceptors/axiosInterceptor";
+import Paginate from "../models/paginate";
 
 class ExperienceService extends BaseService<
     GetAllExperience,
@@ -22,8 +23,8 @@ class ExperienceService extends BaseService<
         this.apiUrl = "Experiences";
     }
 
-    getByUserId(userId: any): Promise<AxiosResponse<GetAllExperience, any>> {
-		return axiosInstance.get<GetAllExperience>(this.apiUrl + "/getByUserId?userId=" + userId + "&PageIndex=0&PageSize=20");
+    getByUserId(userId: any): Promise<AxiosResponse<Paginate<GetAllExperience>, any>> {
+		return axiosInstance.get<Paginate<GetAllExperience>>(this.apiUrl + "/getByUserId?userId=" + userId + "&PageIndex=0&PageSize=20");
 	}
 }
 
