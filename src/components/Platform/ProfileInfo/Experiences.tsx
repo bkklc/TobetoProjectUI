@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Button, Col, Form, FormControl, Row } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,18 +8,37 @@ import AddRequestExperience from '../../../models/requests/experience/AddRequest
 import cityService from '../../../services/cityService';
 import experienceService from '../../../services/experienceService';
 
-
+//
 
 const Experiences = () => {
   const dataResponse = ResponseData(experienceService.getByUserId(tokenDecode().ID));
   const cityResponse = ResponseData(cityService.getAll());
 
-  const deleteData = (id:any) => {
-    return(
-      ResponseData(experienceService.delete(id))
-    )
-    
-  }
+
+
+  const [deletedExperienceIds, setDeletedExperienceIds] = useState<number[]>([]);
+
+
+  const deleteData = (id: any) => {
+    experienceService.delete(id)
+      .then(response => {
+        console.log(response);
+        // Güncellemek için silinen deneyimi state'e de ekleyin
+        setDeletedExperienceIds(prevIds => [...prevIds, id]);
+      })
+      .catch(error => console.log(error));
+  };
+
+  const filteredExperiences = dataResponse && dataResponse.items
+    ? dataResponse.items.filter((data: any) => !deletedExperienceIds.includes(data.id))
+    : [];
+
+  useEffect(() => {
+    const storedDeletedExperienceIds = localStorage.getItem('deletedExperienceIds');
+    if (storedDeletedExperienceIds) {
+      setDeletedExperienceIds(JSON.parse(storedDeletedExperienceIds));
+    }
+  }, []);
 
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
 
@@ -36,6 +55,7 @@ const Experiences = () => {
     }
   );
 
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     experienceService
@@ -44,9 +64,6 @@ const Experiences = () => {
       .catch(error => console.log(error))
   };
 
-  useEffect(() => {
-
-  }, [formData]);
 
 
   return (
@@ -147,10 +164,10 @@ const Experiences = () => {
       </Form>
       <Col xs={12}>
         {
-           dataResponse && dataResponse.items.map((data: any) => (
-            <div className="my-grade">
+          filteredExperiences.map((data: any) => (
+            <div key={data.id} className="my-grade">
               <div className="grade-header">
-                <span className="grade-date"> {`${data.startDate.split('T')[0]} | ${data.endDate === null? "Devam Ediyor" :  data.endDate.split('T')[0]}`}</span>
+                <span className="grade-date"> {`${data.startDate.split('T')[0]} | ${data.endDate === null ? "Devam Ediyor" : data.endDate.split('T')[0]}`}</span>
               </div>
               <div className="grade-details">
                 <div className="grade-details-col">
@@ -170,7 +187,7 @@ const Experiences = () => {
                   <span className="grade-details-content">{data.cityName}</span>
                 </div>
                 <div>
-                  <span className=" grade-delete" onClick={() => deleteData(data.id)}/>
+                  <span className=" grade-delete" onClick={() => deleteData(data.id)} />
                   <span className=" grade-info" />
                 </div>
               </div>

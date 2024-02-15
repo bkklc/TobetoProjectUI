@@ -72,9 +72,11 @@ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
           </Button>
           <label>
             <small>
-              <p className="text-decoration-none text-muted mt-5 d-block">
+              
+                <Link to={"/şifremi-unuttum"} className="text-decoration-none text-muted mt-5 d-block">
                 Şifremi Unuttum
-              </p>
+                </Link>
+            
             </small>
           </label>
         </Form>
