@@ -37,7 +37,7 @@ function NavbarComponent() {
             className="mx-auto my-lg-0 d-none d-xxl-flex navbar-nav"
             style={{ maxHeight: "100px" }}
             navbarScroll>
-            <Nav.Link as={Link} to={"/"} className={(url === "/" ? "nav-active" : "")}>Ana Sayfa</Nav.Link>
+            <Nav.Link as={Link} to={"/"} className={((url === "/" || url === "/platform") ? "nav-active" : "")}>Ana Sayfa</Nav.Link>
             <Nav.Link as={Link} to={"/profilim"} className={(url === "/profilim" ? "nav-active" : "")}>Profilim</Nav.Link>
             <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler" ? "nav-active" : "")}>Değerlendirmeler</Nav.Link>
             <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog" ? "nav-active" : "")}>Katalog</Nav.Link>
