@@ -8,7 +8,7 @@ import { UpdateResponseSkill } from "../models/response/Skill/updateResponseSkil
 
 
 
-class Skill extends BaseService<
+class SkillService extends BaseService<
 GetAllSkill,
 GetByIdSkill,
 AddRequestSkill,
@@ -22,4 +22,4 @@ UpdateResponseSkill>{
     }
 }
 
-export default new Skill();
+export default new SkillService();
