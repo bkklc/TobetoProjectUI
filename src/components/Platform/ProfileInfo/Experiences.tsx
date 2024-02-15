@@ -9,10 +9,12 @@ import cityService from '../../../services/cityService';
 import experienceService from '../../../services/experienceService';
 import GetAllExperience from '../../../models/response/experience/GetAllExperience';
 import Paginate from '../../../models/paginate';
+import { Modal } from 'react-bootstrap';
 
 //
 
-const Experiences = () => { 
+const Experiences = () => {
+  const [showModal, setShowModal] = useState(false);
   const cityResponse = ResponseData(cityService.getAll());
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
   const [formData, setFormData] = useState<AddRequestExperience>(
@@ -31,34 +33,34 @@ const Experiences = () => {
     e.preventDefault();
     experienceService
       .add(formData)
-      .then(() => {  
-        fetchData();       
+      .then(() => {
+        fetchData();
       })
       .catch(error => console.log(error))
   };
-  
-  const deleteData = async (id:number) => {
-    try{
-      await experienceService.delete(id) 
-      fetchData(); 
+
+  const deleteData = async (id: number) => {
+    try {
+      await experienceService.delete(id)
+      fetchData();
     }
     catch (error) {
       console.error("Veri silme sırasında bir hata oluştu:", error);
     }
   }
 
-  const [responseData, setResponseData] = useState<Paginate<GetAllExperience>>({items:[]});
+  const [responseData, setResponseData] = useState<Paginate<GetAllExperience>>({ items: [] });
 
-  const fetchData = async () => {    
+  const fetchData = async () => {
     try {
       await experienceService.getByUserId(tokenDecode().ID).then(
-        (res) =>{
-          if(res.status === 200){
-            setResponseData(res.data)                  
-          }         
+        (res) => {
+          if (res.status === 200) {
+            setResponseData(res.data)
+          }
         }
       );
-      
+
     } catch (error) {
       console.error("Veri çekme sırasında bir hata oluştu:", error);
     }
@@ -68,7 +70,15 @@ const Experiences = () => {
     fetchData();
   }, []);
 
-  
+  const handleInfoClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+
   return (
     <Col xs={12} lg={9} style={{ minHeight: '90vh' }}>
       <Form action="#" data-hs-cf-bound="true" onSubmit={handleSubmit}>
@@ -121,27 +131,31 @@ const Experiences = () => {
           </Col>
           <Col xs={12} md={6} className="mb-6">
             <Form.Label className="input-label-text">İş Başlangıcı*</Form.Label>
-            <DatePicker
-              selected={formData.StartDate}
-              className="form-control tobeto-input"
-              dateFormat="dd.MM.yyyy"
-              placeholderText="gg.aa.yyyy"
-              onChange={(date: Date) => {
-                setFormData({ ...formData, StartDate: date });
-                setIsEndDateEnabled(true);
-              }}
-            />
+            <Row style={{ maxWidth: '416px', paddingLeft: '12px' }}>
+              <DatePicker
+                selected={formData.StartDate}
+                className="form-control tobeto-input"
+                dateFormat="dd.MM.yyyy"
+                placeholderText="gg.aa.yyyy"
+                onChange={(date: Date) => {
+                  setFormData({ ...formData, StartDate: date });
+                  setIsEndDateEnabled(true);
+                }}
+              />
+            </Row>
           </Col>
           <Col xs={12} md={6} className="mb-6">
             <Form.Label className="input-label-text">İş Bitiş*</Form.Label>
-            <DatePicker
-              selected={formData.EndDate}
-              onChange={(date: Date) => setFormData({ ...formData, EndDate: date })}
-              className="form-control tobeto-input"
-              dateFormat="dd.MM.yyyy"
-              placeholderText="gg.aa.yyyy"
-              disabled={!isEndDateEnabled}
-            />
+            <Row style={{ maxWidth: '416px', paddingLeft: '12px' }}>
+              <DatePicker
+                selected={formData.EndDate}
+                onChange={(date: Date) => setFormData({ ...formData, EndDate: date })}
+                className="form-control tobeto-input"
+                dateFormat="dd.MM.yyyy"
+                placeholderText="gg.aa.yyyy"
+                disabled={!isEndDateEnabled}
+              />
+            </Row>
           </Col>
           <Col xs={12} md={{ span: 6, offset: 6 }}>
             <Form.Check
@@ -166,8 +180,8 @@ const Experiences = () => {
         <Button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn" type="submit">Kaydet</Button>
       </Form>
       <Col xs={12}>
-      {
-           responseData.items.map((data: any) => (
+        {
+          responseData.items.map((data: any) => (
             <div key={data.id} id={data.id} className="my-grade">
               <div className="grade-header">
                 <span className="grade-date"> {`${data.startDate.split('T')[0]} | ${data.endDate === null ? "Devam Ediyor" : data.endDate.split('T')[0]}`}</span>
@@ -189,9 +203,9 @@ const Experiences = () => {
                   <span className="grade-details-header">Şehir</span>
                   <span className="grade-details-content">{data.cityName}</span>
                 </div>
-                <div>                 
-                  <span className=" grade-delete" onClick={() => deleteData(data.id)}/>
-                  <span className=" grade-info" />
+                <div>
+                  <span className=" grade-delete" onClick={() => deleteData(data.id)} />
+                  <span className=" grade-info" onClick={handleInfoClick} />
                 </div>
               </div>
             </div>
@@ -199,6 +213,20 @@ const Experiences = () => {
           ))
         }
       </Col>
+
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>İş Açıklaması</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{formData.Description}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Kapat
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Col>
 
   );
