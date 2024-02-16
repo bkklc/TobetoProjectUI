@@ -1,5 +1,6 @@
 import {AxiosResponse} from "axios";
 import axiosInstance from "../interceptors/axiosInterceptor";
+import Paginate from "../../models/paginate";
 
 
 export class BaseService<
@@ -16,8 +17,8 @@ export class BaseService<
 		this.apiUrl = "";
 	}
 
-	getAll(): Promise<AxiosResponse<GetAllType, any>> {
-		return axiosInstance.get<GetAllType>(this.apiUrl + "/getAll?PageIndex=0&PageSize=81");
+	getAll(): Promise<AxiosResponse<Paginate<GetAllType>, any>> {
+		return axiosInstance.get<Paginate<GetAllType>>(this.apiUrl + "/getAll?PageIndex=0&PageSize=81");
 	}
 
 	getById(id: any): Promise<AxiosResponse<GetByIdType, any>> {

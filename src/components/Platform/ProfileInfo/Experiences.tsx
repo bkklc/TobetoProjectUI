@@ -122,10 +122,10 @@ const Experiences = () => {
               name="CityId"
               className="form-select tobeto-input"
               aria-label=""
-              onChange={e => setFormData({ ...formData, CityId: e.target.selectedIndex })}>
+              onChange={e => setFormData({ ...formData, CityId: Number(e.target.options[e.target.selectedIndex].id) })}>
               <option id='0' value="">İl Seçiniz</option>
               {cityResponse && (cityResponse.items.map((cities: any) => (
-                <option key={cities.id} value={cities.id}>{cities.name}</option>
+                <option key={cities.id} value={cities.id} id={cities.id}>{cities.name}</option>
               )))}
             </Form.Select>
           </Col>

@@ -11,7 +11,7 @@ GetAllLanguageLevel,GetByIdLanguageLevel,AddRequestLanguageLevel,AddResponseLang
 
     constructor() {
         super();
-        this.apiUrl = "LanguageLevels";
+        this.apiUrl = "LanguagesLevels";
     }
 }
 
