@@ -18,6 +18,7 @@ class UserService extends BaseService<
     super();
     this.apiUrl = "Users";
   }
+
 }
 
 export default new UserService();

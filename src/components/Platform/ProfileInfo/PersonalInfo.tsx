@@ -1,14 +1,66 @@
+import { FormEvent, useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import ResponseData from "../../../hooks/ResponseData";
-import userService from "../../../services/userService";
-import tokenDecode from "../../../hooks/tokenDecode";
-import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import { useState } from "react";
+import "react-phone-number-input/style.css";
+import tokenDecode from "../../../hooks/tokenDecode";
+import UpdateRequestUser from "../../../models/requests/user/UpdateRequestUser";
+import GetByIdResponseUser from "../../../models/response/user/GetByIdResponseUser";
+import userService from "../../../services/userService";
 
 const PersonalInfo = () => {
-  const responseData = ResponseData(userService.getById(tokenDecode().ID));
-  const [value, setValue] = useState();
+  const [formData, setFormData] = useState<UpdateRequestUser>(
+    {
+      Id: 0,
+      NationalIdentity: '',
+      FirstName: '',
+      LastName: '',
+      PhoneNumber: '',
+      Email: '',
+      Description: '',
+      ImageId: 0,
+      BirthDate: ''
+    }
+  );
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    userService
+      .update(formData)
+      .then(() => {
+        fetchData();
+      })
+      .catch(error => console.log(error))
+  }
+
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
+    nationalIdentity: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    description: '',
+    imageId: 0,
+    birthDate: ''
+  });
+
+  const fetchData = async () => {
+    try {
+      await userService.getById(tokenDecode().ID).then(
+        (res) => {
+          if (res.status === 200) {
+            setResponseData(res.data)
+          }
+        }
+      )
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
 
   return (
     <>
@@ -57,6 +109,7 @@ const PersonalInfo = () => {
                 </div>
               </div>
             </Col>
+
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Adınız*</label>
               <input
@@ -78,9 +131,11 @@ const PersonalInfo = () => {
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Telefon Numaranız*</label>
               <PhoneInput
+                name="phonenumber"
                 placeholder="Enter phone number"
-                value={value}
-                onChange={setValue} />              
+                onChange={()=>setFormData}
+                defaultValue={responseData.phoneNumber}
+              />
             </div>
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Doğum Tarihiniz*</label>
@@ -90,7 +145,7 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input"
                 type="date"
                 defaultValue={
-                  responseData && responseData.birthDate.split("T")[0]
+                  responseData.birthDate.split("T")[0]
                 }
               />
             </div>
@@ -116,6 +171,7 @@ const PersonalInfo = () => {
                 defaultValue={responseData.email}
               />
             </div>
+
             <div className="col-12 mb-6">
               <label className="input-label-text">Ülke*</label>
               <input
@@ -161,7 +217,7 @@ const PersonalInfo = () => {
                 cols={50}
                 className="form-control tobeto-input"
                 placeholder="Kendini kısaca tanıt"
-                defaultValue={""}
+                defaultValue={responseData.description}
               />
             </div>
           </Row>
