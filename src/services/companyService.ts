@@ -1,7 +1,7 @@
 import { BaseService } from "../core/services/baseServices";
 
 
-class CompanieService extends BaseService<{},{},{},{},{},{}>{
+class CompanyService extends BaseService<{},{},{},{},{},{}>{
 
     constructor() {
         super();
@@ -9,4 +9,4 @@ class CompanieService extends BaseService<{},{},{},{},{},{}>{
     }
 }
 
-export default new CompanieService();
+export default new CompanyService();
