@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import PasswordUpdatedComponent from "../../../components/Tobeto/AuthComponents/PassWordUpdatedComponent";
+import PasswordUpdatedComponent from "../../../components/Tobeto/AuthComponents/PasswordUpdatedComponent";
+
 
 
 const PasswordUpdated = () => {
