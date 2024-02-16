@@ -25,7 +25,6 @@ const SocialMedia = () => {
         (res) => {
           if (res.status === 200) {
             setResponseData(res.data)
-            console.log(res.data)
           }
         }
       );
@@ -57,13 +56,13 @@ const SocialMedia = () => {
     e.preventDefault();
     userSocialMediaService
       .add(formData)
-      .then(() => {fetchData(); })
+      .then(() => { fetchData(); })
       .catch(error => console.log(error))
   };
 
   const deleteData = async (id: number) => {
     userSocialMediaService.delete(id)
-      .then(() => { fetchData();})
+      .then(() => { fetchData(); })
       .catch(error => console.log(error))
   }
 
@@ -87,7 +86,7 @@ const SocialMedia = () => {
               >
                 <option value="">Seçiniz*</option>
                 {socialMedia.items.map((socailMedias: any) => (
-                  <option id={socailMedias.id} >{socailMedias.name}</option>
+                  <option key={socailMedias.id} id={socailMedias.id} >{socailMedias.name}</option>
                 ))}
               </Form.Select>
             </Col>
@@ -110,16 +109,16 @@ const SocialMedia = () => {
       <Col>
         {
           responseData.items.map((data: any) => (
-            <div className="col-12 my-2 mt-5">
+            <div key={data.id} className="col-12 my-2 mt-5">
               <Form.Label className="input-label-text">{data.socialMediaName}</Form.Label>
               <div className="section-header tobeto-input">
                 <Form.Control
-                  disabled 
+                  disabled
                   className={"input-" + String(data.socialMediaName).toLocaleLowerCase('tr-TR')}
                   type="text"
                   defaultValue={data.url}
                 />
-                <Button className="btn social-delete" onClick={() => deleteData(data.id)}/>
+                <Button className="btn social-delete" onClick={() => deleteData(data.id)} />
               </div>
             </div>
           ))

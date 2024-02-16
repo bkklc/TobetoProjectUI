@@ -6,6 +6,6 @@ export default interface GetByIdResponseUser {
     email: string,
     description: string;
     imageId: number,
-    birthDate: Date
+    birthDate: string
 
 }
