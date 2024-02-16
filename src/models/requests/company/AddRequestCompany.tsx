@@ -1,4 +1,6 @@
-export default interface AddRequestCompany {
-  ImageId: number;
-  Name: string;
+
+export interface AddRequestCompany {
+  name: string;
+  url: string;
 }
+
