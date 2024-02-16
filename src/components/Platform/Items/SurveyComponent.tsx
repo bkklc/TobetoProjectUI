@@ -12,7 +12,7 @@ const SurveyComponent = () => {
           //   <p>Atanmış herhangi bir anketiniz bulunmamaktadır</p>
           // </div>
 
-          <div className="col-md-4 col-12 my-4">
+          <div key={survey.id} className="col-md-4 col-12 my-4">
             <div className="notfy-card notify">
               <div className="d-flex flex-column">
                 <div className="d-flex justify-content-between mb-4">

@@ -8,7 +8,7 @@ const EducationComponent = () => {
   return (
     <Row>
       {courseResponse && courseResponse.items.map((education: any) => (
-        <div className="col-md-3 mb-4">
+        <div key={education.id} className="col-md-3 mb-4">
           <div className="corp-edu-card">
             <div
               className="card-img"
