@@ -16,6 +16,7 @@ import { Modal } from 'react-bootstrap';
 const Experiences = () => {
   const [showModal, setShowModal] = useState(false);
   const cityResponse = ResponseData(cityService.getAll());
+  const [modalData, setModalData] = useState();
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
   const [formData, setFormData] = useState<AddRequestExperience>(
     {
@@ -70,7 +71,8 @@ const Experiences = () => {
     fetchData();
   }, []);
 
-  const handleInfoClick = () => {
+  const handleInfoClick = (desc:any) => {
+    setModalData(desc);
     setShowModal(true);
   };
 
@@ -205,7 +207,7 @@ const Experiences = () => {
                 </div>
                 <div>
                   <span className=" grade-delete" onClick={() => deleteData(data.id)} />
-                  <span className=" grade-info" onClick={handleInfoClick} />
+                  <span className=" grade-info" onClick={() => handleInfoClick(data.description)} />
                 </div>
               </div>
             </div>
@@ -219,7 +221,7 @@ const Experiences = () => {
           <Modal.Title>İş Açıklaması</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{formData.Description}</p>
+          <p>{modalData}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
