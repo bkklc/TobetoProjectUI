@@ -3,6 +3,13 @@ import Questions from "./Questions";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Envelope,
+} from "react-bootstrap-icons";
 import "./Info.css";
 
 const Info = () => {
@@ -516,9 +523,16 @@ const Info = () => {
             alt="İstanbul Kodluyor Logo"
             decoding="async"
             data-nimg="intrinsic"
-            style={{ maxWidth: "420px", maxHeight: "164px" }}
+            style={{ width: "480px", height: "180px" }}
           />
-        </div> 
+        </div>
+        <div className="col-12 my-10 col-lg-auto d-flex justify-content-center gap-4">
+          <Facebook color="white" size={24} />
+          <Instagram color="white" size={24} />
+          <Twitter color="white" size={24} />
+          <Linkedin color="white" size={24} />
+          <Envelope color="white" size={24} />
+        </div>
       </div>
     </>
   );
