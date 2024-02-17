@@ -1,7 +1,7 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
 import { useState } from "react";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import "./Info.css";
 
@@ -501,10 +501,24 @@ const Info = () => {
               <div className="overlay-bg"></div>
             </div>
           </div>
-          <Link to="/istanbul-kodluyor/galeri" className="showMoreBtn mb-8 text-decoration-none">
-              Daha Fazla Göster
-              </Link>
+          <Link
+            to="/istanbul-kodluyor/galeri"
+            className="showMoreBtn mb-8 text-decoration-none"
+          >
+            Daha Fazla Göster
+          </Link>
         </div>
+      </div>
+      <div className="row bg-darkblue">
+        <div className="col-12 d-flex justify-content-center pt-10">
+          <img
+            src="../../src/assets/png/istanbul-kodluyor-banner.png"
+            alt="İstanbul Kodluyor Logo"
+            decoding="async"
+            data-nimg="intrinsic"
+            style={{ maxWidth: "420px", maxHeight: "164px" }}
+          />
+        </div> 
       </div>
     </>
   );
