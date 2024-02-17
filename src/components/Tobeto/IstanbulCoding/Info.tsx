@@ -1,8 +1,15 @@
 import { Col, Row, Button, Container } from "react-bootstrap";
 import Questions from "./Questions";
 import { useState } from "react";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Envelope,
+} from "react-bootstrap-icons";
 import "./Info.css";
 
 const Info = () => {
@@ -501,9 +508,30 @@ const Info = () => {
               <div className="overlay-bg"></div>
             </div>
           </div>
-          <Link to="/istanbul-kodluyor/galeri" className="showMoreBtn mb-8 text-decoration-none">
-              Daha Fazla Göster
-              </Link>
+          <Link
+            to="/istanbul-kodluyor/galeri"
+            className="showMoreBtn mb-8 text-decoration-none"
+          >
+            Daha Fazla Göster
+          </Link>
+        </div>
+      </div>
+      <div className="row bg-darkblue">
+        <div className="col-12 d-flex justify-content-center pt-10">
+          <img
+            src="../../src/assets/png/istanbul-kodluyor-banner.png"
+            alt="İstanbul Kodluyor Logo"
+            decoding="async"
+            data-nimg="intrinsic"
+            style={{ width: "480px", height: "180px" }}
+          />
+        </div>
+        <div className="col-12 my-10 col-lg-auto d-flex justify-content-center gap-4">
+          <Facebook color="white" size={24} />
+          <Instagram color="white" size={24} />
+          <Twitter color="white" size={24} />
+          <Linkedin color="white" size={24} />
+          <Envelope color="white" size={24} />
         </div>
       </div>
     </>

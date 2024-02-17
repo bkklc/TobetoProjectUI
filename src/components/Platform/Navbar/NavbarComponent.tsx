@@ -12,7 +12,7 @@ function NavbarComponent() {
     if(tokenDecode()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
       
       return(
-        <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Admin</Dropdown.Item>
+        <Dropdown.Item eventKey={1.2} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Admin</Dropdown.Item>
       )
     }
   }
