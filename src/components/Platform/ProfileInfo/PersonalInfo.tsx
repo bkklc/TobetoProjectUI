@@ -1,11 +1,14 @@
 import { FormEvent, useEffect, useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, FormControl, Row } from "react-bootstrap";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import tokenDecode from "../../../hooks/tokenDecode";
 import UpdateRequestUser from "../../../models/requests/user/UpdateRequestUser";
 import GetByIdResponseUser from "../../../models/response/user/GetByIdResponseUser";
 import userService from "../../../services/userService";
+import ResponseData from "../../../hooks/ResponseData";
+import cityService from "../../../services/cityService";
+import townService from "../../../services/townService";
 
 const PersonalInfo = () => {
   const [formData, setFormData] = useState<UpdateRequestUser>({
@@ -19,6 +22,28 @@ const PersonalInfo = () => {
     ImageId: 0,
     BirthDate: "",
   });
+
+  const cityResponse = ResponseData(cityService.getAll())
+  const townResponse = ResponseData(townService.getAll())
+
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedTown, setSelectedTown] = useState("");
+
+  const handleCityChange = (event: any) => {
+    const selectedCityValue = event.target.value;
+    setSelectedCity(selectedCityValue);
+  };
+
+  const updateTownList = async () => {
+    try {
+      const response = await townService.getByCityId(selectedCity);
+      if (response.status === 200) {
+        townResponse(response.data);
+      }
+    } catch (error) {
+      console.error("İlçe listesi alınırken bir hata oluştu:", error);
+    }
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,6 +81,10 @@ const PersonalInfo = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    updateTownList();
+  }, [selectedCity])
 
   return (
     <>
@@ -166,43 +195,51 @@ const PersonalInfo = () => {
               />
             </div>
 
-            <div className="col-12 mb-6">
-              <label className="input-label-text">Ülke*</label>
-              <input
+            <Col className="col-12 mb-6">
+              <Form.Label className="input-label-text">Ülke*</Form.Label>
+              <Form.Control
                 name="country"
                 className="form-control tobeto-input"
                 type="text"
               />
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <label className="input-label-text">İl*</label>
-              <select
+            </Col>
+            <Col className="col-12 col-md-6 mb-6">
+              <Form.Label className="input-label-text">İl*</Form.Label>
+              <Form.Select
                 name="city"
                 className="form-select tobeto-input"
                 aria-label=""
               >
-                <option value="">İl Seçiniz</option>
-              </select>
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <label className="input-label-text">İlçe*</label>
-              <select
-                name="district"
+                {cityResponse && (cityResponse.items.map((cities: any) => (
+                  <option key={cities.id} value={cities.id} id={cities.id}>{cities.name}</option>
+                )))
+                }
+              </Form.Select>
+            </Col>
+            <Col className="col-12 col-md-6 mb-6">
+              <Form.Label className="input-label-text">İlçe*</Form.Label>
+              <Form.Select
+                name="town"
                 className="form-select tobeto-input"
                 aria-label=""
+                onChange={(event) => setSelectedTown(event.target.value)}
               >
-                <option value="">İlçe Seçiniz</option>
-              </select>
-            </div>
-            <div className="col-12 mb-6">
-              <label className="input-label-text">Mahalle / Sokak</label>
-              <textarea
+                {townResponse && (townResponse.items.map((towns: any) => (
+                  <option key={towns.id} value={towns.id} id={towns.id}>{towns.name}</option>
+                )))
+                }
+              </Form.Select>
+            </Col>
+            <Col className="col-12 mb-6">
+              <Form.Label className="input-label-text">Mahalle / Sokak</Form.Label>
+              <FormControl
+                as="textarea"
                 rows={5}
                 name="address"
                 className="form-control tobeto-input"
                 defaultValue={""}
               />
-            </div>
+            </Col>
             <div className="col-12 mb-6">
               <label className="input-label-text">Hakkımda</label>
               <textarea

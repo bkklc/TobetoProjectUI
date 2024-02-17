@@ -1,4 +1,7 @@
+import { AxiosResponse } from "axios";
+import axiosInstance from "../core/interceptors/axiosInterceptor.ts";
 import { BaseService } from "../core/services/baseServices";
+import Paginate from "../models/paginate.ts";
 import AddRequestTown from "../models/requests/town/AddRequestTown";
 import UpdateRequestTown from "../models/requests/town/UpdateRequestTown.tsx";
 import AddResponseTown from "../models/response/town/AddResponseTown";
@@ -17,6 +20,10 @@ class TownService extends BaseService<
   constructor() {
     super();
     this.apiUrl = "Towns";
+  }
+
+  getByCityId(townId: any): Promise<AxiosResponse<Paginate<GetAllResponseTown>, any>> {
+    return axiosInstance.get<Paginate<GetAllResponseTown>>(this.apiUrl + "/getByCityId?cityId=" + townId + "&PageIndex=0&PageSize=81")
   }
 }
 
