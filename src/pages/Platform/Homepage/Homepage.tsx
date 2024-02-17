@@ -16,7 +16,7 @@ function Homepage() {
   return (
     <main>
       <Stack gap={3}>
-        <div className="py-5">
+        <div className="pb-2 pt-16">
           <Container className="text-center">
             <div className="mw-5xl mx-auto">
               <h3>
