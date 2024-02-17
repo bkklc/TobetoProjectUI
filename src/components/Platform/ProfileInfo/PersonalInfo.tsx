@@ -8,19 +8,17 @@ import GetByIdResponseUser from "../../../models/response/user/GetByIdResponseUs
 import userService from "../../../services/userService";
 
 const PersonalInfo = () => {
-  const [formData, setFormData] = useState<UpdateRequestUser>(
-    {
-      Id: 0,
-      NationalIdentity: '',
-      FirstName: '',
-      LastName: '',
-      PhoneNumber: '',
-      Email: '',
-      Description: '',
-      ImageId: 0,
-      BirthDate: ''
-    }
-  );
+  const [formData, setFormData] = useState<UpdateRequestUser>({
+    Id: 0,
+    NationalIdentity: "",
+    FirstName: "",
+    LastName: "",
+    PhoneNumber: "",
+    Email: "",
+    Description: "",
+    ImageId: 0,
+    BirthDate: "",
+  });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,38 +27,35 @@ const PersonalInfo = () => {
       .then(() => {
         fetchData();
       })
-      .catch(error => console.log(error))
-  }
+      .catch((error) => console.log(error));
+  };
 
   const [responseData, setResponseData] = useState<GetByIdResponseUser>({
-    nationalIdentity: '',
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    description: '',
+    nationalIdentity: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    description: "",
     imageId: 0,
-    birthDate: ''
+    birthDate: "",
   });
 
   const fetchData = async () => {
     try {
-      await userService.getById(tokenDecode().ID).then(
-        (res) => {
-          if (res.status === 200) {
-            setResponseData(res.data)
-          }
+      await userService.getById(tokenDecode().ID).then((res) => {
+        if (res.status === 200) {
+          setResponseData(res.data);
         }
-      )
+      });
     } catch (error) {
-      console.error("Veri çekme sırasında bir hata oluştu:", error)
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchData();
-  }, [])
-
+  }, []);
 
   return (
     <>
@@ -131,10 +126,11 @@ const PersonalInfo = () => {
             <div className="col-12 col-md-6 mb-6">
               <label className="input-label-text">Telefon Numaranız*</label>
               <PhoneInput
+                defaultCountry="TR"
                 name="phonenumber"
                 placeholder="Enter phone number"
-                onChange={()=>setFormData}
-                defaultValue={responseData.phoneNumber}
+                onChange={() => setFormData}
+                value={responseData.phoneNumber}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -144,9 +140,7 @@ const PersonalInfo = () => {
                 max="2024-01-016"
                 className="form-control tobeto-input"
                 type="date"
-                defaultValue={
-                  responseData.birthDate.split("T")[0]
-                }
+                defaultValue={responseData.birthDate.split("T")[0]}
               />
             </div>
 
