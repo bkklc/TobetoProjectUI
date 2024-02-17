@@ -1,15 +1,31 @@
 import { FormEvent, useEffect, useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, FormControl, Row } from "react-bootstrap";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import tokenDecode from "../../../hooks/tokenDecode";
 import UpdateRequestUser from "../../../models/requests/user/UpdateRequestUser";
 import GetByIdResponseUser from "../../../models/response/user/GetByIdResponseUser";
 import userService from "../../../services/userService";
+import cityService from "../../../services/cityService";
+import townService from "../../../services/townService";
+import Paginate from "../../../models/paginate";
+import GetAllResponseTown from "../../../models/response/town/GetAllResponseTown";
+import GetAllCities from "../../../models/response/city/GetAllCities";
+import { Value } from "react-phone-number-input/core";
 
 const PersonalInfo = () => {
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
+    nationalIdentity: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    description: "",
+    imageId: 0,
+    birthDate: "",
+  });
   const [formData, setFormData] = useState<UpdateRequestUser>({
-    Id: 0,
+    Id: Number(tokenDecode().ID),
     NationalIdentity: "",
     FirstName: "",
     LastName: "",
@@ -19,6 +35,10 @@ const PersonalInfo = () => {
     ImageId: 0,
     BirthDate: "",
   });
+
+  const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({items:[]});
+  const [cities, setCities] = useState<Paginate<GetAllCities>>({items:[]});
+  const [selectedCity, setSelectedCity] = useState('0');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,22 +50,22 @@ const PersonalInfo = () => {
       .catch((error) => console.log(error));
   };
 
-  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
-    nationalIdentity: "",
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
-    imageId: 0,
-    birthDate: "",
-  });
-
   const fetchData = async () => {
     try {
       await userService.getById(tokenDecode().ID).then((res) => {
         if (res.status === 200) {
           setResponseData(res.data);
+          setFormData({
+            Id: Number(tokenDecode().ID),
+            NationalIdentity: res.data.nationalIdentity,
+            FirstName: res.data.firstName,
+            LastName: res.data.lastName,
+            PhoneNumber: res.data.phoneNumber,
+            Email: res.data.email,
+            Description: res.data.description,
+            ImageId: res.data.imageId,
+            BirthDate: res.data.birthDate,
+          })
         }
       });
     } catch (error) {
@@ -53,14 +73,46 @@ const PersonalInfo = () => {
     }
   };
 
+
+  const fetchCities = async () => {
+    try {
+      await cityService.getAll().then((res) => {
+        if (res.status === 200) {
+          setCities(res.data);
+        }
+      });
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
+    }
+  };
+
+  const fetchTowns = async () => {
+    try {
+      await townService.getByCityId(selectedCity).then((res) => {
+        if (res.status === 200) {
+          setTowns(res.data);
+        }
+      });
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
+    }
+  };
+
+  const handleCityChange = (event:any) => {
+    setSelectedCity(event.target.value);
+  };
+
   useEffect(() => {
     fetchData();
-  }, []);
+    fetchCities();
+    fetchTowns();
+  }, [selectedCity]);
+
 
   return (
     <>
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
-        <Form data-hs-cf-bound="true">
+        <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>         
           <Row className="mb-2">
             <Col mb={6} md={12} className="text-center">
               <div className="profile-photo mx-auto">
@@ -112,6 +164,7 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input"
                 type="text"
                 defaultValue={responseData.firstName}
+                onChange={e => setFormData({ ...formData, FirstName: e.target.value })}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -121,6 +174,7 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input"
                 type="text"
                 defaultValue={responseData.lastName}
+                onChange={e => setFormData({ ...formData, LastName: e.target.value })}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -129,8 +183,8 @@ const PersonalInfo = () => {
                 defaultCountry="TR"
                 name="phonenumber"
                 placeholder="Enter phone number"
-                onChange={() => setFormData}
                 value={responseData.phoneNumber}
+                onChange={(value) => setFormData({ ...formData, PhoneNumber: String(value) })}
               />
             </div>
             <div className="col-12 col-md-6 mb-6">
@@ -141,6 +195,7 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input"
                 type="date"
                 defaultValue={responseData.birthDate.split("T")[0]}
+                onChange={e => setFormData({ ...formData, BirthDate: e.target.value })}
               />
             </div>
 
@@ -151,6 +206,7 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input mb-2"
                 type="number"
                 defaultValue={responseData.nationalIdentity}
+                onChange={e => setFormData({ ...formData, NationalIdentity: e.target.value })}
               />
               <span className="text-danger">
                 *Aboneliklerde fatura için doldurulması zorunlu alan
@@ -163,46 +219,59 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input mb-2"
                 type="email"
                 defaultValue={responseData.email}
+                onChange={e => setFormData({ ...formData, Email: e.target.value })}
               />
             </div>
 
-            <div className="col-12 mb-6">
-              <label className="input-label-text">Ülke*</label>
-              <input
+            <Col className="col-12 mb-6">
+              <Form.Label className="input-label-text">Ülke*</Form.Label>
+              <Form.Control
                 name="country"
                 className="form-control tobeto-input"
                 type="text"
               />
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <label className="input-label-text">İl*</label>
-              <select
+            </Col>
+            <Col className="col-12 col-md-6 mb-6">
+              <Form.Label className="input-label-text">İl*</Form.Label>
+              <Form.Select
                 name="city"
                 className="form-select tobeto-input"
-                aria-label=""
+                aria-label=""              
+                onChange={handleCityChange}
               >
-                <option value="">İl Seçiniz</option>
-              </select>
-            </div>
-            <div className="col-12 col-md-6 mb-6">
-              <label className="input-label-text">İlçe*</label>
-              <select
-                name="district"
+                <option value="0">İl seçiniz</option>
+                {
+                  cities.items.map((city:any) => (
+                    <option value={city.id}>{city.name}</option>
+                  ))
+                }
+              </Form.Select>
+            </Col>
+            <Col className="col-12 col-md-6 mb-6">
+              <Form.Label className="input-label-text">İlçe*</Form.Label>
+              <Form.Select
+                name="town"
                 className="form-select tobeto-input"
                 aria-label=""
+                
               >
-                <option value="">İlçe Seçiniz</option>
-              </select>
-            </div>
-            <div className="col-12 mb-6">
-              <label className="input-label-text">Mahalle / Sokak</label>
-              <textarea
+                {
+                  towns.items.map((town:any) => (
+                    <option>{town.name}</option>
+                  ))
+                }
+              </Form.Select>
+            </Col>
+            <Col className="col-12 mb-6">
+              <Form.Label className="input-label-text">Mahalle / Sokak</Form.Label>
+              <FormControl
+                as="textarea"
                 rows={5}
                 name="address"
                 className="form-control tobeto-input"
                 defaultValue={""}
               />
-            </div>
+            </Col>
             <div className="col-12 mb-6">
               <label className="input-label-text">Hakkımda</label>
               <textarea
@@ -212,10 +281,11 @@ const PersonalInfo = () => {
                 className="form-control tobeto-input"
                 placeholder="Kendini kısaca tanıt"
                 defaultValue={responseData.description}
+                onChange={(e) => setFormData({ ...formData, Description: e.target.value })}
               />
             </div>
           </Row>
-          <Button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn">
+          <Button type="submit" className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn">
             Kaydet
           </Button>
         </Form>

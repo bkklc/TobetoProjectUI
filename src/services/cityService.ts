@@ -19,7 +19,6 @@ class CityService extends BaseService<
         super();
         this.apiUrl = "Cities";
     }
-
 }
 
 export default new CityService();
