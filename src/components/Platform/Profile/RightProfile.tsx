@@ -1,9 +1,28 @@
-import { Row, Col, Badge } from "react-bootstrap";
+import { Row, Col, Badge, Button } from "react-bootstrap";
 import ActivityMap from "./ActivityMap";
+import { Link } from "react-router-dom";
 
 const ProfileRight = () => {
   return (
+    
     <Col md={8} xs={12}>
+      <div className="d-flex justify-content-end">
+      <span className="cv-share-icon dropdown-toggle btn btn-primary" />
+      <div className="dropdown">
+      <Link
+          to="/profilimi-duzenle/kisisel-bilgilerim"
+          type="button"
+          id="dropdown-basic"
+          aria-expanded="false"
+          className="cv-edit-icon"
+          style={{ backgroundColor: "transparent", border: "none" }}
+        >
+          {/* Buton içeriği */}
+        </Link>
+        {/* Dropdown içeriği buraya eklenebilir */}
+      </div>
+    </div>
+
       <div className="cv-box cv-padding">
         <div className="cv-box-header">
           <div className="d-flex justify-content-between">
