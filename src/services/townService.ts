@@ -22,8 +22,8 @@ class TownService extends BaseService<
     this.apiUrl = "Towns";
   }
 
-  getByCityId(townId: any): Promise<AxiosResponse<Paginate<GetAllResponseTown>, any>> {
-    return axiosInstance.get<Paginate<GetAllResponseTown>>(this.apiUrl + "/getByCityId?cityId=" + townId + "&PageIndex=0&PageSize=81")
+  getByCityId(cityId: any): Promise<AxiosResponse<Paginate<GetAllResponseTown>, any>> {
+    return axiosInstance.get<Paginate<GetAllResponseTown>>(this.apiUrl + "/getByCityId?cityId=" + cityId + "&PageIndex=0&PageSize=81")
   }
 }
 
