@@ -1,9 +1,25 @@
+import { useState } from "react";
 import ResponseData from "../../../hooks/ResponseData";
 import surveyService from "../../../services/surveyService";
-import { Row } from "react-bootstrap";
+import { Modal, Row } from "react-bootstrap";
 
 const SurveyComponent = () => {
   const surveyResponse = ResponseData(surveyService.getAll());
+  const [selectedSurvey, setSelectedSurvey] = useState({ name: '', description: '' });
+
+  const handleReadMoreClick = (survey:any) => {
+    setSelectedSurvey({
+      name: survey.name,
+      description: survey.description
+    });
+  };
+
+  const handleCloseModal = () => {
+    setSelectedSurvey({ name: '', description: '' });
+  };
+
+
+
   return (
     <Row>
       {surveyResponse &&
@@ -26,11 +42,26 @@ const SurveyComponent = () => {
                   Başlangıç Tarihi: {survey.startedDate}
                 </span>
                 <span className="date">Bitiş Tarihi: {survey.endDate}</span>
-                <span className="read-more">Devamını Oku</span>
+                <span className="read-more" onClick={() => handleReadMoreClick(survey)}>
+                  Devamını Oku
+                </span>
               </div>
             </div>
           </div>
         ))}
+        {selectedSurvey && (
+        <Modal
+          size="lg"
+          show={!!selectedSurvey.name}
+          onHide={handleCloseModal}
+          aria-labelledby="example-modal-sizes-title-lg"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-modal-sizes-title-lg">{selectedSurvey.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{selectedSurvey.description}</Modal.Body>
+        </Modal>
+      )}
     </Row>
   );
 };
