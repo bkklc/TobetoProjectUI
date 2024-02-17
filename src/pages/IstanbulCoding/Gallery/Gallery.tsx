@@ -11,8 +11,8 @@ import "react-image-gallery/styles/css/image-gallery.css";
 const Gallery = () => {
   const images = [
     {
-      original: "https://tobeto.s3.cloud.ngn.com.tr/DSC_01824_41b41689ce.JPG",
-      thumbnail: "https://tobeto.s3.cloud.ngn.com.tr/DSC_01824_41b41689ce.JPG",
+      original: "https://tobeto.s3.cloud.ngn.com.tr/DSC_06023_1491907961.JPG",
+      thumbnail: "https://tobeto.s3.cloud.ngn.com.tr/DSC_06023_1491907961.JPG",
     },
     {
       original: "https://tobeto.s3.cloud.ngn.com.tr/DSCF_3893_8edb49df7e.JPG",
@@ -39,7 +39,10 @@ const Gallery = () => {
           />
         </div>
       </div>
-      <div style={{ maxWidth: "750px", minHeight: "calc(100vh - 338px)" }}>
+      <div
+        className="d-flex align-items-center m-auto"
+        style={{ maxWidth: "900px", minHeight: "calc(100vh - 338px)" }}
+      >
         <ImageGallery
           items={images}
           showBullets={false}
