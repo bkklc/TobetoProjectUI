@@ -5,7 +5,7 @@ import PageUrl from "../../../hooks/PageUrl";
 import tokenDecode from "../../../hooks/tokenDecode";
 import userService from "../../../services/userService";
 import ResponseData from "../../../hooks/ResponseData";
-import "./HomePage.css";
+
 
 function Homepage() {
   const responseData = ResponseData(userService.getAll());
@@ -68,15 +68,7 @@ function Homepage() {
           </Container>
         </div>
 
-        <div className="asd">          
-          <img
-            alt=""
-            src="/_next/static/media/dot-purple.e0e5c9d8.svg"
-            decoding="async"
-            data-nimg="intrinsic"
-            srcSet="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg 1x, https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg 2x"
-          />
-        </div>
+        
 
         <div className="my-2">
           <section className="my-2">
