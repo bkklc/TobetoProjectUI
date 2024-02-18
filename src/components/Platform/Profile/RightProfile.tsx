@@ -1,6 +1,6 @@
-import { Row, Col, Badge, Button } from "react-bootstrap";
+import { Row, Col, Badge } from "react-bootstrap";
 import ActivityMap from "./ActivityMap";
-import { Link } from "react-router-dom";
+
 
 const ProfileRight = () => {
   return (
