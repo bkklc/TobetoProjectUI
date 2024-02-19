@@ -8,6 +8,7 @@ import Catalog from "../../../pages/Platform/Catalog/Catalog";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
 import Courses from "../../../pages/Courses/Courses";
+import Announcement from "../../../pages/Announcement/Announcement";
 
 
 export default function Dashboard() {
@@ -29,6 +30,8 @@ export default function Dashboard() {
       <DashboardRoute path="/takvim" element={<Calendar />} />
       <DashboardRoute path="/platform-katalog" element={<Catalog />} />
       <DashboardRoute path="/eğitimlerim" element={<Courses />} />
+      <DashboardRoute path="/duyurular" element={<Announcement />} />
+
     </WrapperWrapper>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import CoursesTabs from "./CoursesTabs";
 
 const Courses = () => {
@@ -27,7 +27,7 @@ const Courses = () => {
                 placeholder="Arama"
                 defaultValue=""
               />
-              <button className="">
+              <Button className="">
                 <div
                   style={{
                     display: "flex",
@@ -65,7 +65,7 @@ const Courses = () => {
                     />
                   </svg>
                 </div>
-              </button>
+              </Button>
             </div>
           </div>
         
@@ -73,8 +73,8 @@ const Courses = () => {
           <div className=" css-b62m3t-container">
             <span
               id="react-select-18-live-region"
-              className="css-7pg0cj-a11yText"
-            />
+              className="css-7pg0cj-a11yText" 
+            /> 
             <span
               aria-live="polite"
               aria-atomic="false"
