@@ -1,6 +1,10 @@
 import { Col, Image, Modal } from "react-bootstrap";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import "./LeftProfile.css";
+import GetAllUserSkill from "../../../models/response/userSkill/GetAllUserSkill";
+import Paginate from "../../../models/paginate";
+import userSkillService from "../../../services/userSkillService";
+import tokenDecode from "../../../hooks/tokenDecode";
 
 
 interface Props {
@@ -11,20 +15,32 @@ const LeftProfile = (props: Props) => {
   const { responseData } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
   
+  const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [] });
+
+
+  const fetchData = async () => {
+    try {
+      await userSkillService.getByUserId(tokenDecode().ID).then(
+        (res) => {
+          if (res.status === 200) {
+            setUserSkill(res.data)
+            console.log(res.data)
+          }
+        }
+      );
+
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
+    }
+  };
 
   const handleIsOpenModal = () => {
     setIsOpenModal(!isOpenModal);
   };
 
-  const competencies = [
-    "Html",
-    "Css",
-    "Javascript",
-    "Git",
-    "Github",
-    "C#",
-    "SQL ",
-  ];
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -39,8 +55,8 @@ const LeftProfile = (props: Props) => {
             <Modal.Title className="title">Tüm Yetkinliklerim</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {competencies.map((competency) => (
-              <div className="skill mb-4">{competency}</div>
+            {userSkill.items.map((skill:any) => (
+              <div className="skill mb-4">{skill.skillName}</div>
             ))}
           </Modal.Body>
         </Modal>
@@ -139,11 +155,9 @@ const LeftProfile = (props: Props) => {
               </div>
               <div>
                 <div className="skills">
-                  <span className="skill">javascript</span>
-                  <span className="skill">git</span>
-                  <span className="skill">github</span>
-                  <span className="skill">html</span>
-                  <span className="skill">SQL</span>
+                  {userSkill.items.map((skill:any) => (
+              <span className="skill">{skill.skillName}</span>
+            ))}
                 </div>
               </div>
             </div>
