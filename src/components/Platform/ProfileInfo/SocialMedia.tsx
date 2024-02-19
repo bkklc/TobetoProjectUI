@@ -38,7 +38,7 @@ const SocialMedia = () => {
 
   const fetchSocialMedia = async () => {
     try {
-      await socialMediaService.getAll().then(
+      await socialMediaService.getAll(0,20).then(
         (res) => {
           if (res.status === 200) {
             setSocialMedia(res.data)

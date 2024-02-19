@@ -37,7 +37,7 @@ export default function Abilities() {
 
   const fetchSkill = async () => {
     try {
-      await skillService.getAll().then(
+      await skillService.getAll(0,20).then(
         (res) => {
           if (res.status === 200) {
             setSkills(res.data)

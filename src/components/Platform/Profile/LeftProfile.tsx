@@ -155,9 +155,9 @@ const LeftProfile = (props: Props) => {
               </div>
               <div>
                 <div className="skills">
-                  {userSkill.items.map((skill:any) => (
-              <span className="skill">{skill.skillName}</span>
-            ))}
+                {userSkill.items.slice(0, 5).map((skill:any) => (
+  <span className="skill">{skill.skillName}</span>
+))}
                 </div>
               </div>
             </div>

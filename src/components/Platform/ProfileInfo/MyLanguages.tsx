@@ -65,7 +65,7 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
 
     const fetchLanguage = async () => {
         try {
-            await languageService.getAll().then(
+            await languageService.getAll(0,81).then(
                 (res) => {
                     if (res.status === 200) {
                         setLanguages(res.data)
@@ -80,7 +80,7 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
 
     const fetchLanguageLevel = async () => {
         try {
-            await languageLevelService.getAll().then(
+            await languageLevelService.getAll(0,20).then(
                 (res) => {
                     if (res.status === 200) {
                         setLanguagesLevel(res.data)

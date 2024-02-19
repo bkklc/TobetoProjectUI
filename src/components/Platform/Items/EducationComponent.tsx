@@ -4,7 +4,7 @@ import courseService from "../../../services/courseService";
 
 
 const EducationComponent = () => {
-  const courseResponse = ResponseData(courseService.getAll());
+  const courseResponse = ResponseData(courseService.getAll(0,4));
   return (
     <Row>
       {courseResponse && courseResponse.items.map((education: any) => (

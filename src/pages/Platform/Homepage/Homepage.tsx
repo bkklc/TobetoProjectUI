@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 
 function Homepage() {
-  const responseData = ResponseData(userService.getAll());
+  const responseData = ResponseData(userService.getAll(0,20));
 
 
   const [showModal, setShowModal] = useState(false);

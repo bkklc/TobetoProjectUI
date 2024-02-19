@@ -13,12 +13,12 @@ import educationDegreeService from '../../../services/educationDegreeService';
 import { GetAllSchoolName } from '../../../models/response/schoolName/getAllSchoolName';
 
 function EducationLife() {
-  const educationDegreeResponse = ResponseData(educationDegreeService.getAll());
+  const educationDegreeResponse = ResponseData(educationDegreeService.getAll(0,10));
 
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(true);
 
   const [schoolNameData, setSchoolNameData] = useState<Paginate<GetAllSchoolName>>({ items: [] })
-  const schoolNameResponse = ResponseData(schoolNameService.getAll());
+  const schoolNameResponse = ResponseData(schoolNameService.getAll(0,200));
 
   const [formData, setFormData] = useState<AddRequestEducation>(
     {
@@ -56,7 +56,7 @@ function EducationLife() {
 
   const fetchSchoolName = async () => {
     try {
-      await schoolNameService.getAll()
+      await schoolNameService.getAll(0,200)
         .then(
           (school) => {
             if (school.status === 200) {
@@ -71,7 +71,7 @@ function EducationLife() {
 
   const fetchData = async () => {
     try {
-      await educationService.getAll().then(
+      await educationService.getAll(0,10).then(
         (res) => {
           if (res.status === 200) {
             setResponseData(res.data)
