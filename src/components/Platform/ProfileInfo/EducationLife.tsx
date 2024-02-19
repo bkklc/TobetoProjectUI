@@ -10,6 +10,8 @@ import { GetAllSchoolName } from '../../../models/response/schoolName/getAllScho
 import educationDegreeService from '../../../services/educationDegreeService';
 import educationService from '../../../services/educationService';
 import schoolNameService from '../../../services/schoolNameService';
+import GetByLoginUserData from '../../../hooks/getByIdUserHook';
+import GetByIdResponseUser, { defaultUser } from '../../../models/response/user/GetByIdResponseUser';
 
 function EducationLife() {
   const [educationDegreeData, setEducationDegreeData] = useState<Paginate<GetAllEducationDegree>>({ items: [] })
@@ -31,7 +33,7 @@ function EducationLife() {
 
   const fetchDegreeName = async () => {
     try {
-      await educationDegreeService.getAll(0,20)
+      await educationDegreeService.getAll(0, 20)
         .then(
           (degree) => {
             if (degree.status === 200) {
@@ -50,7 +52,7 @@ function EducationLife() {
     educationService
       .add(formData)
       .then(() => {
-        fetchData();
+        GetByLoginUserData(setResponseData);
       })
       .catch(error => console.log(error))
   }
@@ -58,18 +60,18 @@ function EducationLife() {
   const deleteData = async (id: number) => {
     try {
       await educationService.delete(id)
-      fetchData();
+      GetByLoginUserData(setResponseData);
     }
     catch (error) {
       console.error("Veri silme sırasında bir hata meydana geldi:", error)
     }
   }
 
-  const [responseData, setResponseData] = useState<Paginate<GetAllEducation>>({ items: [] })
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
 
   const fetchSchoolName = async () => {
     try {
-      await schoolNameService.getAll(0,200)
+      await schoolNameService.getAll(0, 200)
         .then(
           (school) => {
             if (school.status === 200) {
@@ -82,24 +84,11 @@ function EducationLife() {
     }
   }
 
-  const fetchData = async () => {
-    try {
-      await educationService.getAll(0,10).then(
-        (res) => {
-          if (res.status === 200) {
-            setResponseData(res.data)
-          }
-        }
-      );
-    } catch (error) {
-      console.error("Veri çekme sırasında bir hata meydana geldi:", error)
-    }
-  }
 
   useEffect(() => {
+    GetByLoginUserData(setResponseData);
     fetchDegreeName();
     fetchSchoolName();
-    fetchData();
   }, [])
 
   return (
@@ -113,7 +102,10 @@ function EducationLife() {
               as="select"
               name="EducationStatus"
               className="tobeto-input"
+              value={formData.EducationDegreeId}
+              onChange={e => setFormData({ ...formData, EducationDegreeId: Number(e.target.options[e.target.selectedIndex].id) })}
             >
+              <option>Derece Seçiniz</option>
               {educationDegreeData.items.map((data: any) => (
                 <option key={data.id} value={data.id} id={data.id}>
                   {data.name}
@@ -131,6 +123,7 @@ function EducationLife() {
               value={formData.SchoolNameId}
               onChange={e => setFormData({ ...formData, SchoolNameId: Number(e.target.options[e.target.selectedIndex].id) })}
             >
+              <option>Okul Seçiniz</option>
               {
                 schoolNameData.items.map((data: any) => (
                   <option key={data.id} value={data.id} id={data.id} >{data.name}</option>
@@ -159,6 +152,7 @@ function EducationLife() {
                 className="form-control tobeto-input"
                 name="StartDate"
                 dateFormat="yyyy"
+                showYearPicker
                 onChange={(date: Date) => {
                   setFormData({ ...formData, StartDate: date });
                 }}
@@ -174,6 +168,7 @@ function EducationLife() {
                 className="form-control tobeto-input"
                 name="EndDate"
                 dateFormat="yyyy"
+                showYearPicker
                 onChange={(date: Date) => {
                   setFormData({ ...formData, EndDate: date })
                 }}
@@ -194,18 +189,16 @@ function EducationLife() {
       </Form>
       <Col xs={12}>
         {
-          responseData.items.map((data: any) => (
+          responseData.educations.map((data: any) => (
             <div key={data.id} id={data.id} className="my-grade">
               <div className="grade-header">
                 <span className="grade-date"> {`${data.startDate} | ${data.endDate === null ? "Devam Ediyor" : data.endDate}`}</span>
-                <span className="grade-degree">Ön Lisans</span>
+                <span className="grade-degree">{data.educationDegreeName}</span>
               </div>
               <div className="grade-details">
                 <div className="grade-details-col">
                   <span className="grade-details-header">Üniversite</span>
-                  <span className="grade-details-content">
-                    {schoolNameData.items.find(school => school.id === data.schoolNameId)?.name}
-                  </span>
+                  <span className="grade-details-content">{data.schoolNameName}</span>
                 </div>
                 <div className="grade-details-col">
                   <span className="grade-details-header">Bölüm</span>
