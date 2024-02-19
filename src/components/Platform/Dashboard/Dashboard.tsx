@@ -7,6 +7,7 @@ import Degerlendirmeler from "../../../pages/Platform/Degerlendirmeler/Degerlend
 import Catalog from "../../../pages/Platform/Catalog/Catalog";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
+import Courses from "../../../pages/Courses/Courses";
 
 
 export default function Dashboard() {
@@ -27,6 +28,7 @@ export default function Dashboard() {
       <DashboardRoute path="/profilimi-duzenle/*" element={<ProfileEdit />} />
       <DashboardRoute path="/takvim" element={<Calendar />} />
       <DashboardRoute path="/platform-katalog" element={<Catalog />} />
+      <DashboardRoute path="/eğitimlerim" element={<Courses />} />
     </WrapperWrapper>
   )
 }
