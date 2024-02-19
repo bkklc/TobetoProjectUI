@@ -1,6 +1,11 @@
 import { Col, Image, Modal } from "react-bootstrap";
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 import "./LeftProfile.css";
+import GetAllUserSkill from "../../../models/response/userSkill/GetAllUserSkill";
+import Paginate from "../../../models/paginate";
+import userSkillService from "../../../services/userSkillService";
+import tokenDecode from "../../../hooks/tokenDecode";
+
 
 interface Props {
   responseData: any;
@@ -9,20 +14,33 @@ interface Props {
 const LeftProfile = (props: Props) => {
   const { responseData } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
+  
+  const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [] });
+
+
+  const fetchData = async () => {
+    try {
+      await userSkillService.getByUserId(tokenDecode().ID).then(
+        (res) => {
+          if (res.status === 200) {
+            setUserSkill(res.data)
+            console.log(res.data)
+          }
+        }
+      );
+
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
+    }
+  };
 
   const handleIsOpenModal = () => {
     setIsOpenModal(!isOpenModal);
   };
 
-  const competencies = [
-    "Html",
-    "Css",
-    "Javascript",
-    "Git",
-    "Github",
-    "C#",
-    "SQL ",
-  ];
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -37,8 +55,8 @@ const LeftProfile = (props: Props) => {
             <Modal.Title className="title">Tüm Yetkinliklerim</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {competencies.map((competency) => (
-              <div className="skill mb-4">{competency}</div>
+            {userSkill.items.map((skill:any) => (
+              <div className="skill mb-4">{skill.skillName}</div>
             ))}
           </Modal.Body>
         </Modal>
@@ -65,11 +83,11 @@ const LeftProfile = (props: Props) => {
                 </div>
                 <Image
                   alt=""
-                  src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&amp;w=256&amp;q=75"
+                  src={responseData.imagePath}
+                  width={128}
+                  height={128}
                   decoding="async"
-                  className="cv-pp-img rounded-circle"
-                  srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&amp;w=256&amp;q=75 2x"
-                />
+                  className="cv-pp-img rounded-circle"                />
               </div>
               <div className="cv-info cv-padding">
                 <div className="info-box">
@@ -77,7 +95,7 @@ const LeftProfile = (props: Props) => {
                   <div className="info-text">
                     <span className="header">Ad Soyad</span>
                     <span className="text">
-                      {responseData &&
+                      {
                         responseData.firstName + " " + responseData.lastName}
                     </span>
                   </div>
@@ -87,7 +105,7 @@ const LeftProfile = (props: Props) => {
                   <div className="info-text">
                     <span className="header">Doğum Tarihi</span>
                     <span className="text">
-                      {responseData && responseData.birthDate.split("T")[0]}
+                      {responseData.birthDate.split("T")[0]}
                     </span>
                   </div>
                 </div>
@@ -96,7 +114,7 @@ const LeftProfile = (props: Props) => {
                   <div className="info-text">
                     <span className="header">E-Posta Adresi</span>
                     <span className="text">
-                      {responseData && responseData.email}
+                      {responseData.email}
                     </span>
                   </div>
                 </div>
@@ -105,7 +123,7 @@ const LeftProfile = (props: Props) => {
                   <div className="info-text">
                     <span className="header">Telefon Numarası</span>
                     <span className="text">
-                      {responseData && responseData.phoneNumber}
+                      {responseData.phoneNumber}
                     </span>
                   </div>
                 </div>
@@ -119,7 +137,7 @@ const LeftProfile = (props: Props) => {
                 <hr />
               </div>
               <div>
-                <span>{responseData && responseData.description}</span>
+                <span>{responseData.description}</span>
               </div>
             </div>
           </Col>
@@ -137,11 +155,9 @@ const LeftProfile = (props: Props) => {
               </div>
               <div>
                 <div className="skills">
-                  <span className="skill">javascript</span>
-                  <span className="skill">git</span>
-                  <span className="skill">github</span>
-                  <span className="skill">html</span>
-                  <span className="skill">SQL</span>
+                {userSkill.items.slice(0, 5).map((skill:any) => (
+  <span className="skill">{skill.skillName}</span>
+))}
                 </div>
               </div>
             </div>
@@ -154,19 +170,25 @@ const LeftProfile = (props: Props) => {
                 </div>
                 <hr />
               </div>
-              <div className="my-langs">
+
+              {
+                responseData.userLanguages.map((data:any) => (
+<div className="my-langs">
                 <div className="lang w-100">
                   <div className="lang-info">
                     <div className="lang-title ">
                       <div className="d-flex flex-column">
-                        <span className="lang-name">İngilizce</span>
-                        <span className="lang-degree">İngilizce Seviyesi</span>
+                        <span className="lang-name">{data.languageName}</span>
+                        <span className="lang-degree">{data.languageLevelName}</span>
                       </div>
                     </div>
                   </div>
                   <span className="lang-degree-symbol main-lang"></span>
                 </div>
               </div>
+                ))
+              }
+              
             </div>
           </Col>
           <Col xs={12}>
@@ -204,11 +226,16 @@ const LeftProfile = (props: Props) => {
                 <hr />
               </div>
               <div className="cv-social-media">
-                <a
-                  className="cv-linkedin"
+                {
+                  responseData.userSocialMedias.map((data:any) => (
+<a
+                  className={"cv-" + String(data.socialMediaName).toLocaleLowerCase('tr-TR')}
                   target="_blank"
-                  href="https://www.linkedin.com/in/altintoprakbeyza/"
+                  href={data.url}
                 ></a>
+                  ))
+                  }
+                
               </div>
             </div>
           </Col>

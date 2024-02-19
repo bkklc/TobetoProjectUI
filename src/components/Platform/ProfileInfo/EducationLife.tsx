@@ -31,7 +31,7 @@ function EducationLife() {
 
   const fetchDegreeName = async () => {
     try {
-      await educationDegreeService.getAll()
+      await educationDegreeService.getAll(0,20)
         .then(
           (degree) => {
             if (degree.status === 200) {
@@ -69,7 +69,7 @@ function EducationLife() {
 
   const fetchSchoolName = async () => {
     try {
-      await schoolNameService.getAll()
+      await schoolNameService.getAll(0,200)
         .then(
           (school) => {
             if (school.status === 200) {
@@ -84,7 +84,7 @@ function EducationLife() {
 
   const fetchData = async () => {
     try {
-      await educationService.getAll().then(
+      await educationService.getAll(0,10).then(
         (res) => {
           if (res.status === 200) {
             setResponseData(res.data)

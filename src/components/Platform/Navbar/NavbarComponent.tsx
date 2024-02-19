@@ -2,12 +2,40 @@ import { Navbar, Nav, Container, NavDropdown, Dropdown, Button, Offcanvas } from
 import PageUrl from '../../../hooks/PageUrl';
 import { Link } from 'react-router-dom';
 import tokenDecode from '../../../hooks/tokenDecode';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import GetByIdResponseUser from '../../../models/response/user/GetByIdResponseUser';
+import GetByLoginUserData from '../../../hooks/getByIdUserHook';
 
 function NavbarComponent() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
+    nationalIdentity: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    description: "",
+    imageId: 0,
+    imagePath:"",
+    birthDate: "",
+    userSocialMedias:[],
+    userLanguages: [],
+    certificates: [],
+    userAnnouncements: [],
+    experiences: [],
+    userSurveys: [],
+    addresses: [],
+    educations: []
+  });
+
+useEffect(() => {
+  GetByLoginUserData(setResponseData);
+}, [])
+
+
 
   const handleLogout = () => {
     localStorage.clear();
@@ -53,8 +81,8 @@ function NavbarComponent() {
                   className='btn p-1 fw-normal text-end d-flex align-items-center b-r-35 w-100 justify-content-between '
                   title={
                     <div className="btn-group align-items-center" style={{ marginRight: "10px", fontSize: "14px", color: "#828282" }}>
-                      <img className="thumbnail-image"
-                        src='https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75'
+                      <img className="thumbnail-image rounded-circle"
+                        src={responseData.imagePath}
                         width={32}
                         height={32}
                         style={{ marginRight: "4px" }}
@@ -121,12 +149,12 @@ function NavbarComponent() {
               <NavDropdown
                 title={
                   <div className="btn-group align-items-center" style={{ marginRight: "10px", fontSize: "14px", color: "#828282" }}>
-                    <img className="thumbnail-image"
-                      src='https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75'
+                    <img className="thumbnail-image rounded-circle"
+                      src={responseData.imagePath}
                       width={32}
                       height={32}
-                      style={{ marginRight: "4px" }}
-                    />
+                      style={{ marginRight: "10px" }}
+                    />                   
                     {tokenDecode().Name}
                   </div>
                 }
@@ -146,3 +174,5 @@ function NavbarComponent() {
 }
 
 export default NavbarComponent;
+
+

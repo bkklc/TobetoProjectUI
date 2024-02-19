@@ -4,7 +4,7 @@ import surveyService from "../../../services/surveyService";
 import { Modal, Row } from "react-bootstrap";
 
 const SurveyComponent = () => {
-  const surveyResponse = ResponseData(surveyService.getAll());
+  const surveyResponse = ResponseData(surveyService.getAll(0,3));
   const [selectedSurvey, setSelectedSurvey] = useState({ name: '', description: '' });
 
   const handleReadMoreClick = (survey:any) => {

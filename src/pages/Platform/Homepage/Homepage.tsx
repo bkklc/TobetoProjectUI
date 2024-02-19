@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 
 function Homepage() {
-  const responseData = ResponseData(userService.getAll());
+  const responseData = ResponseData(userService.getAll(0,20));
 
 
   const [showModal, setShowModal] = useState(false);
@@ -114,18 +114,36 @@ function Homepage() {
               <Modal.Title>Herkes için Kodlama 2B Değerlendirme Sınavı</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div className="quiz-screen">
-                <p>
-                  Sevgili Adayımız,
-                  Herkes için Kodlama Eğitimi'ni tamamladığınız için tebrik ederiz. Bu eğitim sonrası bir sonraki aşamaya geçiş için 25 sorudan oluşan bir değerlendirme sınavımız bulunmaktadır.
-                  Bu test her kullanıcı için sadece 1 kez sunulmakta olup 45 dakika içinde tamamlanması gerekmektedir.
-                  Tüm değerlendirme kriterleri sonrası Mesleki Gelişim Eğitimlerine geçişiniz ile ilgili bilgilendirileceksiniz.
-                  Sevgiler,
-                  TOBETO
-                  Sınav Süresi : 45 Dakika
-                  Soru Sayısı : 25
-                  Soru Tipi : Çoktan Seçmeli
-                </p>
+              <div className="quiz-screen" >
+
+                <div className="join-screen">
+                  <p />
+                  <p>Sevgili Adayımız,</p>
+                  <p>
+                    <strong>Herkes için Kodlama Eğitimi</strong>'ni tamamladığınız için tebrik
+                    ederiz. Bu eğitim sonrası bir sonraki aşamaya geçiş için 25 sorudan oluşan
+                    bir değerlendirme sınavımız bulunmaktadır.&nbsp;
+                  </p>
+                  <p>
+                    Bu test her kullanıcı için sadece 1 kez sunulmakta olup 45 dakika içinde
+                    tamamlanması gerekmektedir.
+                  </p>
+                  
+                  <p>
+                    Tüm değerlendirme kriterleri sonrası{" "}
+                    <strong>Mesleki Gelişim Eğitimlerine</strong> geçişiniz ile ilgili
+                    bilgilendirileceksiniz.
+                  </p>
+                  
+                  <p>Sevgiler,</p>
+                  <p>TOBETO</p>
+                  <p />
+                  <div>
+                    <span>Sınav Süresi : 45 Dakika</span>
+                    <span>Soru Sayısı : 25</span>
+                    <span>Soru Tipi : Çoktan Seçmeli</span>
+                  </div>
+                </div>
               </div>
             </Modal.Body>
             <Modal.Footer className="d-flex justify-content-center">

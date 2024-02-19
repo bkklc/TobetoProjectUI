@@ -11,7 +11,6 @@ import townService from "../../../services/townService";
 import Paginate from "../../../models/paginate";
 import GetAllResponseTown from "../../../models/response/town/GetAllResponseTown";
 import GetAllCities from "../../../models/response/city/GetAllCities";
-import { Value } from "react-phone-number-input/core";
 
 const PersonalInfo = () => {
   const [responseData, setResponseData] = useState<GetByIdResponseUser>({
@@ -22,7 +21,16 @@ const PersonalInfo = () => {
     email: "",
     description: "",
     imageId: 0,
+    imagePath:"",
     birthDate: "",
+    userSocialMedias:[],
+    userLanguages: [],
+    certificates: [],
+    userAnnouncements: [],
+    experiences: [],
+    userSurveys: [],
+    addresses: [],
+    educations: []
   });
   const [formData, setFormData] = useState<UpdateRequestUser>({
     Id: Number(tokenDecode().ID),
@@ -76,7 +84,7 @@ const PersonalInfo = () => {
 
   const fetchCities = async () => {
     try {
-      await cityService.getAll().then((res) => {
+      await cityService.getAll(0,81).then((res) => {
         if (res.status === 200) {
           setCities(res.data);
         }
@@ -119,9 +127,10 @@ const PersonalInfo = () => {
                 <span>
                   <span>
                     <img
+                    className="rounded-circle"
                       alt=""
                       aria-hidden="true"
-                      src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=384&q=75"
+                      src={responseData.imagePath}
                       height={148}
                       width={148}
                     />

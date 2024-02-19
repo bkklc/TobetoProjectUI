@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const AnnouncementsComponent =  () => {
  
-  const announcementResponse =  ResponseData(announcementService.getAll());
+  const announcementResponse =  ResponseData(announcementService.getAll(0,3));
   const [selectedAnnouncement, setSelectedAnnouncement] = useState({ name: '', description: '' });
 
 

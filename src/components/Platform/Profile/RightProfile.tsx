@@ -75,10 +75,10 @@ const ProfileRight = () => {
           <hr />
         </div>
         <div className="row d-flex justify-content-start badge-container">
-          <Badge className="badge-card">
-            <img className="img-fluid" alt="" />
+          <Badge className="badge-card" bg="white">
+            <img className="img-fluid" alt=""  src="https://tobeto.s3.cloud.ngn.com.tr/45_0012252ba6.jpg"/>
           </Badge>
-          <Badge className="badge-card">
+          <Badge className="badge-card" bg="white">
             <img
               className="img-fluid"
               src="https://tobeto.s3.cloud.ngn.com.tr/47_7fc3123c74.jpg"
@@ -96,7 +96,40 @@ const ProfileRight = () => {
           <ActivityMap />
         </div>
       </div>
+
+      <div className="col-12">
+  <div className="cv-box cv-padding">
+    <div className="cv-box-header">
+      <div className="d-flex justify-content-between">
+        <span>Eğitim Hayatım ve Deneyimlerim</span>
+      </div>
+      <hr />
+    </div>
+    <div className="timeline">
+      <div className="line">
+        <div className="circle">
+          <div className=" before">
+            <div className="content">
+              <ul>
+                <li>2018/2020</li>
+                <li className="text-truncate" style={{ maxWidth: 125 }}>
+                  Sakarya Uygulamalı Bilimler Üniversitesi
+                </li>
+                <li className="text-truncate" style={{ maxWidth: 125 }}>
+                  Bilgisayar Programcılığı
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </Col>
+    
   );
 };
 
