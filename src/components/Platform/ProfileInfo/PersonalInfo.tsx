@@ -11,7 +11,6 @@ import townService from "../../../services/townService";
 import Paginate from "../../../models/paginate";
 import GetAllResponseTown from "../../../models/response/town/GetAllResponseTown";
 import GetAllCities from "../../../models/response/city/GetAllCities";
-import { Value } from "react-phone-number-input/core";
 
 const PersonalInfo = () => {
   const [responseData, setResponseData] = useState<GetByIdResponseUser>({
@@ -23,6 +22,14 @@ const PersonalInfo = () => {
     description: "",
     imageId: 0,
     birthDate: "",
+    userSocialMedias:[],
+    userLanguages: [],
+    certificates: [],
+    userAnnouncements: [],
+    experiences: [],
+    userSurveys: [],
+    addresses: [],
+    educations: []
   });
   const [formData, setFormData] = useState<UpdateRequestUser>({
     Id: Number(tokenDecode().ID),

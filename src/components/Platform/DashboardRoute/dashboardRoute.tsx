@@ -1,20 +1,19 @@
+import { Route, Routes } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavbarComponent from "../Navbar/NavbarComponent";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 type Props = {
-  children: any;
+  element: any;
+  path: string;
 };
 
 const DashboardRoute = (props: Props) => {
   return (
-    <>
-    <ProtectedRoute>
-      <NavbarComponent />
-      {props.children}
-      <Footer />
-    </ProtectedRoute>
-      
+    <>           
+        <Routes>
+          <Route path={props.path} element={<ProtectedRoute><NavbarComponent />{props.element}<Footer /></ProtectedRoute>}></Route>
+        </Routes>   
     </>
   );
 };
