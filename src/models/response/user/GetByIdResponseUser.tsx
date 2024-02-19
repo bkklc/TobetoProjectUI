@@ -15,6 +15,7 @@ export default interface GetByIdResponseUser {
     email: string,
     description: string;
     imageId: number,
+    imagePath:string,
     birthDate: string
     userSocialMedias: GetAllUserSocialMedia[];
     userLanguages: GetAllResponseUserLanguage[]

@@ -21,6 +21,7 @@ const PersonalInfo = () => {
     email: "",
     description: "",
     imageId: 0,
+    imagePath:"",
     birthDate: "",
     userSocialMedias:[],
     userLanguages: [],
@@ -126,9 +127,10 @@ const PersonalInfo = () => {
                 <span>
                   <span>
                     <img
+                    className="rounded-circle"
                       alt=""
                       aria-hidden="true"
-                      src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=384&q=75"
+                      src={responseData.imagePath}
                       height={148}
                       width={148}
                     />

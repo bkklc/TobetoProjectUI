@@ -1,17 +1,14 @@
 import { Col, Image, Modal } from "react-bootstrap";
-import {  useEffect, useState } from "react";
+import {  useState } from "react";
 import "./LeftProfile.css";
-import GetAllImage from "../../../models/response/image/GetAllImage";
-import GetByIdImage from "../../../models/response/image/GetByIdImage";
-import imageService from "../../../services/imageService";
+
 
 interface Props {
   responseData: any;
-  profilePhoto: any;
 }
 
 const LeftProfile = (props: Props) => {
-  const { responseData,profilePhoto } = props;
+  const { responseData } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
   
 
@@ -70,7 +67,7 @@ const LeftProfile = (props: Props) => {
                 </div>
                 <Image
                   alt=""
-                  src={profilePhoto.path}
+                  src={responseData.imagePath}
                   width={128}
                   height={128}
                   decoding="async"
