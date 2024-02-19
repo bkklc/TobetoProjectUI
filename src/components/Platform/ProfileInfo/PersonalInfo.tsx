@@ -97,14 +97,13 @@ const PersonalInfo = () => {
               <div className="profile-photo mx-auto">
                 <span>
                   <span>
-                    <img
-                    className="rounded-circle"
-                      alt=""
-                      aria-hidden="true"
-                      src={responseData.imagePath}
-                      height={148}
-                      width={148}
-                    />
+                  <div className="profile-picture-container" style={{ width: "148px", height: "148px" }}>
+                      <img
+                        src={responseData.imagePath}
+                        alt="Profile"
+                        className={`rounded-circle profile-picture `}
+                      />
+                    </div>
                   </span>
                 </span>
                 <div className="photo-edit-btn cursor-pointer" />

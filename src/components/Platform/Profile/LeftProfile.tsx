@@ -1,5 +1,5 @@
 import { Col, Image, Modal } from "react-bootstrap";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./LeftProfile.css";
 import GetAllUserSkill, { defaultGetAllUserSkill } from "../../../models/response/userSkill/GetAllUserSkill";
 import Paginate from "../../../models/paginate";
@@ -14,9 +14,13 @@ interface Props {
 const LeftProfile = (props: Props) => {
   const { responseData } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
-  
-  const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [defaultGetAllUserSkill] });
 
+  const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [defaultGetAllUserSkill] });
+  const [loaded, setLoaded] = useState(false);
+
+  const handleImageLoaded = () => {
+    setLoaded(true);
+  };
 
   const fetchData = async () => {
     try {
@@ -55,7 +59,7 @@ const LeftProfile = (props: Props) => {
             <Modal.Title className="title">Tüm Yetkinliklerim</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {userSkill.items.map((skill:any) => (
+            {userSkill.items.map((skill: any) => (
               <div className="skill mb-4">{skill.skillName}</div>
             ))}
           </Modal.Body>
@@ -81,13 +85,18 @@ const LeftProfile = (props: Props) => {
                     <li></li>
                   </ul>
                 </div>
-                <Image
-                  alt=""
-                  src={responseData.imagePath}
-                  width={128}
-                  height={128}
-                  decoding="async"
-                  className="cv-pp-img rounded-circle"                />
+
+                <div className="profile-picture-container">
+                  {!loaded && <div className="loading">Yükleniyor...</div>}
+                  <img
+                    src={responseData.imagePath}
+                    alt="Profile"
+                    className={`rounded-circle profile-picture ${loaded ? 'visible' : 'hidden'}`} 
+                    onLoad={handleImageLoaded}
+                  />
+                </div>
+
+             
               </div>
               <div className="cv-info cv-padding">
                 <div className="info-box">
@@ -155,9 +164,9 @@ const LeftProfile = (props: Props) => {
               </div>
               <div>
                 <div className="skills">
-                  {userSkill.items.map((skill:any) => (
-              <span className="skill">{skill.skillName}</span>
-            ))}
+                  {userSkill.items.map((skill: any) => (
+                    <span className="skill">{skill.skillName}</span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -172,23 +181,23 @@ const LeftProfile = (props: Props) => {
               </div>
 
               {
-                responseData.userLanguages.map((data:any) => (
-<div className="my-langs">
-                <div className="lang w-100">
-                  <div className="lang-info">
-                    <div className="lang-title ">
-                      <div className="d-flex flex-column">
-                        <span className="lang-name">{data.languageName}</span>
-                        <span className="lang-degree">{data.languageLevelName}</span>
+                responseData.userLanguages.map((data: any) => (
+                  <div className="my-langs">
+                    <div className="lang w-100">
+                      <div className="lang-info">
+                        <div className="lang-title ">
+                          <div className="d-flex flex-column">
+                            <span className="lang-name">{data.languageName}</span>
+                            <span className="lang-degree">{data.languageLevelName}</span>
+                          </div>
+                        </div>
                       </div>
+                      <span className="lang-degree-symbol main-lang"></span>
                     </div>
                   </div>
-                  <span className="lang-degree-symbol main-lang"></span>
-                </div>
-              </div>
                 ))
               }
-              
+
             </div>
           </Col>
           <Col xs={12}>
@@ -227,15 +236,15 @@ const LeftProfile = (props: Props) => {
               </div>
               <div className="cv-social-media">
                 {
-                  responseData.userSocialMedias.map((data:any) => (
-<a
-                  className={"cv-" + String(data.socialMediaName).toLocaleLowerCase('tr-TR')}
-                  target="_blank"
-                  href={data.url}
-                ></a>
+                  responseData.userSocialMedias.map((data: any) => (
+                    <a
+                      className={"cv-" + String(data.socialMediaName).toLocaleLowerCase('tr-TR')}
+                      target="_blank"
+                      href={data.url}
+                    ></a>
                   ))
-                  }
-                
+                }
+
               </div>
             </div>
           </Col>

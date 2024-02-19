@@ -13,7 +13,7 @@ const DashboardRoute = (props: Props) => {
     <>           
         <Routes>
           <Route path={props.path} element={<ProtectedRoute><NavbarComponent />{props.element}<Footer /></ProtectedRoute>}></Route>
-        </Routes>   
+        </Routes>
     </>
   );
 };

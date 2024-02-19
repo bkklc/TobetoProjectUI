@@ -2,10 +2,11 @@ import { Navbar, Nav, Container, NavDropdown, Dropdown, Button, Offcanvas } from
 import PageUrl from '../../../hooks/PageUrl';
 import { Link } from 'react-router-dom';
 import tokenDecode from '../../../hooks/tokenDecode';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import GetByIdResponseUser from '../../../models/response/user/GetByIdResponseUser';
 import GetByLoginUserData from '../../../hooks/getByIdUserHook';
 import { defaultUser } from '../../../models/response/user/GetByIdResponseUser';
+import "../../../App.css"
 
 function NavbarComponent() {
   const [show, setShow] = useState(false);
@@ -14,9 +15,9 @@ function NavbarComponent() {
 
   const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
 
-useEffect(() => {
-  GetByLoginUserData(setResponseData);
-}, [])
+  useEffect(() => {
+    GetByLoginUserData(setResponseData);
+  }, [])
 
 
 
@@ -132,12 +133,19 @@ useEffect(() => {
               <NavDropdown
                 title={
                   <div className="btn-group align-items-center" style={{ marginRight: "10px", fontSize: "14px", color: "#828282" }}>
-                    <img className="thumbnail-image rounded-circle"
-                      src={responseData.imagePath}
-                      width={32}
-                      height={32}
-                      style={{ marginRight: "10px" }}
-                    />                   
+
+                    <div className="profile-picture-container" style={{ width: "32px", height: "32px", marginRight: "10px" }}>
+                      <img
+                        src={responseData.imagePath}
+                        alt="Profile"
+                        className={`rounded-circle profile-picture `}
+                        style={{ marginRight: "10px" }}
+                      />
+                    </div>
+
+
+
+
                     {tokenDecode().Name}
                   </div>
                 }
