@@ -1,24 +1,22 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { Form, Col, Button, Row } from 'react-bootstrap';
-import AddRequestEducation from '../../../models/requests/education/AddRequestEducation';
-import tokenDecode from '../../../hooks/tokenDecode';
-import educationService from '../../../services/educationService';
-import Paginate from '../../../models/paginate';
-import GetAllEducation from '../../../models/response/education/GetAllEducation';
-import { AddRequestSchoolName } from '../../../models/requests/schoolName/addRequestSchoolName';
-import schoolNameService from '../../../services/schoolNameService';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import ResponseData from '../../../hooks/ResponseData';
-import educationDegreeService from '../../../services/educationDegreeService';
+import tokenDecode from '../../../hooks/tokenDecode';
+import Paginate from '../../../models/paginate';
+import AddRequestEducation from '../../../models/requests/education/AddRequestEducation';
+import GetAllEducation from '../../../models/response/education/GetAllEducation';
+import GetAllEducationDegree from '../../../models/response/educationDegree/GetAllEducationDegree';
 import { GetAllSchoolName } from '../../../models/response/schoolName/getAllSchoolName';
+import educationDegreeService from '../../../services/educationDegreeService';
+import educationService from '../../../services/educationService';
+import schoolNameService from '../../../services/schoolNameService';
 
 function EducationLife() {
-  const educationDegreeResponse = ResponseData(educationDegreeService.getAll());
+  const [educationDegreeData, setEducationDegreeData] = useState<Paginate<GetAllEducationDegree>>({ items: [] })
 
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(true);
 
   const [schoolNameData, setSchoolNameData] = useState<Paginate<GetAllSchoolName>>({ items: [] })
-  const schoolNameResponse = ResponseData(schoolNameService.getAll());
 
   const [formData, setFormData] = useState<AddRequestEducation>(
     {
@@ -26,10 +24,25 @@ function EducationLife() {
       EducationDegreeId: 0,
       SchoolNameId: 0,
       Department: '',
-      StartDate: '',
-      EndDate: ''
+      StartDate: new Date(),
+      EndDate: new Date()
     }
   )
+
+  const fetchDegreeName = async () => {
+    try {
+      await educationDegreeService.getAll()
+        .then(
+          (degree) => {
+            if (degree.status === 200) {
+              setEducationDegreeData(degree.data)
+            }
+          }
+        );
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata meydana geldi:", error)
+    }
+  }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -84,6 +97,7 @@ function EducationLife() {
   }
 
   useEffect(() => {
+    fetchDegreeName();
     fetchSchoolName();
     fetchData();
   }, [])
@@ -95,16 +109,17 @@ function EducationLife() {
           {/* Eğitim Durumu */}
           <Form.Group as={Col} md={6} controlId="formEducationStatus">
             <Form.Label>Eğitim Durumu*</Form.Label>
-            <Form.Control
+            <Form.Select
               as="select"
               name="EducationStatus"
               className="tobeto-input"
             >
-              <option id='0' value="">Seviye Seçiniz</option>
-              {educationDegreeResponse && (educationDegreeResponse.items.map((degrees: any) => (
-                <option key={degrees.id} value={degrees.id} id={degrees.id}>{degrees.name}</option>
-              )))}
-            </Form.Control>
+              {educationDegreeData.items.map((data: any) => (
+                <option key={data.id} value={data.id} id={data.id}>
+                  {data.name}
+                </option>
+              ))}
+            </Form.Select>
           </Form.Group>
           {/* Üniversite */}
           <Form.Group as={Col} md={6} controlId="formUniversity">
@@ -116,9 +131,11 @@ function EducationLife() {
               value={formData.SchoolNameId}
               onChange={e => setFormData({ ...formData, SchoolNameId: Number(e.target.options[e.target.selectedIndex].id) })}
             >
-              {schoolNameResponse && (schoolNameResponse.items.map((scNames: any) => (
-                <option key={scNames.id} value={scNames.id} id={scNames.id} >{scNames.name}</option>
-              )))}
+              {
+                schoolNameData.items.map((data: any) => (
+                  <option key={data.id} value={data.id} id={data.id} >{data.name}</option>
+                ))
+              }
             </Form.Select>
           </Form.Group>
           {/* Bölüm */}
@@ -136,30 +153,32 @@ function EducationLife() {
           {/* Başlangıç Yılı */}
           <Form.Group as={Col} md={6} controlId="formStartDate">
             <Form.Label>Başlangıç Yılı*</Form.Label>
-            <Form.Control
-              name="StartDate"
-              type="text"
-              placeholder="Başlangıç Yılınızı Seçiniz"
-              className="tobeto-input"
-              value={formData.StartDate}
-              onChange={e => setFormData({ ...formData, StartDate: e.target.value })}
-            />
+            <Row style={{ maxWidth: '416px', paddingLeft: '12px' }}>
+              <DatePicker
+                selected={formData.StartDate}
+                className="form-control tobeto-input"
+                name="StartDate"
+                dateFormat="yyyy"
+                onChange={(date: Date) => {
+                  setFormData({ ...formData, StartDate: date });
+                }}
+              />
+            </Row>
           </Form.Group>
           {/* Mezuniyet Yılı */}
           <Form.Group as={Col} md={6} controlId="formGraduationDate">
             <Form.Label>Mezuniyet Yılı*</Form.Label>
-            <Form.Control
-              name="EndDate"
-              type="text"
-              placeholder="Mezuniyet Yılınızı Seçiniz"
-              className="tobeto-input"
-              value={formData.EndDate}
-              onChange={e => {
-                setFormData({ ...formData, EndDate: e.target.value })
-                setIsEndDateEnabled(true)
-              }}
-              disabled={!isEndDateEnabled}
-            />
+            <Row style={{ maxWidth: '416px', paddingLeft: '12px' }}>
+              <DatePicker
+                selected={formData.EndDate}
+                className="form-control tobeto-input"
+                name="EndDate"
+                dateFormat="yyyy"
+                onChange={(date: Date) => {
+                  setFormData({ ...formData, EndDate: date })
+                }}
+              />
+            </Row>
             <Form.Check
               name='checkbox'
               type="checkbox"
@@ -184,7 +203,9 @@ function EducationLife() {
               <div className="grade-details">
                 <div className="grade-details-col">
                   <span className="grade-details-header">Üniversite</span>
-                  <span className="grade-details-content">{data.name}</span>
+                  <span className="grade-details-content">
+                    {schoolNameData.items.find(school => school.id === data.schoolNameId)?.name}
+                  </span>
                 </div>
                 <div className="grade-details-col">
                   <span className="grade-details-header">Bölüm</span>
