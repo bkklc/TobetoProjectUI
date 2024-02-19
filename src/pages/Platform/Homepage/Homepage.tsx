@@ -1,14 +1,20 @@
-import { Button, Card, Col, Container, Nav, Row, Stack } from "react-bootstrap";
+import { Button, Card, Col, Container, Nav, Row, Stack, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PlatformTabs from "../../../components/Platform/Items/PlatformTabs";
 import PageUrl from "../../../hooks/PageUrl";
 import tokenDecode from "../../../hooks/tokenDecode";
 import userService from "../../../services/userService";
 import ResponseData from "../../../hooks/ResponseData";
+import { useState } from 'react';
 
 
 function Homepage() {
   const responseData = ResponseData(userService.getAll());
+
+
+  const [showModal, setShowModal] = useState(false);
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   console.log(responseData && responseData.items[0].firstName);
 
@@ -68,7 +74,7 @@ function Homepage() {
           </Container>
         </div>
 
-        
+
 
         <div className="my-2">
           <section className="my-2">
@@ -77,7 +83,11 @@ function Homepage() {
                 <Col md={12} className="position-relative">
                   <span className="exams-header">Sınavlarım</span>
                 </Col>
-                <div className="exams my-3">
+                <div
+                  className="exams my-3"
+                  onClick={handleShowModal}
+                  style={{ cursor: 'pointer' }}
+                >
                   <Card className="exam-card">
                     <div className="exam-header">
                       <span className="exam-name">
@@ -98,7 +108,37 @@ function Homepage() {
               </Row>
             </Container>
           </section>
+
+          <Modal show={showModal} onHide={handleCloseModal} size="xl">
+            <Modal.Header closeButton>
+              <Modal.Title>Herkes için Kodlama 2B Değerlendirme Sınavı</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="quiz-screen">
+                <p>
+                  Sevgili Adayımız,
+                  Herkes için Kodlama Eğitimi'ni tamamladığınız için tebrik ederiz. Bu eğitim sonrası bir sonraki aşamaya geçiş için 25 sorudan oluşan bir değerlendirme sınavımız bulunmaktadır.
+                  Bu test her kullanıcı için sadece 1 kez sunulmakta olup 45 dakika içinde tamamlanması gerekmektedir.
+                  Tüm değerlendirme kriterleri sonrası Mesleki Gelişim Eğitimlerine geçişiniz ile ilgili bilgilendirileceksiniz.
+                  Sevgiler,
+                  TOBETO
+                  Sınav Süresi : 45 Dakika
+                  Soru Sayısı : 25
+                  Soru Tipi : Çoktan Seçmeli
+                </p>
+              </div>
+            </Modal.Body>
+            <Modal.Footer className="d-flex justify-content-center">
+              <Button variant="primary" onClick={handleCloseModal}>
+                Raporu Görüntüle
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
+
+
+
+
         <div className="my-2">
           <div className="container">
             <div className="new-packs my-10">

@@ -43,8 +43,8 @@ const PersonalInfo = () => {
     BirthDate: "",
   });
 
-  const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({items:[]});
-  const [cities, setCities] = useState<Paginate<GetAllCities>>({items:[]});
+  const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [] });
+  const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [] });
   const [selectedCity, setSelectedCity] = useState('0');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -105,7 +105,7 @@ const PersonalInfo = () => {
     }
   };
 
-  const handleCityChange = (event:any) => {
+  const handleCityChange = (event: any) => {
     setSelectedCity(event.target.value);
   };
 
@@ -119,7 +119,7 @@ const PersonalInfo = () => {
   return (
     <>
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
-        <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>         
+        <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>
           <Row className="mb-2">
             <Col mb={6} md={12} className="text-center">
               <div className="profile-photo mx-auto">
@@ -243,12 +243,12 @@ const PersonalInfo = () => {
               <Form.Select
                 name="city"
                 className="form-select tobeto-input"
-                aria-label=""              
+                aria-label=""
                 onChange={handleCityChange}
               >
                 <option value="0">İl seçiniz</option>
                 {
-                  cities.items.map((city:any) => (
+                  cities.items.map((city: any) => (
                     <option value={city.id}>{city.name}</option>
                   ))
                 }
@@ -260,10 +260,10 @@ const PersonalInfo = () => {
                 name="town"
                 className="form-select tobeto-input"
                 aria-label=""
-                
+
               >
                 {
-                  towns.items.map((town:any) => (
+                  towns.items.map((town: any) => (
                     <option>{town.name}</option>
                   ))
                 }
