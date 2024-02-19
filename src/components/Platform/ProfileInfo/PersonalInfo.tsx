@@ -84,7 +84,7 @@ const PersonalInfo = () => {
 
   const fetchCities = async () => {
     try {
-      await cityService.getAll().then((res) => {
+      await cityService.getAll(0,81).then((res) => {
         if (res.status === 200) {
           setCities(res.data);
         }
