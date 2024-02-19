@@ -16,7 +16,7 @@ function PlatformTabs() {
   }
 
   const handleButtonClick2= ()=>{
-    navigate('/duyurularim');
+    navigate('/duyurular');
   }
    
   return (
