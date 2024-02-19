@@ -4,8 +4,8 @@ import AnnouncementsComponent from '../../components/Platform/Items/Announcement
 
 const Announcement = () => {
     return (
-
-        <div>
+        
+        <>
             <div className="container-fluid">
                 <div className="page-banner-card">
                     <div className="container">
@@ -197,13 +197,75 @@ const Announcement = () => {
                         </div>
                     </div>
                 </div>
-                  
-                <AnnouncementsComponent/>    
+
+                <AnnouncementsComponent />
             </Container>
+<div>
+
+
+<ul
+                className="pagination justify-content-center"
+                role="navigation"
+                aria-label="Pagination"
+            >
+                <li className="page-item disabled">
+                    <a
+                        className="page-link "
+                        tabIndex={-1}
+                        role="button"
+                        aria-disabled="true"
+                        aria-label="Previous page"
+                        rel="prev"
+                    />
+                </li>
+                <li className="page-item active">
+                    <a
+                        rel="canonical"
+                        role="button"
+                        className="page-link"
+                        tabIndex={-1}
+                        aria-label="Page 1 is your current page"
+                        aria-current="page"
+                    >
+                        1
+                    </a>
+                </li>
+                <li className="page-item">
+                    <a
+                        rel="next"
+                        role="button"
+                        className="page-link"
+                        tabIndex={0}
+                        aria-label="Page 2"
+                    >
+                        2
+                    </a>
+                </li>
+                <li className="page-item">
+                    <a role="button" className="page-link" tabIndex={0} aria-label="Page 3">
+                        3
+                    </a>
+                </li>
+                <li className="page-item">
+                    <a
+                        className="page-link"
+                        tabIndex={0}
+                        role="button"
+                        aria-disabled="false"
+                        aria-label="Next page"
+                        rel="next"
+                    />
+                </li>
+            </ul>
+
 
 
         </div>
 
+
+
+</>
+           
 
 
 
