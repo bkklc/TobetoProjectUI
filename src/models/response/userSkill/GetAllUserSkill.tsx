@@ -3,3 +3,9 @@ export default interface GetAllUserSkill{
     UserId:number,
     SkillId:number,
 }
+
+export const defaultGetAllUserSkill: GetAllUserSkill = {
+    Id:0,
+    UserId:0,
+    SkillId:0,
+  };

@@ -6,29 +6,11 @@ import tokenDecode from "../../../hooks/tokenDecode";
 import userService from "../../../services/userService";
 import { PencilSquare, Share } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import GetByIdResponseUser from "../../../models/response/user/GetByIdResponseUser";
+import GetByIdResponseUser, { defaultUser } from "../../../models/response/user/GetByIdResponseUser";
 
 
 const Profile = () => {
-  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
-    nationalIdentity: "",
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
-    imageId: 0,
-    imagePath:"",
-    birthDate: "",
-    userSocialMedias:[],
-    userLanguages: [],
-    certificates: [],
-    userAnnouncements: [],
-    experiences: [],
-    userSurveys: [],
-    addresses: [],
-    educations: []
-  });
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
 
   
   useEffect(() => {

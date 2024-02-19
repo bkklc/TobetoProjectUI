@@ -1,7 +1,7 @@
 import { Col, Image, Modal } from "react-bootstrap";
 import {  useEffect, useState } from "react";
 import "./LeftProfile.css";
-import GetAllUserSkill from "../../../models/response/userSkill/GetAllUserSkill";
+import GetAllUserSkill, { defaultGetAllUserSkill } from "../../../models/response/userSkill/GetAllUserSkill";
 import Paginate from "../../../models/paginate";
 import userSkillService from "../../../services/userSkillService";
 import tokenDecode from "../../../hooks/tokenDecode";
@@ -15,7 +15,7 @@ const LeftProfile = (props: Props) => {
   const { responseData } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
   
-  const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [] });
+  const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [defaultGetAllUserSkill] });
 
 
   const fetchData = async () => {
@@ -155,9 +155,9 @@ const LeftProfile = (props: Props) => {
               </div>
               <div>
                 <div className="skills">
-                {userSkill.items.slice(0, 5).map((skill:any) => (
-  <span className="skill">{skill.skillName}</span>
-))}
+                  {userSkill.items.map((skill:any) => (
+              <span className="skill">{skill.skillName}</span>
+            ))}
                 </div>
               </div>
             </div>

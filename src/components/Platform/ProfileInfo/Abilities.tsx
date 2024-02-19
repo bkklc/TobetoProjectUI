@@ -6,11 +6,11 @@ import { GetAllSkill } from "../../../models/response/Skill/getAllSkill";
 import AddRequestUserSkill from "../../../models/requests/userSkill/AddRequestUserSkill";
 import tokenDecode from "../../../hooks/tokenDecode";
 import userSkillService from "../../../services/userSkillService";
-import GetAllUserSkill from "../../../models/response/userSkill/GetAllUserSkill";
+import GetAllUserSkill, { defaultGetAllUserSkill } from "../../../models/response/userSkill/GetAllUserSkill";
 
 export default function Abilities() {
   const [skills, setSkills] = useState<Paginate<GetAllSkill>>({ items: [] });
-  const [responseData, setResponseData] = useState<Paginate<GetAllUserSkill>>({ items: [] });
+  const [responseData, setResponseData] = useState<Paginate<GetAllUserSkill>>({ items: [defaultGetAllUserSkill] });
   const [formData, setFormData] = useState<AddRequestUserSkill>(
     {
       UserId: Number(tokenDecode().ID),

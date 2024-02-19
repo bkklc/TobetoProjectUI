@@ -5,31 +5,14 @@ import tokenDecode from '../../../hooks/tokenDecode';
 import { useState,useEffect } from 'react';
 import GetByIdResponseUser from '../../../models/response/user/GetByIdResponseUser';
 import GetByLoginUserData from '../../../hooks/getByIdUserHook';
+import { defaultUser } from '../../../models/response/user/GetByIdResponseUser';
 
 function NavbarComponent() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
-    nationalIdentity: "",
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
-    imageId: 0,
-    imagePath:"",
-    birthDate: "",
-    userSocialMedias:[],
-    userLanguages: [],
-    certificates: [],
-    userAnnouncements: [],
-    experiences: [],
-    userSurveys: [],
-    addresses: [],
-    educations: []
-  });
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
 
 useEffect(() => {
   GetByLoginUserData(setResponseData);

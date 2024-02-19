@@ -26,3 +26,23 @@ export default interface GetByIdResponseUser {
     addresses: GetAllAddress[]
     educations: GetAllEducation[]
 }
+
+export const defaultUser: GetByIdResponseUser = {
+    nationalIdentity: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    description: "",
+    imageId: 0,
+    imagePath:"",
+    birthDate: "",
+    userSocialMedias:[],
+    userLanguages: [],
+    certificates: [],
+    userAnnouncements: [],
+    experiences: [],
+    userSurveys: [],
+    addresses: [],
+    educations: []
+  };

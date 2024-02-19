@@ -3,49 +3,20 @@ import { Button, Col, Form, FormControl, Row } from "react-bootstrap";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import tokenDecode from "../../../hooks/tokenDecode";
-import UpdateRequestUser from "../../../models/requests/user/UpdateRequestUser";
-import GetByIdResponseUser from "../../../models/response/user/GetByIdResponseUser";
+import UpdateRequestUser, { defaultUpdateRequestUser } from "../../../models/requests/user/UpdateRequestUser";
+import GetByIdResponseUser, { defaultUser } from "../../../models/response/user/GetByIdResponseUser";
 import userService from "../../../services/userService";
 import cityService from "../../../services/cityService";
 import townService from "../../../services/townService";
 import Paginate from "../../../models/paginate";
-import GetAllResponseTown from "../../../models/response/town/GetAllResponseTown";
-import GetAllCities from "../../../models/response/city/GetAllCities";
+import GetAllResponseTown, { defaultGetAllResponseTown } from "../../../models/response/town/GetAllResponseTown";
+import GetAllCities, { defaultGetAllCities } from "../../../models/response/city/GetAllCities";
 
 const PersonalInfo = () => {
-  const [responseData, setResponseData] = useState<GetByIdResponseUser>({
-    nationalIdentity: "",
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
-    imageId: 0,
-    imagePath:"",
-    birthDate: "",
-    userSocialMedias:[],
-    userLanguages: [],
-    certificates: [],
-    userAnnouncements: [],
-    experiences: [],
-    userSurveys: [],
-    addresses: [],
-    educations: []
-  });
-  const [formData, setFormData] = useState<UpdateRequestUser>({
-    Id: Number(tokenDecode().ID),
-    NationalIdentity: "",
-    FirstName: "",
-    LastName: "",
-    PhoneNumber: "",
-    Email: "",
-    Description: "",
-    ImageId: 0,
-    BirthDate: "",
-  });
-
-  const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [] });
-  const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [] });
+  const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
+  const [formData, setFormData] = useState<UpdateRequestUser>(defaultUpdateRequestUser);
+  const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [defaultGetAllResponseTown] });
+  const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [defaultGetAllCities] });
   const [selectedCity, setSelectedCity] = useState('0');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
