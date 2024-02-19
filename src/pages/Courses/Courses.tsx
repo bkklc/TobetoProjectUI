@@ -15,9 +15,8 @@ const Courses = () => {
         </div>
       </div>
 
-<Container>
-      <div className="row">
-        
+      <Container>
+        <div className="row">
           <div className="col-md-5 col-12 mb-4">
             <div className="searchBox search-box ">
               <input
@@ -68,166 +67,162 @@ const Courses = () => {
               </Button>
             </div>
           </div>
-        
-        <div className="col-md-3 col-12 mb-4">
-          <div className=" css-b62m3t-container">
-            <span
-              id="react-select-18-live-region"
-              className="css-7pg0cj-a11yText" 
-            /> 
-            <span
-              aria-live="polite"
-              aria-atomic="false"
-              aria-relevant="additions text"
-              className="css-7pg0cj-a11yText"
-            />
-            <div className="select__control css-13cymwt-control">
-              <div className="select__value-container select__value-container--is-multi css-hlgwow">
-                <div
-                  className="select__placeholder css-1jqq78o-placeholder"
-                  id="react-select-18-placeholder"
-                >
-                  Kurum Seçiniz
-                </div>
-                <div
-                  className="select__input-container css-19bb58m"
-                  data-value=""
-                >
-                  <input
-                    className="select__input"
-                    autoCapitalize="none"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    id="react-select-18-input"
-                    spellCheck="false"
-                    tabIndex={0}
-                    type="text"
-                    aria-autocomplete="list"
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    role="combobox"
-                    aria-describedby="react-select-18-placeholder"
-                    defaultValue=""
-                    style={{
-                      color: "inherit",
-                      background: "0px center",
-                      opacity: 1,
-                      width: "100%",
-                      gridArea: "1 / 2",
-                      font: "inherit",
-                      minWidth: 2,
-                      border: 0,
-                      margin: 0,
-                      outline: 0,
-                      padding: 0,
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="select__indicators css-1wy0on6">
-                <span className="select__indicator-separator css-1u9des2-indicatorSeparator" />
-                <div
-                  className="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
-                  aria-hidden="true"
-                >
-                  <svg
-                    height={20}
-                    width={20}
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                    focusable="false"
-                    className="css-8mmkcg"
+
+          <Col className="col-md-3 col-12 mb-4">
+            <div className=" css-b62m3t-container">
+              <span
+                id="react-select-18-live-region"
+                className="css-7pg0cj-a11yText"
+              />
+              <span
+                aria-live="polite"
+                aria-atomic="false"
+                aria-relevant="additions text"
+                className="css-7pg0cj-a11yText"
+              />
+              <div className="select__control css-13cymwt-control">
+                <div className="select__value-container select__value-container--is-multi css-hlgwow">
+                  <div
+                    className="select__placeholder css-1jqq78o-placeholder"
+                    id="react-select-18-placeholder"
                   >
-                    <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" />
-                  </svg>
+                    Kurum Seçiniz
+                  </div>
+                  <div
+                    className="select__input-container css-19bb58m"
+                    data-value=""
+                  >
+                    <input
+                      className="select__input"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      id="react-select-18-input"
+                      spellCheck="false"
+                      tabIndex={0}
+                      type="text"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      role="combobox"
+                      aria-describedby="react-select-18-placeholder"
+                      defaultValue=""
+                      style={{
+                        color: "inherit",
+                        background: "0px center",
+                        opacity: 1,
+                        width: "100%",
+                        gridArea: "1 / 2",
+                        font: "inherit",
+                        minWidth: 2,
+                        border: 0,
+                        margin: 0,
+                        outline: 0,
+                        padding: 0,
+                      }}
+                    />
+                  </div>
                 </div>
-                
+                <div className="select__indicators css-1wy0on6">
+                  <span className="select__indicator-separator css-1u9des2-indicatorSeparator" />
+                  <div
+                    className="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      height={20}
+                      width={20}
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                      focusable="false"
+                      className="css-8mmkcg"
+                    >
+                      <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              
+              <div>
+                <input name="organization" type="hidden" defaultValue="" />
+              </div>
             </div>
-            
-            <div>
-              <input name="organization" type="hidden" defaultValue="" />
+          </Col>
+
+          <div className="col-md-3 col-12 mb-4">
+            <div className=" css-b62m3t-container">
+              <span
+                id="react-select-19-live-region"
+                className="css-7pg0cj-a11yText"
+              />
+              <span
+                aria-live="polite"
+                aria-atomic="false"
+                aria-relevant="additions text"
+                className="css-7pg0cj-a11yText"
+              />
+              <div className="select__control css-13cymwt-control">
+                <div className="select__value-container select__value-container--has-value css-hlgwow">
+                  <div className="select__single-value css-1dimb5e-singleValue">
+                    Adına Göre (A-Z)
+                  </div>
+                  <div
+                    className="select__input-container css-19bb58m"
+                    data-value=""
+                  >
+                    <input
+                      className="select__input"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      id="react-select-19-input"
+                      spellCheck="false"
+                      tabIndex={0}
+                      type="text"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      role="combobox"
+                      defaultValue=""
+                      style={{
+                        color: "inherit",
+                        background: "0px center",
+                        opacity: 1,
+                        width: "100%",
+                        gridArea: "1 / 2",
+                        font: "inherit",
+                        minWidth: 2,
+                        border: 0,
+                        margin: 0,
+                        outline: 0,
+                        padding: 0,
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="select__indicators css-1wy0on6">
+                  <span className="select__indicator-separator css-1u9des2-indicatorSeparator" />
+                  <div
+                    className="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      height={20}
+                      width={20}
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                      focusable="false"
+                      className="css-8mmkcg"
+                    >
+                      <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <input name="sort" type="hidden" defaultValue="name-asc" />
             </div>
           </div>
-          
+          <Col className="col-md-1 col-12 mb-4 d-flex justify-content-end" />
         </div>
-        
-        <div className="col-md-3 col-12 mb-4">
-          <div className=" css-b62m3t-container">
-            <span
-              id="react-select-19-live-region"
-              className="css-7pg0cj-a11yText"
-            />
-            <span
-              aria-live="polite"
-              aria-atomic="false"
-              aria-relevant="additions text"
-              className="css-7pg0cj-a11yText"
-            />
-            <div className="select__control css-13cymwt-control">
-              <div className="select__value-container select__value-container--has-value css-hlgwow">
-                <div className="select__single-value css-1dimb5e-singleValue">
-                  Adına Göre (A-Z)
-                </div>
-                <div
-                  className="select__input-container css-19bb58m"
-                  data-value=""
-                >
-                  <input
-                    className="select__input"
-                    autoCapitalize="none"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    id="react-select-19-input"
-                    spellCheck="false"
-                    tabIndex={0}
-                    type="text"
-                    aria-autocomplete="list"
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    role="combobox"
-                    defaultValue=""
-                    style={{
-                      color: "inherit",
-                      background: "0px center",
-                      opacity: 1,
-                      width: "100%",
-                      gridArea: "1 / 2",
-                      font: "inherit",
-                      minWidth: 2,
-                      border: 0,
-                      margin: 0,
-                      outline: 0,
-                      padding: 0,
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="select__indicators css-1wy0on6">
-                <span className="select__indicator-separator css-1u9des2-indicatorSeparator" />
-                <div
-                  className="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
-                  aria-hidden="true"
-                >
-                  <svg
-                    height={20}
-                    width={20}
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                    focusable="false"
-                    className="css-8mmkcg"
-                  >
-                    <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <input name="sort" type="hidden" defaultValue="name-asc" />
-          </div>
-        </div>
-        <div className="col-md-1 col-12 mb-4 d-flex justify-content-end" />
-      </div>
       </Container>
       <CoursesTabs></CoursesTabs>
     </div>
