@@ -81,7 +81,7 @@ useEffect(() => {
                   className='btn p-1 fw-normal text-end d-flex align-items-center b-r-35 w-100 justify-content-between '
                   title={
                     <div className="btn-group align-items-center" style={{ marginRight: "10px", fontSize: "14px", color: "#828282" }}>
-                      <img className="thumbnail-image"
+                      <img className="thumbnail-image rounded-circle"
                         src={responseData.imagePath}
                         width={32}
                         height={32}
