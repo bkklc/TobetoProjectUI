@@ -1,6 +1,6 @@
 export default interface GetByIdImage {
     Id:Number,
-    Name:string,
-    Path:string,
+    name:string,
+    path:string,
     
 }
