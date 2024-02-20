@@ -19,6 +19,8 @@ import "@uppy/dashboard/dist/style.css";
 import "@uppy/core/dist/style.css";
 import "@uppy/dashboard/dist/style.css";
 import imageService from "../../../services/imageService";
+import { GetAllCountryResponse, defaultGetAllCountries } from "../../../models/response/country/GetAllCountryResponse";
+import countryService from "../../../services/countryService";
 
 
 const PersonalInfo = () => {
@@ -26,7 +28,9 @@ const PersonalInfo = () => {
   const [formData, setFormData] = useState<UpdateRequestUser>(defaultUpdateRequestUser);
   const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [defaultGetAllResponseTown] });
   const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [defaultGetAllCities] });
+  const [countries, setCountries] = useState<Paginate<GetAllCountryResponse>>({ items: [defaultGetAllCountries] });
   const [selectedCity, setSelectedCity] = useState('0');
+  const [selectedCountry, setSelectedCountry] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -64,6 +68,20 @@ const PersonalInfo = () => {
   };
 
 
+  const fetchCountries = async () => {
+    try {
+      await countryService.getAll(0, 210).then((res) => {
+        if (res.status === 200) {
+          setCountries(res.data);
+        }
+      });
+    } catch (error) {
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
+    }
+  };
+
+
+
   const fetchCities = async () => {
     try {
       await cityService.getAll(0, 81).then((res) => {
@@ -92,10 +110,15 @@ const PersonalInfo = () => {
     setSelectedCity(event.target.value);
   };
 
+  const handleCountryChange = (event: any) => {
+    setSelectedCountry(event.target.value);
+  };
+
   useEffect(() => {
     fetchData();
     fetchCities();
     fetchTowns();
+    fetchCountries();
   }, [selectedCity]);
 
 
@@ -247,11 +270,19 @@ const PersonalInfo = () => {
 
             <Col className="col-12 mb-6">
               <Form.Label className="input-label-text">Ülke*</Form.Label>
-              <Form.Control
+              <Form.Select
                 name="country"
-                className="form-control tobeto-input"
-                type="text"
-              />
+                className="form-select tobeto-input"
+                aria-label=""
+                onChange={handleCountryChange}
+              >
+                <option value="0">Ülke seçiniz</option>
+                {
+                  countries.items.map((country: any) => (
+                    <option value={country.id}>{country.name}</option>
+                  ))
+                }
+              </Form.Select>
             </Col>
             <Col className="col-12 col-md-6 mb-6">
               <Form.Label className="input-label-text">İl*</Form.Label>
