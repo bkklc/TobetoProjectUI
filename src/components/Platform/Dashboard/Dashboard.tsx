@@ -5,7 +5,7 @@ import DashboardRoute from "../DashboardRoute/dashboardRoute";
 import Homepage from "../../../pages/Platform/Homepage/Homepage";
 import Degerlendirmeler from "../../../pages/Platform/Degerlendirmeler/Degerlendirmeler";
 import Catalog from "../../../pages/Platform/Catalog/Catalog";
-import { Routes, Route, useLocation } from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
 import Courses from "../../../pages/Courses/Courses";
 import Announcement from "../../../pages/Announcement/Announcement";
