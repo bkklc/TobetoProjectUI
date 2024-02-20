@@ -1,4 +1,4 @@
-import { Col, Image, Modal } from "react-bootstrap";
+import { Col,  Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import "./LeftProfile.css";
 import GetAllUserSkill, { defaultGetAllUserSkill } from "../../../models/response/userSkill/GetAllUserSkill";

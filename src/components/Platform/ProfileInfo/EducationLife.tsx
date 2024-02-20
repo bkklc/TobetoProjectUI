@@ -4,7 +4,6 @@ import DatePicker from 'react-datepicker';
 import tokenDecode from '../../../hooks/tokenDecode';
 import Paginate from '../../../models/paginate';
 import AddRequestEducation from '../../../models/requests/education/AddRequestEducation';
-import GetAllEducation from '../../../models/response/education/GetAllEducation';
 import GetAllEducationDegree from '../../../models/response/educationDegree/GetAllEducationDegree';
 import { GetAllSchoolName } from '../../../models/response/schoolName/getAllSchoolName';
 import educationDegreeService from '../../../services/educationDegreeService';

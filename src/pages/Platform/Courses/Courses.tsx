@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+
+import { Button, Col, Container} from "react-bootstrap";
 import CoursesTabs from "./CoursesTabs";
 
 const Courses = () => {

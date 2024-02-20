@@ -11,6 +11,15 @@ import townService from "../../../services/townService";
 import Paginate from "../../../models/paginate";
 import GetAllResponseTown, { defaultGetAllResponseTown } from "../../../models/response/town/GetAllResponseTown";
 import GetAllCities, { defaultGetAllCities } from "../../../models/response/city/GetAllCities";
+import Uppy from "@uppy/core";
+import { DashboardModal } from '@uppy/react'
+import XHR from '@uppy/xhr-upload';
+import "@uppy/core/dist/style.css";
+import "@uppy/dashboard/dist/style.css";
+import "@uppy/core/dist/style.css";
+import "@uppy/dashboard/dist/style.css";
+import imageService from "../../../services/imageService";
+
 
 const PersonalInfo = () => {
   const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
@@ -18,6 +27,8 @@ const PersonalInfo = () => {
   const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [defaultGetAllResponseTown] });
   const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [defaultGetAllCities] });
   const [selectedCity, setSelectedCity] = useState('0');
+  const [isOpen, setIsOpen] = useState(false);
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,7 +66,7 @@ const PersonalInfo = () => {
 
   const fetchCities = async () => {
     try {
-      await cityService.getAll(0,81).then((res) => {
+      await cityService.getAll(0, 81).then((res) => {
         if (res.status === 200) {
           setCities(res.data);
         }
@@ -88,16 +99,72 @@ const PersonalInfo = () => {
   }, [selectedCity]);
 
 
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+  const uppy = new Uppy({
+    debug: true,
+    autoProceed: false,
+    restrictions: {
+      maxFileSize: 2000000,
+      maxNumberOfFiles: 1,
+      minNumberOfFiles: 1
+    }
+  })
+  uppy.use(XHR, { endpoint: "https://hoixi.com.tr/api/FileUpload" })
+
+  uppy.on('upload-success', (file: any, response: any) => {
+    if (responseData.imageId === 3) {
+      imageService.add({
+        Name: file.name,
+        Path: response.body.sitePath,
+      }).then(res => {
+        userService.getById(tokenDecode().ID)
+          .then(resUser => {
+            userService.update({
+              Id: Number(tokenDecode().ID),
+              NationalIdentity: resUser.data.nationalIdentity,
+              FirstName: resUser.data.firstName,
+              LastName: resUser.data.lastName,
+              PhoneNumber: resUser.data.phoneNumber,
+              Email: resUser.data.email,
+              Description: resUser.data.description,
+              ImageId: Number(res.data.Id),
+              BirthDate: resUser.data.birthDate
+            })
+            fetchData();
+          })
+      })
+    }
+
+    else {
+      userService.getById(tokenDecode().ID)
+      .then(res => {
+        imageService.update({
+          Id:res.data.imageId,
+          Path:response.body.sitePath,
+          Name: file.name,
+        })
+        fetchData();
+      })
+    }
+
+    
+  });
+
   return (
     <>
+    
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
+      <DashboardModal uppy={uppy} open={isOpen} closeModalOnClickOutside onRequestClose={toggleModal} />
         <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>
           <Row className="mb-2">
             <Col mb={6} md={12} className="text-center">
               <div className="profile-photo mx-auto">
                 <span>
                   <span>
-                  <div className="profile-picture-container" style={{ width: "148px", height: "148px" }}>
+                    <div className="profile-picture-container" style={{ width: "148px", height: "148px" }}>
                       <img
                         src={responseData.imagePath}
                         alt="Profile"
@@ -106,33 +173,9 @@ const PersonalInfo = () => {
                     </div>
                   </span>
                 </span>
-                <div className="photo-edit-btn cursor-pointer" />
+                <div className="photo-edit-btn cursor-pointer " onClick={toggleModal}/>
               </div>
-              <div>
-                <div className="uppy-Container">
-                  <div className="uppy-Root" dir="ltr">
-                    <div
-                      className="uppy-Dashboard uppy-Dashboard--animateOpenClose uppy-Dashboard--modal uppy-Dashboard--isInnerWrapVisible"
-                      data-uppy-theme="light"
-                      data-uppy-num-acquirers={0}
-                      data-uppy-drag-drop-supported="true"
-                      aria-hidden="true"
-                      aria-disabled="false"
-                      aria-label="Dosya Yükle (Kapatmak için Esc)"
-                    >
-                      <div
-                        aria-hidden="true"
-                        className="uppy-Dashboard-overlay"
-                        tabIndex={-1}
-                      />
-                      <div
-                        className="uppy-Dashboard-inner"
-                        aria-modal="true"
-                        role="dialog"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
+              <div>               
               </div>
             </Col>
 

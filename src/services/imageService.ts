@@ -7,7 +7,12 @@ import GetByIdImage from "../models/response/image/GetByIdImage";
 import UpdateResponseImage from "../models/response/image/UpdateResponseImage";
 
 class imageService extends BaseService<
-GetAllImage,GetByIdImage,AddRequestImage,AddResponseImage,UpdateRequestImage,UpdateResponseImage>{
+GetAllImage,
+GetByIdImage,
+AddRequestImage,
+AddResponseImage,
+UpdateRequestImage,
+UpdateResponseImage>{
 
     constructor() {
         super();

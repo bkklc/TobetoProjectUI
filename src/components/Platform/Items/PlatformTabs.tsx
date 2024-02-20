@@ -5,7 +5,7 @@ import AnnouncementsComponent from "./AnnouncementsComponent";
 import ApplicationsComponent from "./ApplicationsComponent";
 import EducationComponent from "./EducationComponent";
 import SurveyComponent from "./SurveyComponent";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 function PlatformTabs() {
 
