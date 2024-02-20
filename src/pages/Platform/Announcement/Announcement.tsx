@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import AnnouncementsComponent from '../../components/Platform/Items/AnnouncementsComponent';
+import AnnouncementsComponent from '../../../components/Platform/Items/AnnouncementsComponent';
 
 const Announcement = () => {
     return (

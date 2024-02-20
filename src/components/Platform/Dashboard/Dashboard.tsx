@@ -7,8 +7,8 @@ import Degerlendirmeler from "../../../pages/Platform/Degerlendirmeler/Degerlend
 import Catalog from "../../../pages/Platform/Catalog/Catalog";
 import {  useLocation } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
-import Courses from "../../../pages/Courses/Courses";
-import Announcement from "../../../pages/Announcement/Announcement";
+import Courses from "../../../pages/Platform/Courses/Courses";
+import Announcement from "../../../pages/Platform/Announcement/Announcement";
 
 
 export default function Dashboard() {

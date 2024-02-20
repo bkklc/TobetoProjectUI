@@ -1,5 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import AboutusComponent from '../../components/Tobeto/About/AboutusComponent'
+import AboutusComponent from '../../../components/Tobeto/About/AboutusComponent'
 
 
 const Aboutus = () => {

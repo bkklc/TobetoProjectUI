@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import IstanbulCoding from '../../pages/IstanbulCoding/IstanbulCoding'
-import Gallery from '../../pages/IstanbulCoding/Gallery/Gallery'
+import IstanbulCoding from '../../pages/Platform/IstanbulCoding/IstanbulCoding'
+import Gallery from '../../pages/Platform/IstanbulCoding/Gallery/Gallery'
 import TobetoRoute from './TobetoRoute/TobetoRoute'
 import Login from '../../pages/Tobeto/Auth/Login'
 import Register from '../../pages/Tobeto/Auth/Register'

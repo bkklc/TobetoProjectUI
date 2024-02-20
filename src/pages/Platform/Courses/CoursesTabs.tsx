@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Tab, Tabs } from 'react-bootstrap';
-import EducationComponent from '../../components/Platform/Items/EducationComponent';
+import EducationComponent from '../../../components/Platform/Items/EducationComponent';
 
 function CoursesTabs() {
     return (
