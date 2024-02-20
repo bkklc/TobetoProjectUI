@@ -18,6 +18,10 @@ function PlatformTabs() {
   const handleButtonClick2= ()=>{
     navigate('/duyurular');
   }
+
+  const handleButtonSurvey= ()=>{
+    navigate('/anketler');
+  }
    
   return (
     <Container>
@@ -41,6 +45,7 @@ function PlatformTabs() {
         </Tab>
         <Tab eventKey="surveys" title="Anketlerim">
           <SurveyComponent />
+          <div className="showMoreBtn" onClick={handleButtonSurvey}>Daha Fazla Göster</div>          
         </Tab>
       </Tabs>
     </Container>

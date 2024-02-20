@@ -3,28 +3,28 @@ import ResponseData from "../../../hooks/ResponseData";
 import surveyService from "../../../services/surveyService";
 import { Modal, Row } from "react-bootstrap";
 
-const SurveyComponent = () => {
-  const surveyResponse = ResponseData(surveyService.getAll(0,3));
-  const [selectedSurvey, setSelectedSurvey] = useState({ name: '', description: '', surveyUrl: ''});
-
-  const handleReadMoreClick = (survey:any) => {
-    setSelectedSurvey({
-      name: survey.name,
-      description: survey.description,
-      surveyUrl: survey.url
-    });
-  };
-
-  const handleCloseModal = () => {
-    setSelectedSurvey({ name: '', description: '',surveyUrl: ''});
-  };
+const SurveyComponentForSurveyPage = () => {
+    const surveyResponse = ResponseData(surveyService.getAll(0,3));
+    const [selectedSurvey, setSelectedSurvey] = useState({ name: '', description: '', surveyUrl: ''});
+  
+    const handleReadMoreClick = (survey:any) => {
+      setSelectedSurvey({
+        name: survey.name,
+        description: survey.description,
+        surveyUrl: survey.url
+      });
+    };
+  
+    const handleCloseModal = () => {
+      setSelectedSurvey({ name: '', description: '',surveyUrl: ''});
+    };
 
 
 
   return (
     <Row>
       {surveyResponse &&
-        surveyResponse.items.slice(0,3).map((survey: any) => (
+        surveyResponse.items.map((survey: any) => (
           // <div className=" noDataCard">
           //   <p>Atanmış herhangi bir anketiniz bulunmamaktadır</p>
           // </div>
@@ -50,6 +50,7 @@ const SurveyComponent = () => {
             </div>
           </div>
         ))}
+        
         {selectedSurvey && (
         <Modal
           size="lg"
@@ -68,4 +69,4 @@ const SurveyComponent = () => {
   );
 };
 
-export default SurveyComponent;
+export default SurveyComponentForSurveyPage;
