@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import tokenDecode from '../../../hooks/tokenDecode';
 import Paginate from '../../../models/paginate';
@@ -18,6 +18,8 @@ function EducationLife() {
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(true);
 
   const [schoolNameData, setSchoolNameData] = useState<Paginate<GetAllSchoolName>>({ items: [] })
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState();
 
   const [formData, setFormData] = useState<AddRequestEducation>(
     {
@@ -47,11 +49,12 @@ function EducationLife() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     educationService
       .add(formData)
       .then(() => {
         GetByLoginUserData(setResponseData);
+        resetForm();
       })
       .catch(error => console.log(error))
   }
@@ -60,6 +63,7 @@ function EducationLife() {
     try {
       await educationService.delete(id)
       GetByLoginUserData(setResponseData);
+      handleCloseModal();
     }
     catch (error) {
       console.error("Veri silme sırasında bir hata meydana geldi:", error)
@@ -83,12 +87,32 @@ function EducationLife() {
     }
   }
 
+  const resetForm = () => {
+    setFormData({
+      UserId: Number(tokenDecode().ID),
+      EducationDegreeId: 0,
+      SchoolNameId: 0,
+      Department: '',
+      StartDate: new Date(),
+      EndDate: new Date()
+    });
+  };
 
   useEffect(() => {
     GetByLoginUserData(setResponseData);
     fetchDegreeName();
     fetchSchoolName();
   }, [])
+
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleDeleteInfo = (desc: any) => {
+    setModalData(desc);
+    setShowModal(true);
+  };
 
   return (
     <Col xs={12} lg={9} style={{ minHeight: "90vh" }}>
@@ -204,14 +228,38 @@ function EducationLife() {
                   <span className="grade-details-content">{data.department}</span>
                 </div>
                 <div>
-                  <span className=" grade-delete" onClick={() => deleteData(data.id)} />
+                  <span className=" grade-delete" onClick={() => handleDeleteInfo(data.id)} />
                 </div>
               </div>
             </div>
           ))
         }
+
+
+        <Modal className='fade alert-modal modal' show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Body>
+            <div className="mw-xl mx-auto ">
+              <div className=" bg-white shadow-lg">
+                <div className="alert-header mx-3">
+                  <span className="alert-icon" />
+                  <span className="alert-close" onClick={handleCloseModal} />
+                </div>
+                <p className="alert-message mx-3">
+                  Seçilen Eğitimi silmek istediğinize emin misiniz?
+                </p>
+                <p className="alert-message-light mx-3">Bu işlem geri alınamaz.</p>
+                <div className="alert-buttons">
+                  <button className="btn btn-no my-3 " onClick={handleCloseModal}>Hayır</button>
+                  <button className="btn btn-yes my-3" onClick={() => deleteData(Number(modalData))}>Evet</button>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </Col>
+
     </Col>
+    
   );
 }
 

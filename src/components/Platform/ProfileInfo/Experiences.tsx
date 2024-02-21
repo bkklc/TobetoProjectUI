@@ -272,7 +272,7 @@ const Experiences = () => {
                 <span className="alert-close" onClick={handleCloseModal2} />
               </div>
               <p className="alert-message mx-3">
-                Seçilen sertifikayı silmek istediğinize emin misiniz?
+                Seçilen Deneyimi silmek istediğinize emin misiniz?
               </p>
               <p className="alert-message-light mx-3">Bu işlem geri alınamaz.</p>
               <div className="alert-buttons">

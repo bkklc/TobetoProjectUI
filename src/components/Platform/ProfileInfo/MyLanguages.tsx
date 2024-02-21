@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { Form, Button, Col, Row } from 'react-bootstrap';
+import { Form, Button, Col, Row, Modal } from 'react-bootstrap';
 import languageService from '../../../services/languageService';
 import GetAllLanguage from '../../../models/response/language/GetAllLanguage';
 import Paginate from '../../../models/paginate';
@@ -11,10 +11,12 @@ import tokenDecode from '../../../hooks/tokenDecode';
 import GetAllResponseUserLanguage from '../../../models/response/userLanguage/GetAllResponseUserLanguage';
 
 interface MyLanguagesProps {
-    // Define any props if needed
+    
 }
 
 const MyLanguages: React.FC<MyLanguagesProps> = () => {
+    const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState();
     const [languages, setLanguages] = useState<Paginate<GetAllLanguage>>({ items: [] });
     const [languagesLevel, setLanguagesLevel] = useState<Paginate<GetAllLanguageLevel>>({ items: [] });
     const [responseData, setResponseData] = useState<Paginate<GetAllResponseUserLanguage>>({ items: [] });
@@ -57,6 +59,7 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
         try {
             await userLanguageService.delete(id)
             fetchData();
+            handleCloseModal();
         }
         catch (error) {
             console.error("Veri silme sırasında bir hata oluştu:", error);
@@ -98,6 +101,16 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
         fetchLanguageLevel();
         fetchData();
     }, []);
+
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+      };
+    
+      const handleDeleteInfo = (desc: any) => {
+        setModalData(desc);
+        setShowModal(true);
+      };
 
     return (
         <div className="col-12 col-lg-9" style={{ minHeight: '90vh' }}>
@@ -148,14 +161,35 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
                                     </div>
                                 </div>
                                 <span className="lang-degree-symbol main-lang" />
-                                <span className="delete-lang" onClick={() => deleteData(data.id)}/>
+                                <span className="delete-lang" onClick={() => handleDeleteInfo(data.id)}/>
                             </div>
                         ))
 
                     }
                 </div>
             </Row>
+            <Modal className='fade alert-modal modal' show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Body>
+            <div className="mw-xl mx-auto ">
+              <div className=" bg-white shadow-lg">
+                <div className="alert-header mx-3">
+                  <span className="alert-icon" />
+                  <span className="alert-close" onClick={handleCloseModal} />
+                </div>
+                <p className="alert-message mx-3">
+                  Seçilen Dili silmek istediğinize emin misiniz?
+                </p>
+                <p className="alert-message-light mx-3">Bu işlem geri alınamaz.</p>
+                <div className="alert-buttons">
+                  <button className="btn btn-no my-3 " onClick={handleCloseModal}>Hayır</button>
+                  <button className="btn btn-yes my-3" onClick={() => deleteData(Number(modalData))}>Evet</button>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
         </div>
+        
     );
 };
 
