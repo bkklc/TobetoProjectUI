@@ -19,7 +19,7 @@ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         localStorage.setItem("Token" , response.data.token)
         navigate("/")
       })
-      .catch(error => console.error(error));
+      
   };
 
   useEffect(() => {

@@ -121,7 +121,7 @@ const PersonalInfo = () => {
     fetchCountries();
   }, [selectedCity]);
 
-
+  selectedCountry;
 
   const toggleModal = () => {
     setIsOpen(!isOpen);

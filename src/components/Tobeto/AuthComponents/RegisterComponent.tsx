@@ -1,6 +1,6 @@
 import { useEffect, useState, FormEvent } from "react";
 import { Button, Form } from "react-bootstrap";
-import testAuthService from "../../../services/authService";
+import AuthService from "../../../services/authService";
 import { RegisterFormData } from "../../../models/auth";
 
 export default function RegisterComponent() {
@@ -14,7 +14,7 @@ export default function RegisterComponent() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    testAuthService
+    AuthService
       .register(formData)
       .then(response => console.log(response))
       .catch(error => console.error(error));

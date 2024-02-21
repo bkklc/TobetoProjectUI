@@ -7,6 +7,8 @@ import AddRequestUserSkill from "../../../models/requests/userSkill/AddRequestUs
 import tokenDecode from "../../../hooks/tokenDecode";
 import userSkillService from "../../../services/userSkillService";
 import GetAllUserSkill, { defaultGetAllUserSkill } from "../../../models/response/userSkill/GetAllUserSkill";
+import { ADDED_SUCCESS, DELETE_SUCCESS } from "../../../contexts/messageContexts";
+import toastr from "toastr";
 
 export default function Abilities() {
   const [skills, setSkills] = useState<Paginate<GetAllSkill>>({ items: [] });
@@ -54,17 +56,25 @@ export default function Abilities() {
     e.preventDefault();
     userSkillService
       .add(formData)
-      .then(() => { fetchData();})
+      .then(() => {     
+        toastr.success(ADDED_SUCCESS);   
+        fetchData();
+        
+      })
       .catch(error => console.log(error))
   };
 
   const deleteData = async (id: number) => {
     await userSkillService.delete(id)
-      .then(() => { fetchData();})
+      .then(() => { 
+        fetchData();
+        toastr.info(DELETE_SUCCESS)
+      })
       .catch(error => console.log(error))
   }
 
   useEffect(() => {
+    
     fetchSkill();
     fetchData();
   }, []);
