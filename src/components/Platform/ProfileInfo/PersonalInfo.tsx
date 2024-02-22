@@ -30,7 +30,7 @@ const PersonalInfo = () => {
   const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [defaultGetAllResponseTown] });
   const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [defaultGetAllCities] });
   const [countries, setCountries] = useState<Paginate<GetAllCountryResponse>>({ items: [defaultGetAllCountries] });
-  const [selectedCity, setSelectedCity] = useState('0');
+  const [selectedCity, setSelectedCity] = useState("0");
   const [isOpen, setIsOpen] = useState(false);
  
 
@@ -60,6 +60,11 @@ const PersonalInfo = () => {
             ImageId: res.data.imageId,
             BirthDate: res.data.birthDate,
           })
+          if(selectedCity === "0") {
+            const initiallySelectedCityId = res.data.addresses.cityId;
+            setSelectedCity(String(initiallySelectedCityId));
+          }
+          
         }
       });
     } catch (error) {
@@ -117,10 +122,9 @@ const PersonalInfo = () => {
     fetchCities();
     fetchTowns();
     fetchCountries();
-     
   }, [selectedCity]);
 
-
+  
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -295,7 +299,7 @@ const PersonalInfo = () => {
                 className="form-select tobeto-input"
                 aria-label=""
                 onChange={handleCityChange}
-                onLoad={() => setSelectedCity(String(responseData.addresses.cityId))}           
+                   
               >
                 <option value="0">İl seçiniz</option>
                 {
@@ -313,7 +317,7 @@ const PersonalInfo = () => {
                 name="town"
                 className="form-select tobeto-input"
                 aria-label=""
-                
+                defaultValue={responseData.addresses.townName}
               >
                 {
                   towns.items.map((town: any) => (
