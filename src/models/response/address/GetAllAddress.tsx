@@ -1,8 +1,24 @@
 export default interface GetAllAddress{
-    Id:number,
-    UserId:number,
-    TownName:string,
-    CityName:string,
-    CountryName:string,
-    Description:string,
+    id:number,
+    userId:number,
+    townName:string,
+    cityName:string,
+    countryName:string,
+    description:string,
+    townId:number,
+    cityId:number,
+    countryId:number
+}
+
+export const defaultGetAllAddress: GetAllAddress = {
+
+    id:0,
+    userId:0,
+    townName:"string",
+    cityName:"string",
+    countryName:"string",
+    description:"string",
+    townId:0,
+    cityId:0,
+    countryId:0
 }

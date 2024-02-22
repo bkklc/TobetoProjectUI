@@ -1,4 +1,4 @@
-import GetAllAddress from "../address/GetAllAddress";
+import GetAllAddress, { defaultGetAllAddress } from "../address/GetAllAddress";
 import GetAllCertificate from "../certificate/GetAllCertificate";
 import GetAllEducation from "../education/GetAllEducation";
 import GetAllExperience from "../experience/GetAllExperience";
@@ -23,7 +23,7 @@ export default interface GetByIdResponseUser {
     userAnnouncements: GetAllResponseUserAnnouncement[]
     experiences: GetAllExperience[]
     userSurveys: GetAllResponseSurvey[]
-    addresses: GetAllAddress[]
+    addresses: GetAllAddress
     educations: GetAllEducation[]
 }
 
@@ -43,6 +43,6 @@ export const defaultUser: GetByIdResponseUser = {
     userAnnouncements: [],
     experiences: [],
     userSurveys: [],
-    addresses: [],
+    addresses: defaultGetAllAddress,
     educations: []
   };

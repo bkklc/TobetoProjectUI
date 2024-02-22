@@ -1,1 +1,1 @@
-export const BASE_API_URL = "https://api.tobeto.hoixi.com.tr/api/";
+export const BASE_API_URL = "http://localhost:5062/api/";

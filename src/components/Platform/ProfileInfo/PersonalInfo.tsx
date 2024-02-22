@@ -24,15 +24,15 @@ import countryService from "../../../services/countryService";
 
 
 const PersonalInfo = () => {
+  
   const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
   const [formData, setFormData] = useState<UpdateRequestUser>(defaultUpdateRequestUser);
   const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [defaultGetAllResponseTown] });
   const [cities, setCities] = useState<Paginate<GetAllCities>>({ items: [defaultGetAllCities] });
   const [countries, setCountries] = useState<Paginate<GetAllCountryResponse>>({ items: [defaultGetAllCountries] });
   const [selectedCity, setSelectedCity] = useState('0');
-  const [selectedCountry, setSelectedCountry] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
-
+ 
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -110,18 +110,17 @@ const PersonalInfo = () => {
     setSelectedCity(event.target.value);
   };
 
-  const handleCountryChange = (event: any) => {
-    setSelectedCountry(event.target.value);
-  };
+
 
   useEffect(() => {
     fetchData();
     fetchCities();
     fetchTowns();
     fetchCountries();
+     
   }, [selectedCity]);
 
-  selectedCountry;
+
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -175,6 +174,8 @@ const PersonalInfo = () => {
 
     
   });
+
+
 
   return (
     <>
@@ -273,13 +274,16 @@ const PersonalInfo = () => {
               <Form.Select
                 name="country"
                 className="form-select tobeto-input"
-                aria-label=""
-                onChange={handleCountryChange}
+                aria-label=""                
               >
                 <option value="0">Ülke seçiniz</option>
                 {
-                  countries.items.map((country: any) => (
-                    <option value={country.id}>{country.name}</option>
+                  countries.items.map((country: any) => (                  
+
+                      (country.id == responseData.addresses.countryId) ? 
+                      (<option value={country.id} id={country.id} selected>{country.name}</option>) : 
+                      (<option value={country.id} id={country.id}>{country.name}</option>)               
+               
                   ))
                 }
               </Form.Select>
@@ -291,11 +295,14 @@ const PersonalInfo = () => {
                 className="form-select tobeto-input"
                 aria-label=""
                 onChange={handleCityChange}
+                onLoad={() => setSelectedCity(String(responseData.addresses.cityId))}           
               >
                 <option value="0">İl seçiniz</option>
                 {
                   cities.items.map((city: any) => (
-                    <option value={city.id}>{city.name}</option>
+                      (city.id === responseData.addresses.cityId) ? 
+                      (<option value={city.id} id={city.id} selected>{city.name}</option>) : 
+                      (<option value={city.id} id={city.id}>{city.name}</option>)
                   ))
                 }
               </Form.Select>
@@ -306,11 +313,14 @@ const PersonalInfo = () => {
                 name="town"
                 className="form-select tobeto-input"
                 aria-label=""
-
+                
               >
                 {
                   towns.items.map((town: any) => (
-                    <option>{town.name}</option>
+                    /*<option id={town.id}>{town.name}</option>*/
+
+                      (town.id === responseData.addresses.townId) ? (<option id={town.id} selected>{town.name}</option>) : (<option id={town.id}>{town.name}</option>)
+
                   ))
                 }
               </Form.Select>

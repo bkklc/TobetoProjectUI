@@ -4,3 +4,11 @@ export default interface GetAllCertificate{
     Path:string,
     Filename:string,
 }
+
+export const defaultGetAllCertificate: GetAllCertificate = {
+
+    Id:0,
+    UserId:0,
+    Path:"string",
+    Filename:"string",
+}
