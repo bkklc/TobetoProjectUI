@@ -118,7 +118,8 @@ const SocialMedia = () => {
                   type="text"
                   defaultValue={data.url}
                 />
-                <Button className="btn social-delete" onClick={() => deleteData(data.id)} />
+                
+                <button className="btn social-delete bg-white" onClick={() => deleteData(data.id)} />
               </div>
             </div>
           ))

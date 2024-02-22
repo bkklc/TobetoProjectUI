@@ -204,7 +204,7 @@ const Announcement = () => {
 
 
 <ul
-                className="pagination justify-content-center"
+                className="pagination justify-content-center mb-60"
                 role="navigation"
                 aria-label="Pagination"
             >

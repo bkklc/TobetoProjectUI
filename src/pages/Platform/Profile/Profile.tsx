@@ -2,11 +2,10 @@ import { Row } from "react-bootstrap";
 import ProfileRight from "../../../components/Platform/Profile/RightProfile";
 import LeftProfile from "../../../components/Platform/Profile/LeftProfile";
 import { useEffect, useState } from "react";
-import tokenDecode from "../../../hooks/tokenDecode";
-import userService from "../../../services/userService";
 import { PencilSquare, Share } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import GetByIdResponseUser, { defaultUser } from "../../../models/response/user/GetByIdResponseUser";
+import GetByLoginUserData from "../../../hooks/getByIdUserHook";
 
 
 const Profile = () => {
@@ -14,17 +13,7 @@ const Profile = () => {
 
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await userService.getById(tokenDecode().ID);
-        setResponseData(response.data);
-
-      } catch (error) {
-        console.error("Veri çekme sırasında bir hata oluştu:", error);
-      }
-    };
-
-    fetchData();
+    GetByLoginUserData(setResponseData);
   }, []);
 
   return (

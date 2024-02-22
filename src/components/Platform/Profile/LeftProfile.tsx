@@ -14,7 +14,6 @@ interface Props {
 const LeftProfile = (props: Props) => {
   const { responseData } = props;
   const [isOpenModal, setIsOpenModal] = useState(false);
-
   const [userSkill, setUserSkill] = useState<Paginate<GetAllUserSkill>>({ items: [defaultGetAllUserSkill] });
   const [loaded, setLoaded] = useState(false);
 
@@ -164,7 +163,7 @@ const LeftProfile = (props: Props) => {
               </div>
               <div>
                 <div className="skills">
-                  {userSkill.items.map((skill: any) => (
+                  {userSkill.items.slice(0,5).map((skill: any) => (
                     <span className="skill">{skill.skillName}</span>
                   ))}
                 </div>
@@ -182,7 +181,7 @@ const LeftProfile = (props: Props) => {
 
               {
                 responseData.userLanguages.map((data: any) => (
-                  <div className="my-langs">
+                  <div className="my-langs mb-3">
                     <div className="lang w-100">
                       <div className="lang-info">
                         <div className="lang-title ">
@@ -208,22 +207,15 @@ const LeftProfile = (props: Props) => {
               </div>
               <div className="row">
                 <div className="skills">
-                  <span
-                    id="certificate_name"
-                    className="skill d-flex justify-content-between"
-                  >
-                    <span className="me-2 text-truncate">
-                      Bilgi_Teknolojilerine_Giri__Sertifika
+                  {responseData.certificates.map((data:any) => (
+                    <span id="certificate_name" className="skill d-flex justify-content-between">
+                    <span className="me-2 text-truncate ">
+                      {data.fileName}
                     </span>
-                    <span className="me-0 pdf_icon text - center"></span>
+                    <span className="me-0 png_icon text - center" />
                   </span>
-                  <span
-                    id="certificate_name"
-                    className="skill d-flex justify-content-between"
-                  >
-                    <span className="me-2 text-truncate">imagepng</span>
-                    <span className="me-0 png_icon text - center"></span>
-                  </span>
+                  
+                  ))}
                 </div>
               </div>
             </div>
