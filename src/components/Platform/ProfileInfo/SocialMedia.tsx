@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import AddRequestUserSocialMedia from "../../../models/requests/userSocialMedia/AddRequestUserSocialMedia";
 import tokenDecode from "../../../hooks/tokenDecode";
 import { FormEvent, useEffect, useState } from "react";
@@ -7,8 +7,11 @@ import { GetAllSocialMedia } from "../../../models/response/socialMedias/getAllS
 import Paginate from "../../../models/paginate";
 import socialMediaService from "../../../services/socialMediaService";
 import GetAllUserSocialMedia from "../../../models/response/userSocialMedia/GetAllUserSocialMedia";
+import { ADDED_SUCCESS, DELETE_SUCCESS } from "../../../contexts/messageContexts";
 
 const SocialMedia = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState();
   const [socialMedia, setSocialMedia] = useState<Paginate<GetAllSocialMedia>>({ items: [] });
   const [responseData, setResponseData] = useState<Paginate<GetAllUserSocialMedia>>({ items: [] });
   const [formData, setFormData] = useState<AddRequestUserSocialMedia>(
@@ -38,7 +41,7 @@ const SocialMedia = () => {
 
   const fetchSocialMedia = async () => {
     try {
-      await socialMediaService.getAll(0,20).then(
+      await socialMediaService.getAll(0, 20).then(
         (res) => {
           if (res.status === 200) {
             setSocialMedia(res.data)
@@ -54,16 +57,33 @@ const SocialMedia = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     userSocialMediaService
       .add(formData)
-      .then(() => { fetchData(); })
+      .then(() => {
+        
+
+        fetchData();
+        resetForm();
+        toastr.success(ADDED_SUCCESS);
+      })
       .catch(error => console.log(error))
+  };
+
+  const resetForm = () => {
+    setFormData({
+      UserId: Number(tokenDecode().ID),
+      SocialMediaId: 0,
+      Url: ""
+    });
   };
 
   const deleteData = async (id: number) => {
     userSocialMediaService.delete(id)
       .then(() => { fetchData(); })
       .catch(error => console.log(error))
+    handleCloseModal();
+    toastr.info(DELETE_SUCCESS)
   }
 
   useEffect(() => {
@@ -71,6 +91,14 @@ const SocialMedia = () => {
     fetchData();
   }, []);
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleDeleteInfo = (desc: any) => {
+    setModalData(desc);
+    setShowModal(true);
+  };
 
   return (
     <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
@@ -119,14 +147,35 @@ const SocialMedia = () => {
                   defaultValue={data.url}
                 />
                 
-                <button className="btn social-delete bg-white" onClick={() => deleteData(data.id)} />
+                <button className="btn social-delete bg-white" onClick={() => handleDeleteInfo(data.id)} />
               </div>
             </div>
           ))
         }
 
+        <Modal className='fade alert-modal modal' show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Body>
+            <div className="mw-xl mx-auto ">
+              <div className=" bg-white shadow-lg">
+                <div className="alert-header mx-3">
+                  <span className="alert-icon" />
+                  <span className="alert-close" onClick={handleCloseModal} />
+                </div>
+                <p className="alert-message mx-3">
+                  Seçilen Hesabı silmek istediğinize emin misiniz?
+                </p>
+                <p className="alert-message-light mx-3">Bu işlem geri alınamaz.</p>
+                <div className="alert-buttons">
+                  <button className="btn btn-no my-3 " onClick={handleCloseModal}>Hayır</button>
+                  <button className="btn btn-yes my-3" onClick={() => deleteData(Number(modalData))}>Evet</button>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </Col>
     </Col>
+
   );
 };
 

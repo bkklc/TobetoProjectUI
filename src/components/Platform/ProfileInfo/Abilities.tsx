@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import skillService from "../../../services/skillService";
 import Paginate from "../../../models/paginate";
 import { FormEvent, useEffect, useState } from "react";
@@ -11,6 +11,9 @@ import { ADDED_SUCCESS, DELETE_SUCCESS } from "../../../contexts/messageContexts
 import toastr from "toastr";
 
 export default function Abilities() {
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState();
   const [skills, setSkills] = useState<Paginate<GetAllSkill>>({ items: [] });
   const [responseData, setResponseData] = useState<Paginate<GetAllUserSkill>>({ items: [defaultGetAllUserSkill] });
   const [formData, setFormData] = useState<AddRequestUserSkill>(
@@ -39,7 +42,7 @@ export default function Abilities() {
 
   const fetchSkill = async () => {
     try {
-      await skillService.getAll(0,20).then(
+      await skillService.getAll(0, 20).then(
         (res) => {
           if (res.status === 200) {
             setSkills(res.data)
@@ -56,29 +59,38 @@ export default function Abilities() {
     e.preventDefault();
     userSkillService
       .add(formData)
-      .then(() => {     
-        toastr.success(ADDED_SUCCESS);   
+      .then(() => {
+        toastr.success(ADDED_SUCCESS);
         fetchData();
-        
+
       })
       .catch(error => console.log(error))
   };
 
   const deleteData = async (id: number) => {
     await userSkillService.delete(id)
-      .then(() => { 
+      .then(() => {
         fetchData();
+        handleCloseModal();
         toastr.info(DELETE_SUCCESS)
       })
       .catch(error => console.log(error))
   }
 
   useEffect(() => {
-    
+
     fetchSkill();
     fetchData();
   }, []);
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleDeleteInfo = (desc: any) => {
+    setModalData(desc);
+    setShowModal(true);
+  };
 
   return (
     <Col md={9}>
@@ -112,13 +124,33 @@ export default function Abilities() {
                   <div className="grade-details-col">
                     <span className="grade-details-content">{data.skillName}</span>
                   </div>
-                  <span className=" grade-delete g-del" onClick={() => deleteData(data.id)}/>
+                  <span className=" grade-delete g-del" onClick={() => handleDeleteInfo(data.id)} />
                 </div>
               </div>
+
             </Col>
           ))
         }
-
+        <Modal className='fade alert-modal modal' show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Body>
+            <div className="mw-xl mx-auto ">
+              <div className=" bg-white shadow-lg">
+                <div className="alert-header mx-3">
+                  <span className="alert-icon" />
+                  <span className="alert-close" onClick={handleCloseModal} />
+                </div>
+                <p className="alert-message mx-3">
+                  Seçilen Yetkinliği silmek istediğinize emin misiniz?
+                </p>
+                <p className="alert-message-light mx-3">Bu işlem geri alınamaz.</p>
+                <div className="alert-buttons">
+                  <button className="btn btn-no my-3 " onClick={handleCloseModal}>Hayır</button>
+                  <button className="btn btn-yes my-3" onClick={() => deleteData(Number(modalData))}>Evet</button>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       </Container>
     </Col>
   );

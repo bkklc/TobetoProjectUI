@@ -15,8 +15,9 @@ import { Modal } from 'react-bootstrap';
 
 const Experiences = () => {
   const [showModal, setShowModal] = useState(false);
-  const cityResponse = ResponseData(cityService.getAll(0,81));
-  const [modalData, setModalData] = useState();
+  const [showModal2, setShowModal2] = useState(false);
+  const cityResponse = ResponseData(cityService.getAll(0, 81));
+  const [modalData, setModalData] = useState<string | undefined>();
   const [isEndDateEnabled, setIsEndDateEnabled] = useState(false);
   const [formData, setFormData] = useState<AddRequestExperience>(
     {
@@ -35,6 +36,20 @@ const Experiences = () => {
     experienceService
       .add(formData)
       .then(() => {
+        // Form verilerini sıfırla
+        setFormData({
+          UserId: Number(tokenDecode().ID),
+          CityId: 0,
+          CompanyName: '',
+          Position: '',
+          Sector: '',
+          Description: '',
+          StartDate: new Date(),
+          EndDate: null
+        });
+
+        // Diğer state'leri de sıfırla
+        setIsEndDateEnabled(false);
         fetchData();
       })
       .catch(error => console.log(error))
@@ -44,6 +59,7 @@ const Experiences = () => {
     try {
       await experienceService.delete(id)
       fetchData();
+      handleCloseModal2();
     }
     catch (error) {
       console.error("Veri silme sırasında bir hata oluştu:", error);
@@ -71,15 +87,24 @@ const Experiences = () => {
     fetchData();
   }, []);
 
-  const handleInfoClick = (desc:any) => {
+  const handleInfoClick = (desc: any) => {
     setModalData(desc);
     setShowModal(true);
   };
+
+
 
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
+  const handleDeleteInfo = (desc: any) => {
+    setModalData(desc);
+    setShowModal2(true);
+  };
+  const handleCloseModal2 = () => {
+    setShowModal2(false);
+  };
 
   return (
     <Col xs={12} lg={9} style={{ minHeight: '90vh' }}>
@@ -124,10 +149,17 @@ const Experiences = () => {
               name="CityId"
               className="form-select tobeto-input"
               aria-label=""
-              onChange={e => setFormData({ ...formData, CityId: Number(e.target.options[e.target.selectedIndex].id) })}>
-              <option id='0' value="">İl Seçiniz</option>
+              value={formData.CityId || ''}
+              onChange={(e) => setFormData({ ...formData, CityId: Number(e.target.value) })}
+            >
+              <option value="">İl Seçiniz</option>
               {cityResponse && (cityResponse.items.map((cities: any) => (
-                <option key={cities.id} value={cities.id} id={cities.id}>{cities.name}</option>
+                <option
+                  key={cities.id}
+                  value={cities.id}
+                >
+                  {cities.name}
+                </option>
               )))}
             </Form.Select>
           </Col>
@@ -206,7 +238,7 @@ const Experiences = () => {
                   <span className="grade-details-content">{data.cityName}</span>
                 </div>
                 <div>
-                  <span className=" grade-delete" onClick={() => deleteData(data.id)} />
+                  <span className=" grade-delete" onClick={() => handleDeleteInfo(data.id)} />
                   <span className=" grade-info" onClick={() => handleInfoClick(data.description)} />
                 </div>
               </div>
@@ -228,6 +260,28 @@ const Experiences = () => {
             Kapat
           </Button>
         </Modal.Footer>
+      </Modal>
+
+
+      <Modal className='fade alert-modal modal' show={showModal2} onHide={handleCloseModal2} centered>
+        <Modal.Body>
+          <div className="mw-xl mx-auto ">
+            <div className=" bg-white shadow-lg">
+              <div className="alert-header mx-3">
+                <span className="alert-icon" />
+                <span className="alert-close" onClick={handleCloseModal2} />
+              </div>
+              <p className="alert-message mx-3">
+                Seçilen Deneyimi silmek istediğinize emin misiniz?
+              </p>
+              <p className="alert-message-light mx-3">Bu işlem geri alınamaz.</p>
+              <div className="alert-buttons">
+                <button className="btn btn-no my-3 " onClick={handleCloseModal2}>Hayır</button>
+                <button className="btn btn-yes my-3" onClick={() => deleteData(Number(modalData))}>Evet</button>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
       </Modal>
     </Col>
 
