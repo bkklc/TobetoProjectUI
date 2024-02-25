@@ -11,6 +11,8 @@ import educationService from '../../../services/educationService';
 import schoolNameService from '../../../services/schoolNameService';
 import GetByLoginUserData from '../../../hooks/getByIdUserHook';
 import GetByIdResponseUser, { defaultUser } from '../../../models/response/user/GetByIdResponseUser';
+import { ADDED_SUCCESS, DELETE_SUCCESS } from '../../../contexts/messageContexts';
+import toastr from "toastr";
 
 function EducationLife() {
   const [educationDegreeData, setEducationDegreeData] = useState<Paginate<GetAllEducationDegree>>({ items: [] })
@@ -53,6 +55,7 @@ function EducationLife() {
     educationService
       .add(formData)
       .then(() => {
+        toastr.success(ADDED_SUCCESS);
         GetByLoginUserData(setResponseData);
         resetForm();
       })
@@ -64,6 +67,7 @@ function EducationLife() {
       await educationService.delete(id)
       GetByLoginUserData(setResponseData);
       handleCloseModal();
+      toastr.info(DELETE_SUCCESS)
     }
     catch (error) {
       console.error("Veri silme sırasında bir hata meydana geldi:", error)

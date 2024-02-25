@@ -10,7 +10,8 @@ import experienceService from '../../../services/experienceService';
 import GetAllExperience from '../../../models/response/experience/GetAllExperience';
 import Paginate from '../../../models/paginate';
 import { Modal } from 'react-bootstrap';
-
+import { ADDED_SUCCESS, DELETE_SUCCESS } from "../../../contexts/messageContexts";
+import toastr from "toastr";
 //
 
 const Experiences = () => {
@@ -51,6 +52,7 @@ const Experiences = () => {
         // Diğer state'leri de sıfırla
         setIsEndDateEnabled(false);
         fetchData();
+        toastr.success(ADDED_SUCCESS);
       })
       .catch(error => console.log(error))
   };
@@ -60,6 +62,7 @@ const Experiences = () => {
       await experienceService.delete(id)
       fetchData();
       handleCloseModal2();
+      toastr.info(DELETE_SUCCESS)
     }
     catch (error) {
       console.error("Veri silme sırasında bir hata oluştu:", error);

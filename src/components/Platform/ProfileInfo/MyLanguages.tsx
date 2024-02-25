@@ -9,7 +9,8 @@ import AddRequestUserLanguage from '../../../models/requests/userLanguage/AddReq
 import userLanguageService from '../../../services/userLanguageService';
 import tokenDecode from '../../../hooks/tokenDecode';
 import GetAllResponseUserLanguage from '../../../models/response/userLanguage/GetAllResponseUserLanguage';
-
+import { ADDED_SUCCESS, DELETE_SUCCESS } from "../../../contexts/messageContexts";
+import toastr from "toastr";
 interface MyLanguagesProps {
     
 }
@@ -51,7 +52,10 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
         e.preventDefault();
         userLanguageService
             .add(formData)
-            .then(() => { fetchData();})
+            .then(() => { 
+                fetchData();
+                toastr.success(ADDED_SUCCESS);
+            })
             .catch(error => console.log(error))
     };
 
@@ -60,6 +64,7 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
             await userLanguageService.delete(id)
             fetchData();
             handleCloseModal();
+            toastr.info(DELETE_SUCCESS)
         }
         catch (error) {
             console.error("Veri silme sırasında bir hata oluştu:", error);

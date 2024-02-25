@@ -21,7 +21,8 @@ import "@uppy/dashboard/dist/style.css";
 import imageService from "../../../services/imageService";
 import { GetAllCountryResponse, defaultGetAllCountries } from "../../../models/response/country/GetAllCountryResponse";
 import countryService from "../../../services/countryService";
-
+import toastr from "toastr";
+import { UPDATE_SUCCESS } from "../../../contexts/messageContexts";
 
 const PersonalInfo = () => {
   
@@ -40,6 +41,7 @@ const PersonalInfo = () => {
       .update(formData)
       .then(() => {
         fetchData();
+        toastr.success(UPDATE_SUCCESS);
       })
       .catch((error) => console.log(error));
   };
