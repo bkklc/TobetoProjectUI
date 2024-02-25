@@ -1,7 +1,7 @@
 export default interface GetAllClassroomStudents {
-    Id: number,
-    ClassroomGroupId: number,
-    StudentId: number,
-    ClassroomGroupName: string,
+    id: number,
+    classroomGroupId: number,
+    studentId: number,
+    classroomGroupName: string,
     //Student:GetAllStudents
 }

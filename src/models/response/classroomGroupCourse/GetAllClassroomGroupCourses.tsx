@@ -1,5 +1,11 @@
 export default interface GetAllClassroomGroupCourses {
-    Id: number,
-    ClassroomGroupName: string,
-    CourseName: string
+    id: number,
+    classroomGroupName: string,
+    courseName: string
+}
+
+export const defaultGetAllClassroomGroupCourses: GetAllClassroomGroupCourses = {
+    id: 0,
+    classroomGroupName: "string",
+    courseName: "string"
 }

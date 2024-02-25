@@ -3,20 +3,14 @@ import { Link } from "react-router-dom";
 import PlatformTabs from "../../../components/Platform/Items/PlatformTabs";
 import PageUrl from "../../../hooks/PageUrl";
 import tokenDecode from "../../../hooks/tokenDecode";
-import userService from "../../../services/userService";
-import ResponseData from "../../../hooks/ResponseData";
 import { useState } from 'react';
 
 
 function Homepage() {
-  const responseData = ResponseData(userService.getAll(0,20));
-
-
   const [showModal, setShowModal] = useState(false);
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
-  console.log(responseData && responseData.items[0].firstName);
 
   const url = PageUrl();
   return (
