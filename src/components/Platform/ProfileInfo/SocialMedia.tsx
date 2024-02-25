@@ -61,7 +61,7 @@ const SocialMedia = () => {
     userSocialMediaService
       .add(formData)
       .then(() => {
-        
+
 
         fetchData();
         resetForm();
@@ -80,7 +80,12 @@ const SocialMedia = () => {
 
   const deleteData = async (id: number) => {
     userSocialMediaService.delete(id)
-      .then(() => { fetchData(); })
+      .then((res) => {
+        fetchData();
+        if (res.status === 200) {
+          toastr.success(ADDED_SUCCESS);
+        }
+      })
       .catch(error => console.log(error))
     handleCloseModal();
     toastr.info(DELETE_SUCCESS)
@@ -146,7 +151,7 @@ const SocialMedia = () => {
                   type="text"
                   defaultValue={data.url}
                 />
-                
+
                 <button className="btn social-delete bg-white" onClick={() => handleDeleteInfo(data.id)} />
               </div>
             </div>

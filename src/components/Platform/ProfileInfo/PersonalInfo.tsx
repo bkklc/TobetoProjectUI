@@ -118,9 +118,12 @@ const PersonalInfo = () => {
   };
 
 
-
   useEffect(() => {
     fetchData();
+  },[])
+
+  useEffect(() => {
+    
     fetchCities();
     fetchTowns();
     fetchCountries();
@@ -338,7 +341,7 @@ const PersonalInfo = () => {
                 rows={5}
                 name="address"
                 className="form-control tobeto-input"
-                defaultValue={""}
+                defaultValue={responseData.addresses.description}
               />
             </Col>
             <div className="col-12 mb-6">

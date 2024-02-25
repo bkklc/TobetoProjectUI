@@ -36,7 +36,7 @@ const Experiences = () => {
     e.preventDefault();
     experienceService
       .add(formData)
-      .then(() => {
+      .then((res) => {
         // Form verilerini sıfırla
         setFormData({
           UserId: Number(tokenDecode().ID),
@@ -52,7 +52,9 @@ const Experiences = () => {
         // Diğer state'leri de sıfırla
         setIsEndDateEnabled(false);
         fetchData();
-        toastr.success(ADDED_SUCCESS);
+        if(res.status === 200) {
+          toastr.success(ADDED_SUCCESS);
+        }  
       })
       .catch(error => console.log(error))
   };

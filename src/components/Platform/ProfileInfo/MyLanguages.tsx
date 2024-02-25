@@ -52,9 +52,11 @@ const MyLanguages: React.FC<MyLanguagesProps> = () => {
         e.preventDefault();
         userLanguageService
             .add(formData)
-            .then(() => { 
+            .then((res) => { 
                 fetchData();
-                toastr.success(ADDED_SUCCESS);
+                if(res.status === 200) {
+                    toastr.success(ADDED_SUCCESS);
+                  }  
             })
             .catch(error => console.log(error))
     };
