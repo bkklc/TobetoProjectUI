@@ -54,8 +54,10 @@ function EducationLife() {
   
     educationService
       .add(formData)
-      .then(() => {
-        toastr.success(ADDED_SUCCESS);
+      .then((res) => {
+        if(res.status === 200) {
+          toastr.success(ADDED_SUCCESS);
+        }  
         GetByLoginUserData(setResponseData);
         resetForm();
       })

@@ -14,10 +14,10 @@ export const defaultGetAllAddress: GetAllAddress = {
 
     id:0,
     userId:0,
-    townName:"string",
-    cityName:"string",
-    countryName:"string",
-    description:"string",
+    townName:"",
+    cityName:"",
+    countryName:"",
+    description:"",
     townId:0,
     cityId:0,
     countryId:0

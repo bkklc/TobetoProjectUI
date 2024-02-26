@@ -59,8 +59,10 @@ export default function Abilities() {
     e.preventDefault();
     userSkillService
       .add(formData)
-      .then(() => {
-        toastr.success(ADDED_SUCCESS);
+      .then((res) => {
+        if(res.status === 200) {
+          toastr.success(ADDED_SUCCESS);
+        }   
         fetchData();
 
       })

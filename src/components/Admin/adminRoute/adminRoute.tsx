@@ -1,11 +1,21 @@
-import AdminNavbar from '../adminNavbar/adminNavbar'
-import AdminSidebar from '../adminSidebar/adminSidebar'
+import { Route, Routes } from "react-router-dom";
+import NavbarComponent from "../../Platform/Navbar/NavbarComponent";
+import Footer from "../../Platform/Footer/Footer";
+import ProtectedRoute from "../../Platform/ProtectedRoute/ProtectedRoute";
+import AdminProtectedRoute from "../adminProtectedRoute/adminProtectedRoute";
 
-export default function AdminRoute() {
+type Props = {
+  element: any;
+  path: string;
+};
+
+
+export default function AdminRoute(props: Props) {
   return (
-    <>
-      <AdminNavbar />
-      <AdminSidebar />
+    <>           
+        <Routes>
+          <Route path={props.path} element={<ProtectedRoute><AdminProtectedRoute><NavbarComponent />{props.element}<Footer /></AdminProtectedRoute></ProtectedRoute>}></Route>
+        </Routes>
     </>
 
   )

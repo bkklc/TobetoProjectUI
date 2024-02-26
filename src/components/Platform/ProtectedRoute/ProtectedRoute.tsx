@@ -18,7 +18,7 @@ const ProtectedRoute = (props: Props) => {
 		{
 			localStorage.removeItem("Token");
 		}
-	}, []);
+	});
 
 	return <>{props.children}</>;
 };
