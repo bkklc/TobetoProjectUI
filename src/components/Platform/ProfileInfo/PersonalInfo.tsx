@@ -24,8 +24,11 @@ import countryService from "../../../services/countryService";
 import toastr from "toastr";
 import { UPDATE_SUCCESS } from "../../../contexts/messageContexts";
 
+import UpdateRequestAddress, { defaultUpdateRequestAddress } from "../../../models/requests/address/UpdateRequestAddress";
+import addressService from "../../../services/addressService";
+
 const PersonalInfo = () => {
-  
+
   const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
   const [formData, setFormData] = useState<UpdateRequestUser>(defaultUpdateRequestUser);
   const [towns, setTowns] = useState<Paginate<GetAllResponseTown>>({ items: [defaultGetAllResponseTown] });
@@ -33,7 +36,7 @@ const PersonalInfo = () => {
   const [countries, setCountries] = useState<Paginate<GetAllCountryResponse>>({ items: [defaultGetAllCountries] });
   const [selectedCity, setSelectedCity] = useState("0");
   const [isOpen, setIsOpen] = useState(false);
- 
+  const [addressFormData, setAddressFormData] = useState<UpdateRequestAddress>(defaultUpdateRequestAddress);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +46,9 @@ const PersonalInfo = () => {
         fetchData();
         toastr.success(UPDATE_SUCCESS);
       })
+      .catch((error) => console.log(error));
+
+      addressService.update(addressFormData)
       .catch((error) => console.log(error));
   };
 
@@ -62,11 +68,20 @@ const PersonalInfo = () => {
             ImageId: res.data.imageId,
             BirthDate: res.data.birthDate,
           })
-          if(selectedCity === "0") {
+
+          if (selectedCity === "0") {
             const initiallySelectedCityId = res.data.addresses.cityId;
             setSelectedCity(String(initiallySelectedCityId));
           }
-          
+
+          setAddressFormData({
+            id: res.data.addresses.id,
+            userId: res.data.addresses.userId,
+            townId: res.data.addresses.townId,
+            cityId: res.data.addresses.cityId,
+            countryId: res.data.addresses.countryId,
+            description: res.data.addresses.description,
+          })
         }
       });
     } catch (error) {
@@ -120,16 +135,18 @@ const PersonalInfo = () => {
 
   useEffect(() => {
     fetchData();
-  },[])
+  }, [])
+
+
 
   useEffect(() => {
-    
+
     fetchCities();
     fetchTowns();
     fetchCountries();
   }, [selectedCity]);
 
-  
+
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -171,26 +188,26 @@ const PersonalInfo = () => {
 
     else {
       userService.getById(tokenDecode().ID)
-      .then(res => {
-        imageService.update({
-          Id:res.data.imageId,
-          Path:response.body.sitePath,
-          Name: file.name,
+        .then(res => {
+          imageService.update({
+            Id: res.data.imageId,
+            Path: response.body.sitePath,
+            Name: file.name,
+          })
+          fetchData();
         })
-        fetchData();
-      })
     }
 
-    
+
   });
 
 
 
   return (
     <>
-    
+
       <Col className="col-12 col-lg-9" style={{ minHeight: "90vh" }}>
-      <DashboardModal uppy={uppy} open={isOpen} closeModalOnClickOutside onRequestClose={toggleModal} />
+        <DashboardModal uppy={uppy} open={isOpen} closeModalOnClickOutside onRequestClose={toggleModal} />
         <Form data-hs-cf-bound="true" onSubmit={handleSubmit}>
           <Row className="mb-2">
             <Col mb={6} md={12} className="text-center">
@@ -206,9 +223,9 @@ const PersonalInfo = () => {
                     </div>
                   </span>
                 </span>
-                <div className="photo-edit-btn cursor-pointer " onClick={toggleModal}/>
+                <div className="photo-edit-btn cursor-pointer " onClick={toggleModal} />
               </div>
-              <div>               
+              <div>
               </div>
             </Col>
 
@@ -283,16 +300,17 @@ const PersonalInfo = () => {
               <Form.Select
                 name="country"
                 className="form-select tobeto-input"
-                aria-label=""                
+                aria-label=""
+                onChange={e => setAddressFormData({ ...addressFormData, countryId: Number(e.target.value) })}
               >
                 <option value="0">Ülke seçiniz</option>
                 {
-                  countries.items.map((country: any) => (                  
+                  countries.items.map((country: any) => (
 
-                      (country.id == responseData.addresses.countryId) ? 
-                      (<option value={country.id} id={country.id} selected>{country.name}</option>) : 
-                      (<option value={country.id} id={country.id}>{country.name}</option>)               
-               
+                    (country.id == responseData.addresses.countryId) ?
+                      (<option value={country.id} id={country.id} selected>{country.name}</option>) :
+                      (<option value={country.id} id={country.id}>{country.name}</option>)
+
                   ))
                 }
               </Form.Select>
@@ -303,14 +321,17 @@ const PersonalInfo = () => {
                 name="city"
                 className="form-select tobeto-input"
                 aria-label=""
-                onChange={handleCityChange}
-                   
+                onChange={e => {
+                  handleCityChange
+                  setAddressFormData({ ...addressFormData, cityId: Number(e.target.value) })
+                }}
+
               >
                 <option value="0">İl seçiniz</option>
                 {
                   cities.items.map((city: any) => (
-                      (city.id === responseData.addresses.cityId) ? 
-                      (<option value={city.id} id={city.id} selected>{city.name}</option>) : 
+                    (city.id === responseData.addresses.cityId) ?
+                      (<option value={city.id} id={city.id} selected>{city.name}</option>) :
                       (<option value={city.id} id={city.id}>{city.name}</option>)
                   ))
                 }
@@ -323,12 +344,13 @@ const PersonalInfo = () => {
                 className="form-select tobeto-input"
                 aria-label=""
                 defaultValue={responseData.addresses.townName}
+                onChange={e => setAddressFormData({ ...addressFormData, townId: Number(e.target.value) })}
               >
                 {
                   towns.items.map((town: any) => (
                     /*<option id={town.id}>{town.name}</option>*/
 
-                      (town.id === responseData.addresses.townId) ? (<option id={town.id} selected>{town.name}</option>) : (<option id={town.id}>{town.name}</option>)
+                    (town.id === responseData.addresses.townId) ? (<option id={town.id} selected>{town.name}</option>) : (<option id={town.id}>{town.name}</option>)
 
                   ))
                 }
@@ -342,6 +364,7 @@ const PersonalInfo = () => {
                 name="address"
                 className="form-control tobeto-input"
                 defaultValue={responseData.addresses.description}
+                onChange={e => setAddressFormData({ ...addressFormData, description: e.target.value })}
               />
             </Col>
             <div className="col-12 mb-6">

@@ -29,7 +29,7 @@ function NavbarComponent() {
     if (tokenDecode()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
 
       return (
-        <Dropdown.Item eventKey={1.2} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"} onClick={handleClose}>Admin</Dropdown.Item>
+        <Nav.Link as={Link} to={"/kurumsal"} className={(url === "/kurumsal" ? "nav-active" : "")}>Kurumsal</Nav.Link>
       )
     }
   }
@@ -56,6 +56,7 @@ function NavbarComponent() {
             <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog" ? "nav-active" : "")} onClick={handleClose}>Katalog</Nav.Link>
             <Nav.Link as={Link} to={"/takvim"} className={(url === "/takvim" ? "nav-active" : "")} onClick={handleClose}>Takvim</Nav.Link>
             <Nav.Link as={Link} to={"/istanbul-kodluyor"} className={(url === "/istanbul-kodluyor" ? "nav-active" : "")} onClick={handleClose}>İstanbul Kodluyor</Nav.Link>
+            {adminControl()}
           </Nav>
           <div className='my-3 py-3 border-top border-light align-items-center d-flex align-items-center'>
             <div className="btn-group header-avatar w-100">
@@ -76,7 +77,7 @@ function NavbarComponent() {
                   }
                   id="basic-nav-dropdown">
                   <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"} onClick={handleClose}>Profil Bilgileri</Dropdown.Item>
-                  {adminControl()}
+                  
                   <Dropdown.Item eventKey={1.3} onClick={handleLogout}>
                     <i className="fa fa-sign-out"></i> Logout
                   </Dropdown.Item>
@@ -115,6 +116,7 @@ function NavbarComponent() {
               <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog" ? "nav-active" : "")}>Katalog</Nav.Link>
               <Nav.Link as={Link} to={"/takvim"} className={(url === "/takvim" ? "nav-active" : "")}>Takvim</Nav.Link>
               <Nav.Link as={Link} to={"/istanbul-kodluyor"} className={(url === "/istanbul-kodluyor" ? "nav-active" : "")}>İstanbul Kodluyor</Nav.Link>
+              {adminControl()}
             </Nav>
 
           </Navbar.Collapse>
@@ -151,7 +153,7 @@ function NavbarComponent() {
                 }
                 id="basic-nav-dropdown">
                 <Dropdown.Item eventKey={1.1} as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"}>Profil Bilgileri</Dropdown.Item>
-                {adminControl()}
+                
                 <Dropdown.Item eventKey={1.3} onClick={handleLogout}>
                   <i className="fa fa-sign-out"></i> Logout
                 </Dropdown.Item>

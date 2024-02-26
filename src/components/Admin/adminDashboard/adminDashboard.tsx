@@ -1,10 +1,8 @@
-import { Route, Routes } from "react-router-dom";
 import AdminRoute from "../adminRoute/adminRoute";
+import AdminPage from "../../../pages/Admin/AdminPage/AdminPage";
 
 export default function AdminDashboard() {
   return (
-    <Routes>
-        <Route path="/admin" element={<AdminRoute/>}/>
-    </Routes>   
+    <AdminRoute path="/kurumsal" element={<AdminPage/>}/>
   )
 }
