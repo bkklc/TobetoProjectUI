@@ -10,6 +10,7 @@ import { useLayoutEffect } from 'react';
 import Courses from "../../../pages/Platform/Courses/Courses";
 import Announcement from "../../../pages/Platform/Announcement/Announcement";
 import Survey from "../../../pages/Platform/Survey/Survey";
+import CourseDetail from "../../../pages/Platform/CourseDetail/CourseDetail";
 
 
 export default function Dashboard() {
@@ -33,6 +34,7 @@ export default function Dashboard() {
       <DashboardRoute path="/eğitimlerim" element={<Courses />} />
       <DashboardRoute path="/duyurular" element={<Announcement />} />
       <DashboardRoute path="/anketler" element={<Survey />} />
+      <DashboardRoute path="/lms" element={<CourseDetail />} />
 
     </WrapperWrapper>
   )
