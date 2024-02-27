@@ -4,3 +4,10 @@ export interface GetAllUserBadge {
   badgeId: number;
   badgeName: string;
 }
+
+export const defaultGetAllUserBadge: GetAllUserBadge = {
+  id: 0,
+  userId: 0,
+  badgeId: 0,
+  badgeName: ""
+}
