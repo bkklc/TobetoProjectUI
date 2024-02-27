@@ -24,7 +24,7 @@ const EducationComponent = () => {
               className="card-img"
               style={{
                 backgroundImage:
-                  'url("https://tobeto.s3.cloud.ngn.com.tr/23_MES_6_6c76eef420.jpg")',
+                  'url("'+education.imagePath+'")',
               }}
             />
             <div className="card-content">

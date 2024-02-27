@@ -29,7 +29,7 @@ function NavbarComponent() {
     if (tokenDecode()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
 
       return (
-        <Nav.Link as={Link} to={"/kurumsal"} className={(url === "/kurumsal" ? "nav-active" : "")}>Kurumsal</Nav.Link>
+        <Nav.Link as={Link} to={"/kurumsal/egitimler"} className={(url === "/kurumsal/egitimler" ? "nav-active" : "")}>Kurumsal</Nav.Link>
       )
     }
   }

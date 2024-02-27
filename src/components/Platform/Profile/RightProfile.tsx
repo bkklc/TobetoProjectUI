@@ -157,7 +157,7 @@ const ProfileRight = () => {
       <div className=" before">
         <div className="content">
           <ul>
-            <li> {education.startDate} {"/"} - {education.endDate}  </li>
+            <li> {parseInt(education.startDate.slice(0, 4))} {"/"} {parseInt(education.endDate.slice(0, 4))}  </li>
             <li className="text-truncate" >
               {education.schoolNameName}
             </li>
@@ -175,7 +175,7 @@ const ProfileRight = () => {
       <div className=" after">
         <div className="content">
           <ul>
-            <li> {experience.startDate} {"/"} - {experience.endDate} </li>
+            <li> {parseInt(experience.startDate.slice(0, 4))} {"/"} {parseInt(experience.endDate.slice(0, 4))} </li>
             <li className="text-truncate" >
               {experience.companyName}
             </li>

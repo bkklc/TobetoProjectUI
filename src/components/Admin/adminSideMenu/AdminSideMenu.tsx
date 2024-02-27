@@ -9,7 +9,7 @@ function AdminSideMenu() {
       <Col md={3} lg={3} className="mb-8 mb-lg-0">
         <div className="p-2 py-4 mobile-sidebar">
           <Nav.Item>
-            <Nav.Link as={Link} to={"/profilimi-duzenle/kisisel-bilgilerim"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/kisisel-bilgilerim" ? "active-edit" : "")} >
+            <Nav.Link as={Link} to={"/kurumsal/egitimler"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/kisisel-bilgilerim" ? "active-edit" : "")} >
               <span className="personel-informations" />
               <span className="sidebar-text">Eğitimler</span>
             </Nav.Link>
