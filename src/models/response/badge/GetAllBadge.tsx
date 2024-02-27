@@ -5,3 +5,11 @@ export interface GetAllBadge {
   imageName: string;
   imageUrl: string;
 }
+
+export const defaultGetAllBadge: GetAllBadge = {
+  id: 0,
+  imageId: 0,
+  name: "",
+  imageName: "",
+  imageUrl: "",
+}

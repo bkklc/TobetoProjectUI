@@ -1,9 +1,11 @@
 import GetAllAddress, { defaultGetAllAddress } from "../address/GetAllAddress";
+import { GetAllBadge, defaultGetAllBadge } from "../badge/GetAllBadge";
 import GetAllCertificate from "../certificate/GetAllCertificate";
 import GetAllEducation from "../education/GetAllEducation";
 import GetAllExperience from "../experience/GetAllExperience";
 import GetAllResponseSurvey from "../surveys/GetAllResponseSurvey";
 import GetAllResponseUserAnnouncement from "../userAnnouncement/GetAllResponseUserAnnouncement";
+import { GetAllUserBadge, defaultGetAllUserBadge } from "../userBadge/GetAllUserBadge";
 import GetAllResponseUserLanguage from "../userLanguage/GetAllResponseUserLanguage";
 import GetAllUserSocialMedia from "../userSocialMedia/GetAllUserSocialMedia";
 
@@ -25,6 +27,8 @@ export default interface GetByIdResponseUser {
     userSurveys: GetAllResponseSurvey[]
     addresses: GetAllAddress
     educations: GetAllEducation[]
+    userBadge: GetAllUserBadge
+    badge : GetAllBadge[]
 }
 
 export const defaultUser: GetByIdResponseUser = {
@@ -44,5 +48,7 @@ export const defaultUser: GetByIdResponseUser = {
     experiences: [],
     userSurveys: [],
     addresses: defaultGetAllAddress,
-    educations: []
+    educations: [],
+    userBadge: defaultGetAllUserBadge,
+    badge: []
   };

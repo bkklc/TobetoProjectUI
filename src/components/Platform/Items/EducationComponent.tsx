@@ -1,8 +1,9 @@
-import { Row } from "react-bootstrap";
+import { Button, Nav, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import GetStudentCourse from "../../../hooks/getStudentCourse";
 import GetAllClassroomGroupCourses, { defaultGetAllClassroomGroupCourses } from "../../../models/response/classroomGroupCourse/GetAllClassroomGroupCourses";
 import Paginate from "../../../models/paginate";
+import { Link } from "react-router-dom";
 
 
 
@@ -32,7 +33,14 @@ const EducationComponent = () => {
                 <span>{education.courseName}</span>
                 <span className="platform-course-date">21 Eylül 2023 15:20</span>
               </div>
-              <a className="apply-btn">Eğitime Git</a>
+              <Button>
+                    <Nav.Link
+                      as={Link}
+                      to={"/lms"}                      
+                    >
+                      Eğitime Git
+                    </Nav.Link>
+                  </Button>
             </div>
           </div>
         </div>
