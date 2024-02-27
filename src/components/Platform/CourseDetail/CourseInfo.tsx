@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
-const CourseInfo = () => {
+
+
+const CourseInfo = () => { 
+
+
   return (
     <div id="root">
       <div id="wrapper-content" className="wrapper without-slide">
