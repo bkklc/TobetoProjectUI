@@ -1,12 +1,25 @@
 export default interface GetAllExperience{
-    Id:number,
-    UserId:number,
-    CityId:number,
-    CityName:string,
-    CompanyName:string,
-    Position:string,
-    Sector:string,
-    Description:string,
-    StartDate:string,
-    EndDate:string
+    id:number,
+    userId:number,
+    cityId:number,
+    cityName:string,
+    companyName:string,
+    position:string,
+    sector:string,
+    description:string,
+    startDate:string,
+    endDate:string
+}
+
+export const defaultGetAllExperience: GetAllExperience = {
+    id:0,
+    userId:0,
+    cityId:0,
+    cityName:"",
+    companyName:"",
+    position:"",
+    sector:"",
+    description:"",
+    startDate:"",
+    endDate:""
 }
