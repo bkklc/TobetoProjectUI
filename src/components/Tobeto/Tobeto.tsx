@@ -7,6 +7,9 @@ import Register from '../../pages/Tobeto/Auth/Register'
 import PasswordUpdated from '../../pages/Tobeto/Auth/PasswordUpdated'
 import Aboutus from './About/AboutusComponent'
 import CodecademyComponent from './Codecademy/CodecademyComponent'
+import TobetoHomePage from './Home/TobetoHomePage'
+import ForBusinessPage from './WhatWeOfferPage/ForBusinessPage'
+import ForPersonalPage from './WhatWeOfferPage/ForPersonalPage'
 
 
 
@@ -20,6 +23,10 @@ export default function Tobeto() {
       <Route path="/istanbul-kodluyor/galeri" Component={Gallery}></Route>
       <Route path="/hakkimizda" element={<TobetoRoute><Aboutus /></TobetoRoute>}></Route>
       <Route path="/codecademy" element={<TobetoRoute><CodecademyComponent /></TobetoRoute>}></Route>
+      <Route path="/anasayfa" element={<TobetoRoute><TobetoHomePage/></TobetoRoute>}></Route>
+      <Route path="/bireyler-icin" element={<TobetoRoute><ForPersonalPage/></TobetoRoute>}></Route>
+      <Route path="/kurumlar-icin" element={<TobetoRoute><ForBusinessPage/></TobetoRoute>}></Route>
+
     </Routes>
   )
 }
