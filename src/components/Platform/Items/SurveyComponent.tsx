@@ -40,9 +40,9 @@ const SurveyComponent = () => {
               </div>
               <div className="d-flex-direction-column">
                 <span className="date">
-                  Başlangıç Tarihi: {survey.startedDate}
+                  Başlangıç Tarihi: {survey.startedDate.split("T")[0]}
                 </span>
-                <span className="date">Bitiş Tarihi: {survey.endDate}</span>
+                <span className="date">Bitiş Tarihi: {survey.endDate.split("T")[0]}</span>
                 <span className="read-more" onClick={() => handleReadMoreClick(survey)}>
                   Devamını Oku
                 </span>
