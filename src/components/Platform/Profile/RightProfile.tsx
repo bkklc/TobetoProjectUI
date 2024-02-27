@@ -61,12 +61,7 @@ const ProfileRight = () => {
         <div className="model-padding">
           <Row>
             <Col md={6} xs={12} className="my-3">
-              <canvas
-                height="480"
-                width="668"
-                style={{ display: "block", height: "240px", width: "334px" }}
-                className="chartjs-render-monitor"
-              ></canvas>
+              <img src="/chart.png"/>
             </Col>
             <Col md={6} xs={12} className="d-flex my-3">
               <div className="radar-labels">
