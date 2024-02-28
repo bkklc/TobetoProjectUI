@@ -843,7 +843,6 @@ const AboutusComponent = () => {
                   </div>
                 </div>
                 <div className="gradient-line mt-5"></div>
-                <div className="gradient-line mt-5"></div>
                 <div className="container-fluid">
                   <Row className="row about-banner">
                     <span className="mb-10" style={{ fontWeight: 600 }}>
