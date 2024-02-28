@@ -124,9 +124,9 @@ export default function Education() {
         imageService.add({
             Name: file.name,
             Path: response.body.sitePath,
-          }).then(res => {
+        }).then(res => {
             setFormData({ ...formData, imageId: Number(res.data.id) })
-          })
+        })
     });
 
     useEffect(() => {

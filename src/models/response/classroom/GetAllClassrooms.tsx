@@ -1,4 +1,4 @@
 export default interface GetAllClassrooms {
-    Id: number,
-    Name: string
+    id: number,
+    name: string
 }

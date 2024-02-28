@@ -8,10 +8,10 @@ export default interface AddRequestCourse {
 }
 
 export const defaultAddRequestCourse: AddRequestCourse = {
-  imageId: 3,
-  name: "string",
-  description: "string",
-  subTypeId:1,
+  imageId: 9,
+  name: "",
+  description: "",
+  subTypeId:0,
   startedDate:new Date(),
   endDate:new Date()
 };

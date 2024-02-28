@@ -2,9 +2,9 @@ import GetAllClassroomStudents from "../classroomStudent/GetAllClassroomStudents
 
 
 export default interface GetAllClassroomGroups {
-    Id: number,
-    ClassroomName: string,
-    GroupName: string,
-    Students?: GetAllClassroomStudents[]
+    id: number,
+    classroomName: string,
+    groupName: string,
+    students?: GetAllClassroomStudents[]
 }
 

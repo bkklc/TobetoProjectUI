@@ -1,4 +1,9 @@
 export default interface AddRequestClassroomGroup {
-    ClassroomId: number,
-    GroupId: number
+    classroomId: number,
+    groupId: number
 }
+
+export const defaultAddRequestClassroomGroup: AddRequestClassroomGroup = {
+    classroomId: 0,
+    groupId: 0
+  };

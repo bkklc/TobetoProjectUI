@@ -8,31 +8,31 @@ interface Props {
   pageSize: any;
 }
 
-const AnnouncementsComponent =  (props:Props) => {
- 
+const AnnouncementsComponent = (props: Props) => {
+
 
   const [selectedAnnouncement, setSelectedAnnouncement] = useState({ name: '', description: '' });
   const [announcement, setAnnouncement] = useState<Paginate<GetAllAnnouncement>>({ items: [] })
 
   const fetchData = async () => {
     try {
-        await announcementService.getAll(0, props.pageSize).then(
-            (res) => {
-                if (res.status === 200) {
-                  res.data.items.sort((a, b) => {
-                    return new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime();
-                  })
-                    setAnnouncement(res.data)
-                }
-            }
-        );
+      await announcementService.getAll(0, props.pageSize).then(
+        (res) => {
+          if (res.status === 200) {
+            res.data.items.sort((a, b) => {
+              return new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime();
+            })
+            setAnnouncement(res.data)
+          }
+        }
+      );
 
     } catch (error) {
-        console.error("Veri çekme sırasında bir hata oluştu:", error);
+      console.error("Veri çekme sırasında bir hata oluştu:", error);
     }
-};
+  };
 
-  const handleReadMoreClick = (announcement:any) => {
+  const handleReadMoreClick = (announcement: any) => {
     setSelectedAnnouncement({
       name: announcement.name,
       description: announcement.description
@@ -46,11 +46,11 @@ const AnnouncementsComponent =  (props:Props) => {
 
   useEffect(() => {
     fetchData();
-  },[])
+  }, [])
   return (
     <Row>
       {
-        announcement.items.map((announcement:any) => (
+        announcement.items.map((announcement: any) => (
           <div className="col-md-4 col-12 my-4" key={announcement.id}>
             <div className="notfy-card notify">
               <div className="d-flex flex-column">
@@ -79,7 +79,12 @@ const AnnouncementsComponent =  (props:Props) => {
           <Modal.Header closeButton>
             <Modal.Title id="example-modal-sizes-title-lg">{selectedAnnouncement.name}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>{selectedAnnouncement.description}</Modal.Body>
+          <Modal.Body>
+            <div style={{ whiteSpace: 'pre-line' }}>
+              {selectedAnnouncement.description}
+            </div>
+
+          </Modal.Body>
         </Modal>
       )}
     </Row>

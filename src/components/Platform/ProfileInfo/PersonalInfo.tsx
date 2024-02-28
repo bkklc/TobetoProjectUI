@@ -178,7 +178,7 @@ const PersonalInfo = () => {
               PhoneNumber: resUser.data.phoneNumber,
               Email: resUser.data.email,
               Description: resUser.data.description,
-              ImageId: Number(res.data.Id),
+              ImageId: Number(res.data.id),
               BirthDate: resUser.data.birthDate
             })
             fetchData();
