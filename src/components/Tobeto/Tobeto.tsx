@@ -10,13 +10,15 @@ import CodecademyComponent from './Codecademy/CodecademyComponent'
 import TobetoHomePage from './Home/TobetoHomePage'
 import ForBusinessPage from './WhatWeOfferPage/ForBusinessPage'
 import ForPersonalPage from './WhatWeOfferPage/ForPersonalPage'
-import HomePageCatalog from './HomaPageCatalog/HomePageCatalog'
+import HomePageCatalog from './HomePageCatalog/HomePageCatalog'
+
 
 
 
 export default function Tobeto() {
   return (
     <Routes>
+      <Route path="/anasayfa" element={<TobetoRoute><TobetoHomePage/></TobetoRoute>}></Route>
       <Route path="/giris" element={<TobetoRoute><Login /></TobetoRoute>}></Route>
       <Route path="/kayit-ol" element={<TobetoRoute><Register /></TobetoRoute>}></Route>
       <Route path="/şifremi-unuttum" element={<TobetoRoute><PasswordUpdated /></TobetoRoute>}></Route>

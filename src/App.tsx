@@ -5,8 +5,8 @@ import Tobeto from './components/Tobeto/Tobeto'
 
 function App() {
   return (
-    <>
-      <Dashboard />
+    <>      
+      <Dashboard />      
       <Tobeto />
       <AdminDashboard/>
     </>
