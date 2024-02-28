@@ -125,9 +125,11 @@ function NavbarComponent() {
           </Button>
           <div
             className="mx-3 align-items-center d-flex align-items-center d-none d-xxl-block"
-            style={{ gap: "1em" }}
+            style={{ gap: "1em" }}            
           >
+            <Link to="/anasayfa"> 
             <span className="tbt-gradient" />
+            </Link>
           </div>
           <div className="btn-group header-avatar d-none d-xxl-block">
             <Nav>
