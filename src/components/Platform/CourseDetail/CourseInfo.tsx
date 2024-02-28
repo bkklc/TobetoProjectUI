@@ -128,15 +128,152 @@ const CourseInfo = () => {
                   justify
                 >
                   <Tab eventKey="applications" title="İçerik">
-                    <CourseContentComponent/>
+                    <div className="pt-10">
+                    <CourseContentComponent />
+                    </div>
+                    
                   </Tab>
                   <Tab eventKey="courses" title="Hakkında">
-                    
+                    <div className="ant-tabs-content-holder pt-10">
+                      <div className="ant-tabs-content ant-tabs-content-top">
+                        <div
+                          role="tabpanel"
+                          tabIndex={-1}
+                          aria-hidden="true"
+                          className="ant-tabs-tabpane ant-tabs-tabpane-hidden"
+                          id="rc-tabs-0-panel-content"
+                          aria-labelledby="rc-tabs-0-tab-content"
+                        />
+                        <div
+                          id="rc-tabs-0-panel-about"
+                          role="tabpanel"
+                          tabIndex={0}
+                          aria-labelledby="rc-tabs-0-tab-about"
+                          aria-hidden="false"
+                          className="ant-tabs-tabpane ant-tabs-tabpane-active"
+                        >
+                          <div className="activity-detail-info">
+                            <div className="info-section">
+                              <div className="row">
+                                <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                  <i className="sg-icon sg-oven" />
+                                  <strong>Başlangıç</strong>
+                                </div>
+                                <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                  27 EKİ 2023 14:52
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                  <i className="hidden-icon sg-icon sg-oven" />
+                                  <strong>Bitiş</strong>
+                                </div>
+                                <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                  <span>10 MAR 2024 23:59</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="info-section row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <i className="sg-icon sg-stopwatch" />
+                                <strong>Geçirdiğin Süre</strong>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                <span>13 sa 8 dk</span>
+                              </div>
+                            </div>
+                            <div className="info-section row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <i className="sg-icon sg-stopwatch" />
+                                <strong>Tahmini Süre</strong>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                65 g 36 sa 30 dk
+                              </div>
+                            </div>
+                            <div className="info-section row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <span
+                                  role="img"
+                                  aria-label="partition"
+                                  className="anticon anticon-partition"
+                                >
+                                  <svg
+                                    viewBox="64 64 896 896"
+                                    focusable="false"
+                                    className=""
+                                    data-icon="partition"
+                                    width="1em"
+                                    height="1em"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <defs>
+                                      <style
+                                        dangerouslySetInnerHTML={{ __html: "" }}
+                                      />
+                                    </defs>
+                                    <path d="M640.6 429.8h257.1c7.9 0 14.3-6.4 14.3-14.3V158.3c0-7.9-6.4-14.3-14.3-14.3H640.6c-7.9 0-14.3 6.4-14.3 14.3v92.9H490.6c-3.9 0-7.1 3.2-7.1 7.1v221.5h-85.7v-96.5c0-7.9-6.4-14.3-14.3-14.3H126.3c-7.9 0-14.3 6.4-14.3 14.3v257.2c0 7.9 6.4 14.3 14.3 14.3h257.1c7.9 0 14.3-6.4 14.3-14.3V544h85.7v221.5c0 3.9 3.2 7.1 7.1 7.1h135.7v92.9c0 7.9 6.4 14.3 14.3 14.3h257.1c7.9 0 14.3-6.4 14.3-14.3v-257c0-7.9-6.4-14.3-14.3-14.3h-257c-7.9 0-14.3 6.4-14.3 14.3v100h-78.6v-393h78.6v100c0 7.9 6.4 14.3 14.3 14.3zm53.5-217.9h150V362h-150V211.9zM329.9 587h-150V437h150v150zm364.2 75.1h150v150.1h-150V662.1z" />
+                                  </svg>
+                                </span>
+                                <strong>Eğitim Türü</strong>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                Eğitim
+                              </div>
+                            </div>
+                            <div className="info-section row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <i className="sg-icon sg-tag" />
+                                <strong>Kategori</strong>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                <div>Genel</div>
+                              </div>
+                            </div>
+                            <div className="info-section row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-7">
+                                <i className="sg-icon sg-file" />
+                                <strong>İçerik</strong>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-5">
+                                290
+                              </div>
+                            </div>
+                            <div className="info-section file row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-7">
+                                <i className="hidden-icon sg-icon sg-file" />
+                                <span>Görev</span>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-5">
+                                65
+                              </div>
+                            </div>
+                            <div className="info-section file row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-7">
+                                <i className="hidden-icon sg-icon sg-file" />
+                                <span>Video</span>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-5">
+                                225
+                              </div>
+                            </div>
+                            <div id="last-section" className="info-section row">
+                              <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <i className="sg-icon sg-briefcase" />
+                                <strong>Üretici Firma</strong>
+                              </div>
+                              <div className="col-lg-10 col-md-10 col-sm-9 col-xs-7">
+                                <a className="btn-change">Enocta</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Tab>
                 </Tabs>
               </Container>
-
-              
             </div>
           </div>
         </div>
