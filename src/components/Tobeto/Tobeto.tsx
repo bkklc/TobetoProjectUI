@@ -10,7 +10,8 @@ import CodecademyComponent from './Codecademy/CodecademyComponent'
 import TobetoHomePage from './Home/TobetoHomePage'
 import ForBusinessPage from './WhatWeOfferPage/ForBusinessPage'
 import ForPersonalPage from './WhatWeOfferPage/ForPersonalPage'
-import HomePageCatalog from './HomaPageCatalog/HomePageCatalog'
+import HomePageCatalog from './HomePageCatalog/HomePageCatalog'
+
 
 
 
