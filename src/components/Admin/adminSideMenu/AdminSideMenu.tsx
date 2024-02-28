@@ -10,35 +10,35 @@ function AdminSideMenu() {
         <div className="p-2 py-4 mobile-sidebar">
           <Nav.Item>
             <Nav.Link as={Link} to={"/kurumsal/egitimler"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/kisisel-bilgilerim" ? "active-edit" : "")} >
-              <span className="personel-informations" />
+            <span className="material-symbols-outlined size-26">library_books</span>    
               <span className="sidebar-text">Eğitimler</span>
             </Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
             <Nav.Link as={Link} to={"/profilimi-duzenle/deneyimlerim"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/deneyimlerim" ? "active-edit" : "")} >
-              <span className="experience" />             
+            <span className="material-symbols-outlined size-26">school</span>         
               <span className="sidebar-text">Öğrenciler</span>
             </Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
             <Nav.Link as={Link} to={"/profilimi-duzenle/egitim-hayatim"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/egitim-hayatim" ? "active-edit" : "")} >
-              <span className="educations" />
+            <span className="material-symbols-outlined size-26">group</span>    
               <span className="sidebar-text">Eğitmenler</span>
             </Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link as={Link} to={"/profilimi-duzenle/yetkinliklerim"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/yetkinliklerim" ? "active-edit" : "")} >
-              <span className="abilities" />
+            <Nav.Link as={Link} to={"/kurumsal/duyurular"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/yetkinliklerim" ? "active-edit" : "")} >
+            <span className="material-symbols-outlined size-26">info</span> 
               <span className="sidebar-text">Duyurular</span>
             </Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
             <Nav.Link as={Link} to={"/profilimi-duzenle/sertifikalarim"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/sertifikalarim" ? "active-edit" : "")} >
-              <span className="certificates" />
+            <span className="material-symbols-outlined size-26">forum</span> 
               <span className="sidebar-text">Anketler</span>
             </Nav.Link>
           </Nav.Item>
@@ -52,8 +52,8 @@ function AdminSideMenu() {
 
           <Nav.Item>
             <Nav.Link as={Link} to={"/profilimi-duzenle/yabanci-dillerim"} className={"btn mb-2 text-start w-100  sidebar-link " + (url === "/profilimi-duzenle/yabanci-dillerim" ? "active-edit" : "")} >
-              <span className="languages2" />
-              <span className="sidebar-text">Başvuru</span>
+            <span className="material-symbols-outlined size-26">description</span> 
+              <span className="sidebar-text">Başvurular</span>
             </Nav.Link>
           </Nav.Item>
 

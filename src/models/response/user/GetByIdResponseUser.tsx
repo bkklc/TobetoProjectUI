@@ -1,5 +1,5 @@
 import GetAllAddress, { defaultGetAllAddress } from "../address/GetAllAddress";
-import { GetAllBadge, defaultGetAllBadge } from "../badge/GetAllBadge";
+import { GetAllBadge } from "../badge/GetAllBadge";
 import GetAllCertificate from "../certificate/GetAllCertificate";
 import GetAllEducation from "../education/GetAllEducation";
 import GetAllExperience from "../experience/GetAllExperience";

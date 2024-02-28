@@ -1,6 +1,6 @@
 export default interface AddResponseImage {
-    Id:Number,
-    Name:string,
-    Path:string,
+    id:Number,
+    name:string,
+    path:string,
     
 }

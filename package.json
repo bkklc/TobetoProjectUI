@@ -17,6 +17,7 @@
     "@fullcalendar/interaction": "^6.1.10",
     "@fullcalendar/react": "^6.1.10",
     "@fullcalendar/timegrid": "^6.1.10",
+    "@mui/icons-material": "^5.15.11",
     "@reduxjs/toolkit": "^2.0.1",
     "@transloadit/prettier-bytes": "^0.3.1",
     "@uiw/react-heat-map": "^2.2.1",

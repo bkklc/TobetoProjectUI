@@ -1,6 +1,5 @@
 import { AxiosResponse } from "axios";
 import { BaseService } from "../core/services/baseServices";
-import Paginate from "../models/paginate";
 import { AddRequestStudent } from "../models/requests/student/addRequestStudent";
 import { UpdateRequestStudent } from "../models/requests/student/updateRequestStudent";
 import { AddResponseStudent } from "../models/response/student/addResponseStudent";

@@ -1,4 +1,10 @@
 export default interface AddRequestAnnouncement{
-    Name: string,
-    Description:string,
+    name: string,
+    description:string,
 }
+
+
+export const defaultAddRequestAnnouncement: AddRequestAnnouncement = {
+    name: "string",
+    description:"string",
+  };

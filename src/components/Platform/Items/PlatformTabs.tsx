@@ -40,7 +40,7 @@ function PlatformTabs() {
         </Tab>
 
         <Tab eventKey="announcements" title="Duyuru ve Haberlerim">
-          <AnnouncementsComponent />
+          <AnnouncementsComponent pageSize={3} />
           <div className="showMoreBtn" onClick={handleButtonClick2}>Daha Fazla Göster</div>
         </Tab>
         <Tab eventKey="surveys" title="Anketlerim">

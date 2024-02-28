@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+
 import { Container, Tab, Tabs } from "react-bootstrap";
-import ApplicationsComponent from "../Items/ApplicationsComponent";
-import EducationComponent from "../Items/EducationComponent";
+
 import CourseContentComponent from "./CourseContentComponent";
 
 const CourseInfo = () => {

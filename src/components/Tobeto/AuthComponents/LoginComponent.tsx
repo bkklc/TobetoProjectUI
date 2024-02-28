@@ -17,7 +17,7 @@ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       .login(formData)
       .then(response => {
         localStorage.setItem("Token" , response.data.token)
-        navigate("/")
+        navigate("/platform")
       })
       
   };

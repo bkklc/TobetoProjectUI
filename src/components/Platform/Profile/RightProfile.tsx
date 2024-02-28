@@ -7,8 +7,6 @@ import GetAllExperience, {
 } from "../../../models/response/experience/GetAllExperience";
 import experienceService from "../../../services/experienceService";
 import tokenDecode from "../../../hooks/tokenDecode";
-import GetAllEducation from "../../../models/response/education/GetAllEducation";
-import educationService from "../../../services/educationService";
 import GetByLoginUserData from "../../../hooks/getByIdUserHook";
 import GetByIdResponseUser, {
   defaultUser,

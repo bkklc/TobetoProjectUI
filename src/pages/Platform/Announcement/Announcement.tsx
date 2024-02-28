@@ -101,76 +101,37 @@ const Announcement = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="rw-100 css-b62m3t-container">
-                            <span id="react-select-8-live-region" className="css-7pg0cj-a11yText" />
-                            <span
-                                aria-live="polite"
-                                aria-atomic="false"
-                                aria-relevant="additions text"
-                                className="css-7pg0cj-a11yText"
-                            />
-                            <div className="select__control css-13cymwt-control">
-                                <div className="select__value-container select__value-container--is-multi css-hlgwow">
-                                    <div
-                                        className="select__placeholder css-1jqq78o-placeholder"
-                                        id="react-select-8-placeholder"
-                                    >
-                                        Organizasyon
+                        <div className="dropdown">
+                            <button
+                                className="white-filter dropdown-toggle ms-0"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Organizasyon
+                            </button>
+                            <ul className="dropdown-menu new-filter" style={{}}>
+                                <li className="filter-checkbox-item">
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" id="typeNews" />
+                                        <label className="form-check-label" htmlFor="typeNews">
+                                            Haber
+                                        </label>
                                     </div>
-                                    <div className="select__input-container css-19bb58m" data-value="">
+                                </li>
+                                <li className="filter-checkbox-item">
+                                    <div className="form-check">
                                         <input
-                                            className="select__input"
-                                            autoCapitalize="none"
-                                            autoComplete="off"
-                                            autoCorrect="off"
-                                            id="react-select-8-input"
-                                            spellCheck="false"
-                                            tabIndex={0}
-                                            type="text"
-                                            aria-autocomplete="list"
-                                            aria-expanded="false"
-                                            aria-haspopup="true"
-                                            role="combobox"
-                                            aria-describedby="react-select-8-placeholder"
-                                            defaultValue=""
-                                            style={{
-                                                color: "inherit",
-                                                background: "0px center",
-                                                opacity: 1,
-                                                width: "100%",
-                                                gridArea: "1 / 2",
-                                                font: "inherit",
-                                                minWidth: 2,
-                                                border: 0,
-                                                margin: 0,
-                                                outline: 0,
-                                                padding: 0
-                                            }}
+                                            className="form-check-input"
+                                            type="checkbox"
+                                            id="typeAnnouncement"
                                         />
+                                        <label className="form-check-label" htmlFor="typeAnnouncement">
+                                            Duyuru
+                                        </label>
                                     </div>
-                                </div>
-                                <div className="select__indicators css-1wy0on6">
-                                    <span className="select__indicator-separator css-1u9des2-indicatorSeparator" />
-                                    <div
-                                        className="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
-                                        aria-hidden="true"
-                                    >
-                                        <svg
-                                            height={20}
-                                            width={20}
-                                            viewBox="0 0 20 20"
-                                            aria-hidden="true"
-                                            focusable="false"
-                                            className="css-8mmkcg"
-                                        >
-                                            <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <input name="colors" type="hidden" defaultValue="" />
-                            </div>
+                                </li>
+                            </ul>
                         </div>
                         <div className="d-flex align-items-center rw-100 gap-3">
                             <div className="dropdown ">
@@ -198,7 +159,7 @@ const Announcement = () => {
                     </div>
                 </div>
 
-                <AnnouncementsComponent />
+                <AnnouncementsComponent pageSize={20} />
             </Container>
 <div>
 

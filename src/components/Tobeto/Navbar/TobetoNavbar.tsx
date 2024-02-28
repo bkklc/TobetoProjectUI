@@ -6,7 +6,7 @@ const TobetoNavbar = () => {
     <section className="web-header">    
       <Nav className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 py-5">
         <Container fluid>
-          <Link to="#">                    
+          <Link to="/">                    
               <img
                 alt=""
                 src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FTebeto-logo-yatay-beyaz.8c2d6927.png&w=384&q=75"

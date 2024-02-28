@@ -24,7 +24,6 @@ export default function Dashboard() {
   }
   return (
     <WrapperWrapper>
-      <DashboardRoute path="/" element={<Homepage />} />
       <DashboardRoute path="/platform" element={<Homepage />} />
       <DashboardRoute path="/degerlendirmeler" element={<Degerlendirmeler />} />
       <DashboardRoute path="/profilim" element={<Profile />} />

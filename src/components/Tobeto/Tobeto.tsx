@@ -24,7 +24,7 @@ export default function Tobeto() {
       <Route path="/istanbul-kodluyor/galeri" Component={Gallery}></Route>
       <Route path="/hakkimizda" element={<TobetoRoute><Aboutus /></TobetoRoute>}></Route>
       <Route path="/codecademy" element={<TobetoRoute><CodecademyComponent /></TobetoRoute>}></Route>
-      <Route path="/anasayfa" element={<TobetoRoute><TobetoHomePage/></TobetoRoute>}></Route>
+      <Route path="/" element={<TobetoRoute><TobetoHomePage/></TobetoRoute>}></Route>
       <Route path="/bireyler-icin" element={<TobetoRoute><ForPersonalPage/></TobetoRoute>}></Route>
       <Route path="/kurumlar-icin" element={<TobetoRoute><ForBusinessPage/></TobetoRoute>}></Route>
       <Route path="/katalog" element={<TobetoRoute><HomePageCatalog/></TobetoRoute>}></Route>

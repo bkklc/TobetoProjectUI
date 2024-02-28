@@ -50,7 +50,7 @@ function NavbarComponent() {
             className="nav flex-column"
           >
 
-            <Nav.Link as={Link} to={"/"} className={((url === "/" || url === "/platform") ? "nav-active" : "")} onClick={handleClose}>Ana Sayfa</Nav.Link>
+            <Nav.Link as={Link} to={"/platform"} className={(( url === "/platform") ? "nav-active" : "")} onClick={handleClose}>Ana Sayfa</Nav.Link>
             <Nav.Link as={Link} to={"/profilim"} className={(url === "/profilim" ? "nav-active" : "")} onClick={handleClose}>Profilim</Nav.Link>
             <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler" ? "nav-active" : "")} onClick={handleClose}>Değerlendirmeler</Nav.Link>
             <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog" ? "nav-active" : "")} onClick={handleClose}>Katalog</Nav.Link>
@@ -110,7 +110,7 @@ function NavbarComponent() {
               style={{ maxHeight: "100px" }}
               navbarScroll>
 
-              <Nav.Link as={Link} to={"/"} className={((url === "/" || url === "/platform") ? "nav-active" : "")}>Ana Sayfa</Nav.Link>
+              <Nav.Link as={Link} to={"/platform"} className={((url === "/platform") ? "nav-active" : "")}>Ana Sayfa</Nav.Link>
               <Nav.Link as={Link} to={"/profilim"} className={(url === "/profilim" ? "nav-active" : "")}>Profilim</Nav.Link>
               <Nav.Link as={Link} to={"/degerlendirmeler"} className={(url === "/degerlendirmeler" ? "nav-active" : "")}>Değerlendirmeler</Nav.Link>
               <Nav.Link as={Link} to={"/platform-katalog"} className={(url === "/platform-katalog" ? "nav-active" : "")}>Katalog</Nav.Link>
