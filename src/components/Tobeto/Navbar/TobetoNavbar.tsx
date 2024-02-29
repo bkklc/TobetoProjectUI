@@ -10,7 +10,7 @@ const TobetoNavbar = () => {
   const [responseData, setResponseData] = useState<GetByIdResponseUser>(defaultUser);
 
   useEffect(() => {
-    if(!tokenService.hasToken()){
+    if(tokenService.hasToken()){
       GetByLoginUserData(setResponseData);
     }
     
