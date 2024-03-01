@@ -80,8 +80,8 @@ const AnnouncementsComponent = (props: Props) => {
             <Modal.Title id="example-modal-sizes-title-lg">{selectedAnnouncement.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div style={{ whiteSpace: 'pre-line' }}>
-              {selectedAnnouncement.description}
+            <div style={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{__html: selectedAnnouncement.description}}>
+              
             </div>
 
           </Modal.Body>

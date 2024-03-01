@@ -280,7 +280,7 @@ export default function Education() {
                                 </svg>
                             </div>
                             <span>Dosya Yükle</span>
-                            <DashboardModal uppy={uppy} open={isOpen} closeModalOnClickOutside onRequestClose={toggleModal} />
+                            <DashboardModal uppy={uppy} open={isOpen} closeModalOnClickOutside onRequestClose={toggleModal} closeAfterFinish/>
                         </div>
 
 
