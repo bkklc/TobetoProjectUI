@@ -23,8 +23,8 @@ class ClassroomGroupCourseService extends BaseService<
         this.apiUrl = "ClassroomGroupCourses";
     }
 
-    GetListByClassroomGroupId(classroomGroupId: any): Promise<AxiosResponse<Paginate<GetAllClassroomGroupCourses>, any>> {
-		return axiosInstance.get<Paginate<GetAllClassroomGroupCourses>>(this.apiUrl + "/GetListByClassroomGroupId?classroomGroupId=" + classroomGroupId + "&PageIndex=0&PageSize=20");
+    GetListByClassroomGroupId(classroomGroupId: any, pageSize:any): Promise<AxiosResponse<Paginate<GetAllClassroomGroupCourses>, any>> {
+		return axiosInstance.get<Paginate<GetAllClassroomGroupCourses>>(this.apiUrl + "/GetListByClassroomGroupId?classroomGroupId=" + classroomGroupId + "&PageIndex=0&PageSize=" + pageSize);
 	}
 }
 

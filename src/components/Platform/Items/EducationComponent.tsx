@@ -5,15 +5,18 @@ import GetAllClassroomGroupCourses, { defaultGetAllClassroomGroupCourses } from 
 import Paginate from "../../../models/paginate";
 import { Link } from "react-router-dom";
 
+interface Props {
+  pageSize: any;
+}
 
-
-const EducationComponent = () => {
+const EducationComponent = (prop:Props) => {
   const [course, setCourse] = useState<Paginate<GetAllClassroomGroupCourses>>({
     items: [defaultGetAllClassroomGroupCourses]
   });
 
   useEffect(() => {
-    GetStudentCourse(setCourse);
+    console.log(prop.pageSize);
+    GetStudentCourse(setCourse,prop.pageSize);
   }, [])
   return (
 

@@ -4,13 +4,13 @@ import studentService from '../services/studentService';
 import tokenDecode from './tokenDecode';
 
 
-    const GetStudentCourse = async (state:any) => {
+    const GetStudentCourse = async (state:any, pageSize:any) => {
       try {
         await studentService.getByUserId(tokenDecode().ID)
         .then((res) => {
             classroomStudent.GetListByStudentId(res.data.id)
             .then((resCS) => {               
-                classroomGroupCourseService.GetListByClassroomGroupId(resCS.data.items[0].classroomGroupId)
+                classroomGroupCourseService.GetListByClassroomGroupId(resCS.data.items[0].classroomGroupId , pageSize)
                 .then((resCGC)=> {
                     state(resCGC.data)
                 })

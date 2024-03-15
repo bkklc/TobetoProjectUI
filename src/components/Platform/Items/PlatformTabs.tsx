@@ -35,7 +35,7 @@ function PlatformTabs() {
           <ApplicationsComponent />
         </Tab>
         <Tab eventKey="courses" title="Eğitimlerim">
-          <EducationComponent />
+          <EducationComponent pageSize={4}/>
             <div className="showMoreBtn" onClick={handleButtonClick1}>Daha Fazla Göster</div>
         </Tab>
 
